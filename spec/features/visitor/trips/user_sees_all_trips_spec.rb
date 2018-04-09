@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Visitor' do
   scenario 'A visitor goes to trip index and sees all trips' do
-    trips = create_list(:trip, 5)
+    trips = create_list(:trip, 1)
 
     visit trips_path
 
@@ -20,9 +20,12 @@ describe 'Visitor' do
     end
   end
   scenario 'A visitor goes to trip index and sees trips over 30 paginated' do
-    trips = create_list(:trip, 90)
+    trips = create_list(:trip, 35)
 
     visit trips_path
-    save_and_open_page
+
+    expect(page).to have_content("#{trips[0].duration} #{trips[0].start_date} #{trips[0].start_station_name}")
+    expect(page).to_not have_content("#{trips[33].duration} #{trips[33].start_date} #{trips[33].start_station_name}")
+    expect(page).to have_content('← Previous 1 2 Next →')
   end
 end
