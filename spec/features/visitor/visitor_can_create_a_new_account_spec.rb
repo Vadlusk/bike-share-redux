@@ -16,20 +16,20 @@ describe 'Visitor' do
   end
 
   describe 'can click create a new account link and complete the form' do
-    skip 'and it creates a new account' do
-      visit '/'
-      click_on 'Create Account'
-
+    it 'and it creates a new account' do
       username = "username"
       password = "password"
       email = "email@email.com"
 
-      expect(current_path).to eq("/login")
+      visit '/login'
+      click_on 'Create Account'
 
-      fill_in 'user[email]', with: username
+      expect(current_path).to eq(register_path)
+
       fill_in 'user[username]', with: username
-      fill_in 'user[password]', with: username
-      fill_in 'user[password_confirmation]', with: username
+      fill_in 'user[password]', with: password
+      fill_in 'user[password_confirmation]', with: password
+      fill_in 'user[email]', with: email
       click_on "Create Account"
 
       expect(current_path).to eq("/dashboard")
