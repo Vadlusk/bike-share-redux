@@ -19,4 +19,10 @@ describe 'Visitor' do
       expect(page).to have_content(trip.zip_code)
     end
   end
+  scenario 'A visitor goes to trip index and sees trips over 30 paginated' do
+    trips = create_list(:trip, 90)
+
+    visit trips_path
+    save_and_open_page
+  end
 end
