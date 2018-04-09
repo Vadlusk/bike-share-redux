@@ -5,13 +5,13 @@ describe 'Visitor' do
     it 'see a login link' do
       visit '/'
 
-      within(".login-button") do
+      within("#link1") do
         expect(page).to have_content("Login")
       end
 
       click_on "Login"
 
-      expect(curret_path).to eq("/login")
+      expect(current_path).to eq("/login")
     end
   end
 
