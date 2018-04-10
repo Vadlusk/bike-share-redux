@@ -10,21 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180410025629) do
-=======
-ActiveRecord::Schema.define(version: 20180409232513) do
->>>>>>> f92b1d7... Add sessions#new view. Add users migration, controller, model, model tests for validations. Update routes
-=======
-ActiveRecord::Schema.define(version: 20180410002616) do
->>>>>>> 35448bd... Add role to users, update user_spec to test for default role.. Add dynamic nav logic to application_helper. Add nav views. Add basic styling to nav, header, form. Add user.rb to spec factories.
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   create_table "conditions", force: :cascade do |t|
     t.date "date"
     t.float "max_temperature_f"
@@ -52,8 +42,6 @@ ActiveRecord::Schema.define(version: 20180410002616) do
     t.string "zip_code"
   end
 
-=======
->>>>>>> 71df0ad... Update schema after running trips migration locally
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
     t.datetime "start_date"
@@ -65,19 +53,10 @@ ActiveRecord::Schema.define(version: 20180410002616) do
     t.integer "bike_id"
     t.string "subscription_type"
     t.integer "zip_code"
-=======
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.string "email"
->>>>>>> f92b1d7... Add sessions#new view. Add users migration, controller, model, model tests for validations. Update routes
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role", default: 0
   end
 
-<<<<<<< HEAD
-=======
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -87,5 +66,4 @@ ActiveRecord::Schema.define(version: 20180410002616) do
     t.integer "role", default: 0
   end
 
->>>>>>> 71df0ad... Update schema after running trips migration locally
 end
