@@ -19,6 +19,6 @@ describe 'visitor' do
 
     visit station_path(station)
 
-    expect(current_path).to eq("/#{station.name}")
+    expect(current_path).to eq("/stations/#{station.slug}")
   end
 end
