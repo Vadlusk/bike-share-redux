@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Visitor' do
   scenario 'A visitor goes to trip index and sees all trips' do
-    trips = create_list(:trip, 1)
+    trips = create_list(:trip, 3)
 
     visit trips_path
 
