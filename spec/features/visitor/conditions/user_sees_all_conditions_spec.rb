@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'user sees all conditions' do
   scenario 'and all their attributes' do
-    conditions = create_list(:conditions, 10)
+    conditions = create_list(:condition, 10)
 
     visit conditions_path
 
