@@ -40,6 +40,7 @@ describe 'Visitor' do
       end
 
       expect(page).to_not have_content("Login")
+<<<<<<< HEAD
     end
 
     it 'but cannot create an account if chosen username already exists in database' do
@@ -101,6 +102,8 @@ describe 'Visitor' do
 
       expect(current_path).to eq(register_path)
       expect(page).to have_content("Failed to create new account. Please try again.")
+=======
+>>>>>>> 35448bd... Add role to users, update user_spec to test for default role.. Add dynamic nav logic to application_helper. Add nav views. Add basic styling to nav, header, form. Add user.rb to spec factories.
     end
   end
 end

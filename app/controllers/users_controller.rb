@@ -8,9 +8,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
 <<<<<<< HEAD
+<<<<<<< HEAD
       session[:user_id] = @user.id
 =======
 >>>>>>> f92b1d7... Add sessions#new view. Add users migration, controller, model, model tests for validations. Update routes
+=======
+      session[:user_id] = @user.id
+>>>>>>> 35448bd... Add role to users, update user_spec to test for default role.. Add dynamic nav logic to application_helper. Add nav views. Add basic styling to nav, header, form. Add user.rb to spec factories.
       flash[:success] = "Logged in as #{@user.username}"
       redirect_to '/dashboard'
     else
@@ -20,10 +24,14 @@ class UsersController < ApplicationController
   end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 35448bd... Add role to users, update user_spec to test for default role.. Add dynamic nav logic to application_helper. Add nav views. Add basic styling to nav, header, form. Add user.rb to spec factories.
   def show
     @user = User.find(session[:user_id])
   end
 
+<<<<<<< HEAD
   private
     def user_params
       params.require(:user).permit(:username, :password, :password_confirmation, :email)
@@ -32,5 +40,10 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :password, :email)
 >>>>>>> f92b1d7... Add sessions#new view. Add users migration, controller, model, model tests for validations. Update routes
+=======
+  private
+    def user_params
+      params.require(:user).permit(:username, :password, :email, :role)
+>>>>>>> 35448bd... Add role to users, update user_spec to test for default role.. Add dynamic nav logic to application_helper. Add nav views. Add basic styling to nav, header, form. Add user.rb to spec factories.
     end
 end

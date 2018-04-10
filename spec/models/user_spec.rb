@@ -7,5 +7,11 @@ describe User, type: :model do
     it { should validate_presence_of :password }
     it { should validate_presence_of :email }
     it { should validate_uniqueness_of :email }
+
+    it 'should be created with default role' do
+      user = create(:user)
+
+      expect(user.default?).to be_truthy
+    end
   end
 end
