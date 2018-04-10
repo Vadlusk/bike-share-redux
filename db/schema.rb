@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410215408) do
+ActiveRecord::Schema.define(version: 20180410221728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20180410215408) do
     t.float "max_visibility_miles"
     t.float "mean_visibility_miles"
     t.float "min_visibility_miles"
-    t.float "max_wind_speed_mph"
+    t.float "max_wind_Speed_mph"
     t.float "mean_wind_speed_mph"
     t.float "max_gust_speed_mph"
     t.float "precipitation_inches"
