@@ -43,7 +43,11 @@ class UsersController < ApplicationController
 =======
   private
     def user_params
+<<<<<<< HEAD
       params.require(:user).permit(:username, :password, :email, :role)
 >>>>>>> 35448bd... Add role to users, update user_spec to test for default role.. Add dynamic nav logic to application_helper. Add nav views. Add basic styling to nav, header, form. Add user.rb to spec factories.
+=======
+      params.require(:user).permit(:username, :password, :password_confirmation, :email)
+>>>>>>> 3d123c7... Add password_confirmation to user_params
     end
 end
