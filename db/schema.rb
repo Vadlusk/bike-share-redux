@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180410025629) do
+=======
+ActiveRecord::Schema.define(version: 20180409232513) do
+>>>>>>> f92b1d7... Add sessions#new view. Add users migration, controller, model, model tests for validations. Update routes
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "conditions", force: :cascade do |t|
     t.date "date"
     t.float "max_temperature_f"
@@ -53,6 +58,12 @@ ActiveRecord::Schema.define(version: 20180410025629) do
     t.integer "bike_id"
     t.string "subscription_type"
     t.integer "zip_code"
+=======
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.string "email"
+>>>>>>> f92b1d7... Add sessions#new view. Add users migration, controller, model, model tests for validations. Update routes
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

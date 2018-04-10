@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   
   root controller: 'welcome', action: :index
 
-  get   '/login',  to: 'sessions#new'
+  get '/login',  to: 'sessions#new'
+
+  get '/register', to: 'users#new'
+  resources :users, only: [ :create ]
 end
