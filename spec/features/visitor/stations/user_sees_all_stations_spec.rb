@@ -11,8 +11,6 @@ describe 'visitor' do
       expect(page).to have_content(station.dock_count)
       expect(page).to have_content(station.city)
       expect(page).to have_content(station.installation_date)
-      expect(page).to have_content(station.latitude)
-      expect(page).to have_content(station.longitude)
     end
   end
 end
