@@ -1,8 +1,6 @@
-require 'date'
-
 FactoryBot.define do
   factory Condition do
-    date Date.now
+    date Time.now
     sequence(:max_temp) { rand(60..80)}
     sequence(:mean_temp) { rand(50..70)}
     sequence(:min_temp) { rand(40..60)}
