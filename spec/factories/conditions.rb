@@ -10,9 +10,9 @@ FactoryBot.define do
     sequence(:max_humidity) { rand(75..100)}
     sequence(:mean_humidity) { rand(50..90)}
     sequence(:min_humidity) { rand(10..60)}
-    sequence(:max_sea_level_pressure_inches) { rand(29.95..30.22)}
-    sequence(:mean_sea_level_pressure_inches) { rand(30.00..30.15)}
-    sequence(:min_sea_level_pressure_inches) { rand(29.80..29.95)}
+    sequence(:max_sea_level_pressure_inches) { rand(29.95..30.22).round(2)}
+    sequence(:mean_sea_level_pressure_inches) { rand(30.00..30.15).round(2)}
+    sequence(:min_sea_level_pressure_inches) { rand(29.80..29.95).round(2)}
     max_visibility_miles 10
     sequence(:mean_visibility_miles) { rand(5..10)}
     sequence(:min_visibility_miles) { rand(0..10)}
