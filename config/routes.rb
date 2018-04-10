@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :show]
   resources :conditions, only: %i[index show]
-  
+  resources :stations, only: [:index, :show], param: :slug
+
   root controller: 'welcome', action: :index
 
   get  '/login',  to: 'sessions#new'
