@@ -36,7 +36,7 @@ describe Condition do
     end
     context 'invalid attributes' do
       it 'is invalid without a date' do
-        condition = Condition.create!(
+        condition = Condition.create(
           date: '',
           max_temperature_f: 60,
           mean_temperature_f: 50,
