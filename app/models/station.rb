@@ -9,7 +9,7 @@ class Station < ApplicationRecord
   before_save :generate_slug
 
   def generate_slug
-    slug = name.parameterize
+    self.slug = name.parameterize
   end
 
   def to_param
