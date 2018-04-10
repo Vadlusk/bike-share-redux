@@ -7,7 +7,6 @@ module ApplicationHelper
     return "layouts/nav_visitor" if current_user.nil?
 
     case current_user.role
-    when nil then "layouts/nav_visitor"
       when "default" then "layouts/nav_user"
       when "admin"   then "layouts/nav_admin"
     end
