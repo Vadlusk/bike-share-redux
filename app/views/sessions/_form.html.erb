@@ -1,0 +1,12 @@
+<%= form_tag login_path do %>
+  <%= label_tag :username  %>
+  <%= text_field_tag :username %>
+
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+
+  <div class="cancel-submit">
+    <%= link_to "Cancel", root_path, class: 'btn btn-outline-light' %>
+    <%= submit_tag 'Login', class: 'btn btn-outline-light' %>
+  </div>
+<% end %>
