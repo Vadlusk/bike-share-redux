@@ -34,12 +34,12 @@ describe 'Visitor' do
 
       expect(current_path).to eq("/dashboard")
 
-      within(".nav") do
+      within(".navbar") do
         expect(page).to have_content("Logged in as #{username}")
+        expect(page).to have_content("Logout")
       end
 
-      expect(page).to have_css(".logout-button")
-      expect(page).to_not have_css(".login-button")
+      expect(page).to_not have_content("Login")
     end
   end
 end
