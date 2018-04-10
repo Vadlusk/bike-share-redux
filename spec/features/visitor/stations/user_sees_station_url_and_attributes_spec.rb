@@ -10,8 +10,8 @@ describe 'visitor' do
     expect(page).to have_content(station.dock_count)
     expect(page).to have_content(station.city)
     expect(page).to have_content(station.installation_date)
-    expect(page).to have_content(station.latitude)
-    expect(page).to have_content(station.longitude)
+    expect(page).to have_content(station.lat)
+    expect(page).to have_content(station.long)
   end
 
   scenario 'visitor sees station name in URL' do
