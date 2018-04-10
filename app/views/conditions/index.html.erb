@@ -1,0 +1,28 @@
+<table>
+  <% @conditions.each do |condition| %>
+    <td><%= condition.date %></td>
+    <td><%= condition.max_temperature_f %></td>
+    <td><%= condition.mean_temperature_f %></td>
+    <td><%= condition.min_temperature_f %></td>
+    <td><%= condition.max_dew_point_f%></td>
+    <td><%= condition.mean_dew_point_f %></td>
+    <td><%= condition.min_dew_point_f %></td>
+    <td><%= condition.max_humidity %></td>
+    <td><%= condition.mean_humidity %></td>
+    <td><%= condition.min_humidity %></td>
+    <td><%= condition.max_sea_level_pressure_inches %></td>
+    <td><%= condition.mean_sea_level_pressure_inches %></td>
+    <td><%= condition.min_sea_level_pressure_inches %></td>
+    <td><%= condition.max_visibility_miles %></td>
+    <td><%= condition.mean_visibility_miles %></td>
+    <td><%= condition.min_visibility_miles %></td>
+    <td><%= condition.max_wind_speed_mph %></td>
+    <td><%= condition.mean_wind_speed_mph %></td>
+    <td><%= condition.max_gust_speed_mph %></td>
+    <td><%= condition.precipitation_inches %></td>
+    <td><%= condition.cloud_cover %></td>
+    <td><%= condition.events %></td>
+    <td><%= condition.wind_dir_degrees %></td>
+    <td><%= condition.zip_code %></td>
+  <% end %>
+</table>
