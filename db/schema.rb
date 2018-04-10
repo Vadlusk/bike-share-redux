@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180410002616) do
   enable_extension "plpgsql"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   create_table "conditions", force: :cascade do |t|
     t.date "date"
     t.float "max_temperature_f"
@@ -51,6 +52,8 @@ ActiveRecord::Schema.define(version: 20180410002616) do
     t.string "zip_code"
   end
 
+=======
+>>>>>>> 71df0ad... Update schema after running trips migration locally
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
     t.datetime "start_date"
@@ -73,4 +76,16 @@ ActiveRecord::Schema.define(version: 20180410002616) do
     t.integer "role", default: 0
   end
 
+<<<<<<< HEAD
+=======
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "role", default: 0
+  end
+
+>>>>>>> 71df0ad... Update schema after running trips migration locally
 end
