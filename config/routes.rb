@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :show]
   resources :conditions, only: %i[index show]
   resources :stations, only: [:index, :show], param: :slug
+  resources :accessories, only: [:show]
 
   root controller: 'welcome', action: :index
 
