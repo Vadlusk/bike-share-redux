@@ -5,4 +5,14 @@ class Station < ApplicationRecord
                         :installation_date,
                         :latitude,
                         :longitude
+
+  before_save :generate_slug
+
+  def generate_slug
+    slug = name.parameterize
+  end
+
+  def to_param
+    slug
+  end
 end
