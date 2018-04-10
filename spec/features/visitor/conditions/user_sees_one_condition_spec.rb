@@ -22,7 +22,7 @@ describe 'user sees one condition' do
     expect(page).to have_content(condition.max_visibility_miles)
     expect(page).to have_content(condition.mean_visibility_miles)
     expect(page).to have_content(condition.min_visibility_miles)
-    expect(page).to have_content(condition.max_wind_speed_mph)
+    expect(page).to have_content(condition.max_wind_Speed_mph)
     expect(page).to have_content(condition.mean_wind_speed_mph)
     expect(page).to have_content(condition.max_gust_speed_mph)
     expect(page).to have_content(condition.precipitation_inches)

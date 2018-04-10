@@ -12,6 +12,5 @@ describe 'visitor' do
       expect(page).to have_content(station.city)
       expect(page).to have_content(station.installation_date)
     end
-    binding.pry
   end
 end
