@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 20180410221728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accessories", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.decimal "price", precision: 9, scale: 2
+    t.text "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "conditions", force: :cascade do |t|
     t.date "date"
     t.float "max_temperature_f"
