@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'user sees all conditions' do
   scenario 'and all their attributes' do
-    conditions = create(:conditions, 10)
+    conditions = create_list(:conditions, 10)
 
     visit conditions_path
 
@@ -25,7 +25,7 @@ describe 'user sees all conditions' do
       expect(page).to have_content(condition.min_visibility)
       expect(page).to have_content(condition.max_wind_speed)
       expect(page).to have_content(condition.mean_wind_speed)
-      expect(page).to have_content(condition.min_wind_speed)
+      expect(page).to have_content(condition.max_gust_speed)
       expect(page).to have_content(condition.precip)
       expect(page).to have_content(condition.cloud_cover)
       expect(page).to have_content(condition.events)
