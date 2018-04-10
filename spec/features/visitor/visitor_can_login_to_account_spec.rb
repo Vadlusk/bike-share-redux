@@ -17,7 +17,7 @@ describe 'Visitor' do
       expect(current_path).to eq("/dashboard")
 
       within(".navbar") do
-        expect(page).to have_content("Logged in as #{username}")
+        expect(page).to have_content("Logged in as #{user.username}")
         expect(page).to have_content("Logout")
       end
 
