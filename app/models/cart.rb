@@ -9,7 +9,7 @@ class Cart
     contents[id.to_s] = contents[id.to_s] + 1
   end
 
-  def total_count
+  def total_item_count
     contents.values.sum
   end
 end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   root controller: 'welcome', action: :index
 
+  get  '/cart',      to: 'carts#show'
   get  '/register',  to: 'users#new'
   post '/register',  to: 'users#create'
   get  '/dashboard', to: 'users#show'
