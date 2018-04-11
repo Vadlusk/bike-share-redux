@@ -2,6 +2,7 @@ class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def show
+    @accessories = @cart.contents
   end
 
   def create

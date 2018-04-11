@@ -7,4 +7,8 @@ class Accessory < ApplicationRecord
     return true if status == 'active'
     return false if status == 'retired'
   end
+
+  def self.total_price
+    sum(:price)
+  end
 end
