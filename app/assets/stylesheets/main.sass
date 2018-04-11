@@ -77,3 +77,84 @@ form
 .visitor-tip
   display: flex
   justify-content: center
+
+
+#background
+  background:
+    image: asset-url("welcome.jpg")
+    size: cover
+    repeat: no-repeat
+    position: 50% 50%
+  display: flex
+  justify-content: space-around
+  font-family: 'Tajawal', cursive
+  height: 100vh
+
+  #logo-links
+    display: flex
+    justify-content: center
+    align-self: center
+    flex-flow: column nowrap
+    background-color: transparentize(#AAAAAA, .1)
+    position: relative
+    width: auto
+    height: auto
+    border-radius: 10px
+
+  #logo
+    flex: 2
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    padding: 20px 20px 0px 20px
+    height: 400px
+
+  img
+    height: 150px
+    width: 150px
+
+  h3
+    margin-top: 20px
+    font-size: 70px
+    color: white
+
+#links
+  flex: 2
+  display: flex
+  justify-content: space-around
+  align-items: center
+  text-align: center
+  flex-flow: row nowrap
+
+  a
+    color: white
+    font-size: 35px
+
+#link1
+  flex: 1
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: transparentize(#DE6E4B, .4)
+  height: 100%
+  border-radius: 0px 0px 10px 10px
+  padding-top: 10px
+
+#link2
+  flex: 1
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: transparentize(#6D6A75, .6)
+  height: 100%
+
+#link3
+  flex: 1
+  flex: 1
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: transparentize(#114B5F, .4)
+  height: 100%
+  border-radius: 0px 0px 10px 0px
