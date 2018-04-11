@@ -18,6 +18,7 @@ describe 'visitor' do
     visit accessory_path(accessory)
     click_button 'Add to Cart'
 
+    expect(current_path).to eq(accessory_path(accessory))
     expect(page).to have_content("You've added #{accessory.title} to your cart")
   end
 end
