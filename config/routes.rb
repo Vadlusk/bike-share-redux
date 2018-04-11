@@ -13,23 +13,33 @@ Rails.application.routes.draw do
 
   root controller: 'welcome', action: :index
 
+<<<<<<< HEAD
   get  '/cart',      to: 'carts#show'
   get  '/register',  to: 'users#new'
   post '/register',  to: 'users#create'
   get  '/dashboard', to: 'users#show'
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/conditions-dashboard', to: 'conditions_dashboard#index'
+=======
+  get  '/register',  to: 'users#new'
+  post '/register',  to: 'users#create'
+  get  '/dashboard', to: 'users#show'
+>>>>>>> Add authorization tests for admin login. Add admin namespace to routes, with admin/user#show sub-resource. Update sessions controller to redirect admin to admin_dashboard_path. Add Admin::UsersController and admin/users#show view.
 
   get  '/login',  to: 'sessions#new'
   post '/login',  to: 'sessions#create'
   get  '/logout', to: 'sessions#destroy'
 
   namespace :admin do
+<<<<<<< HEAD
     get '/bike-shop', to: 'accessories#index'
     get '/dashboard', to: 'users#show'
     resources :stations, only: [:update, :edit, :destroy, :new, :create]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :trips, only: [:new, :create, :edit, :show, :update, :destroy]
     resources :accessories, only: [:new, :create, :edit, :index, :update]
+=======
+    get '/dashboard', to: 'users#show'
+>>>>>>> Add authorization tests for admin login. Add admin namespace to routes, with admin/user#show sub-resource. Update sessions controller to redirect admin to admin_dashboard_path. Add Admin::UsersController and admin/users#show view.
   end
 end
