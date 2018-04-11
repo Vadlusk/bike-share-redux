@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Visitor' do
   describe 'visits the root path' do
     it 'see a login link' do
-      visit '/'
+      visit root_path
 
       within("#link1") do
         expect(page).to have_content("Login")
@@ -21,7 +21,7 @@ describe 'Visitor' do
       password = "password"
       email = "email@email.com"
 
-      visit '/login'
+      visit login_path
       click_on 'Create Account'
 
       expect(current_path).to eq(register_path)
@@ -32,7 +32,7 @@ describe 'Visitor' do
       fill_in 'user[email]', with: email
       click_on "Create Account"
 
-      expect(current_path).to eq("/dashboard")
+      expect(current_path).to eq(dashboard_path)
 
       within(".navbar") do
         expect(page).to have_content("Logged in as #{username}")
@@ -47,7 +47,7 @@ describe 'Visitor' do
       password = "password"
       email = "email@email.com"
 
-      visit '/login'
+      visit login_path
       click_on 'Create Account'
 
       expect(current_path).to eq(register_path)
@@ -67,7 +67,7 @@ describe 'Visitor' do
       username = "user"
       password = "password"
 
-      visit '/login'
+      visit login_path
       click_on 'Create Account'
 
       expect(current_path).to eq(register_path)
@@ -88,7 +88,7 @@ describe 'Visitor' do
       password_2 = "password2"
       email = "email@email.com"
 
-      visit '/login'
+      visit login_path
       click_on 'Create Account'
 
       expect(current_path).to eq(register_path)

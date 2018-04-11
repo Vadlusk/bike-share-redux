@@ -8,10 +8,14 @@ Rails.application.routes.draw do
 
   root controller: 'welcome', action: :index
 
+  get  '/register',  to: 'users#new'
+  post '/register',  to: 'users#create'
+  get  '/dashboard', to: 'users#show'
+
   get  '/login',  to: 'sessions#new'
   post '/login',  to: 'sessions#create'
 
-  get  '/register', to: 'users#new'
-  post '/register', to: 'users#create'
-  get '/dashboard', to: 'users#show'
+  namespace :admin do
+    get '/dashboard', to: 'users#show'
+  end
 end
