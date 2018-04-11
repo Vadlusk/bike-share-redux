@@ -19,7 +19,11 @@
         <h3>Bike Share</h3>
       </div>
       <div id="links">
-        <div id="link1"><%= link_to "Login", login_path, {class: "homepage-link"} %></div>
+        <% if current_user.nil? %>
+          <div id="link1"><%= link_to "Login", login_path, {class: "homepage-link"} %></div>
+        <% else %>
+          <div id="link1"><%= link_to "Logout", logout_path, {class: "homepage-link"} %></div>
+        <% end %>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
