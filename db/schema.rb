@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180410221728) do
     t.text "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
   end
 
   create_table "conditions", force: :cascade do |t|
