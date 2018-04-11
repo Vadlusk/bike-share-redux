@@ -7,7 +7,7 @@
   </tr>
   <% @stations.each do |s| %>
     <tr>
-      <td><%= s.name %></td>
+      <td><a href="/stations/<%= s.slug %>"><%= s.name %></a></td>
       <td><%= s.dock_count %></td>
       <td><%= s.city %></td>
       <td><%= s.built %></td>
