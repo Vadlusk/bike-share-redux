@@ -10,6 +10,7 @@ describe 'Visitor' do
       end
     end
     it 'displays all added accessories' do
+      skip "I'm still working on this one."
       visit '/cart'
 
       @accessories.each do |accessory|

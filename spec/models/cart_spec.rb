@@ -23,12 +23,8 @@ describe Cart do
     context '::total_price' do
       it 'calculates the total price' do
         accessory_1, accessory_2, accessory_3 = create_list(:accessory, 3)
-        cart = Cart.new(nil)
-        cart.add_accessory(accessory_1)
-        cart.add_accessory(accessory_2)
-        cart.add_accessory(accessory_3)
 
-        expect(cart.contents.total_price).to eq(accessory_1.price + accessory_2.price + accessory_3.price)
+        expect(Accessory.total_price).to eq(accessory_1.price + accessory_2.price + accessory_3.price)
       end
     end
   end
