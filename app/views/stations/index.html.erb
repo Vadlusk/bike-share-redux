@@ -4,13 +4,23 @@
       <th>Bikes</th>
       <th>City</th>
       <th>Built</th>
+      <% if current_user && current_user.admin? %>
+      <th></th>
+      <% end %>
   </tr>
   <% @stations.each do |s| %>
-    <tr>
+    <tr class="station-<%= s.id %>">
       <td><a href="/stations/<%= s.slug %>"><%= s.name %></a></td>
       <td><%= s.dock_count %></td>
       <td><%= s.city %></td>
       <td><%= s.built %></td>
+      <% if current_user && current_user.admin? %>
+        <td>
+          <div class="table-buttons">
+            <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_admin_station_path(s) %>
+          </div>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>
