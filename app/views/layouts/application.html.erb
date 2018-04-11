@@ -12,7 +12,6 @@
   <body>
 
     <%= render partial: "#{nav_bar}" %>
-
     <div id="notice">
       <% flash.each do |key, value| %>
         <div class=" <%= flash_class(key) %> ">

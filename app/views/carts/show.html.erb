@@ -1,0 +1,13 @@
+<% @accessories.each do |accessory| %>
+  <%= accessory.title %>
+  <%= accessory.price %>
+  <%= accessory.image_url %>
+  <%= accessory.quantity %>
+<% end %>
+<h3>Subtotal</h3>
+<%= @accessories.each do |accessory| %>
+  <p><%= accessory.price %> x <%= accessory.quantity %> =
+  <%= accessory.subtotal %></p>
+<% end %>
+<h3>Total</h3>
+<%= @cart.total_price %>

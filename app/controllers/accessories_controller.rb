@@ -1,7 +1,7 @@
 class AccessoriesController < ApplicationController
   def show
     @accessory = Accessory.find(params[:id])
-    @active = @accessory.active?
+    @active    = @accessory.active?
   end
 
   def index
