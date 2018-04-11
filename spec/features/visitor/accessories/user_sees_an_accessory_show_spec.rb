@@ -19,6 +19,10 @@ describe 'visitor' do
     click_button 'Add to Cart'
 
     expect(current_path).to eq(accessory_path(accessory))
-    expect(page).to have_content("You've added #{accessory.title} to your cart")
+    expect(page).to have_content("You've added 1 #{accessory.title} to your cart")
+
+    click_button 'Add to Cart'
+
+    expect(page).to have_content("You've added 2 #{accessory.title}s to your cart")
   end
 end
