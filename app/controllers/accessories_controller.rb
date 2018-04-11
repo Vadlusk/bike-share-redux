@@ -1,7 +1,8 @@
 class AccessoriesController < ApplicationController
   def show
     @accessory = Accessory.find(params[:id])
-    @active = @accessory.active?
+    @cart = Cart.new(session[:cart])
+    @active    = @accessory.active?
   end
 
   def index
