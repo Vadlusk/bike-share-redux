@@ -26,7 +26,7 @@ describe 'user' do
       expect(page).to_not have_css(".table-buttons")
     end
 
-    it 'admin can get edit page by clicking button' do
+    it 'admin can get to station edit page by clicking button' do
       create_list(:station, 10)
       station = create(:station)
 
@@ -65,6 +65,11 @@ describe 'user' do
       expect(page).to have_content('This station has been updated.')
       expect(page).to_not have_content('Grrblllball')
       expect(page).to have_content('Awesome Bike Place')
+      expect(page).to have_content(station.dock_count)
+      expect(page).to have_content(station.installation_date)
+      expect(page).to have_content(station.city)
+      expect(page).to have_content(station.lat)
+      expect(page).to have_content(station.long)
     end
 
   end
