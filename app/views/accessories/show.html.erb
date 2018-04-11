@@ -1,0 +1,9 @@
+<%= @accessory.title %>
+<%= @accessory.description %>
+<%= @accessory.price %>
+<img src="<%= @accessory.image_url %>" alt="" class="accessory_image">
+<% if @active %>
+  <%= link_to 'Add to Cart' %>
+<% else %>
+  <p>Accessory Retired</p>
+<% end %>
