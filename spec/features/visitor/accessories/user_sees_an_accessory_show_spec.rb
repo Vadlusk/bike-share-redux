@@ -13,7 +13,7 @@ describe 'visitor' do
   end
 
   scenario 'a visitor goes to accessory show and clicks add_to_cart' do
-    accessory = create(:accessory)
+    accessory = create(:accessory, title: 'Seat')
 
     visit accessory_path(accessory)
     click_button 'Add to Cart'
