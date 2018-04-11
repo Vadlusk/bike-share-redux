@@ -22,4 +22,9 @@ class Cart
       Accessory.find(accessory).price * quantity
     end.sum
   end
+
+
+  def subtotal(accessory)
+    accessory.price * contents[accessory.id.to_s]
+  end
 end

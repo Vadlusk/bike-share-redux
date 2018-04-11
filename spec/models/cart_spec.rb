@@ -30,5 +30,17 @@ describe Cart do
         expect(cart.total_price).to eq((accessory_1.price * 2) + accessory_2.price)
       end
     end
+    context '#subtotal' do
+      it 'calculates the total price for one type of accessory in a cart' do
+        accessory_1 = create(:accessory)
+        accessory_2 = create(:accessory)
+        cart = Cart.new(nil)
+        cart.add_accessory(accessory_1.id)
+        cart.add_accessory(accessory_1.id)
+        cart.add_accessory(accessory_2.id)
+
+        expect(cart.subtotal(accessory_1)).to eq(accessory_1.price * 2)
+      end
+    end
   end
 end
