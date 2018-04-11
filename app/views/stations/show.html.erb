@@ -6,5 +6,11 @@
     <h3>Built: </h3><p><%= @station.installation_date %></p>
     <h3>Latitude: </h3><p><%= @station.lat %>°</p>
     <h3>Longitude: </h3><p><%= @station.long %>°</p>
+    <% if current_user && current_user.admin? %>
+        <div class="table-buttons float-right">
+          <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_admin_station_path(@station) %>
+          <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, admin_station_path(@station), method: :delete, data: { confirm: "Are you sure? You will permanently delete this station."} %>
+        </div>
+    <% end %>
   </div>
 </main>
