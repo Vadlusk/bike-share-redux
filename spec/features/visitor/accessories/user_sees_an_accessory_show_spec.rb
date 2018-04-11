@@ -13,11 +13,11 @@ describe 'visitor' do
   end
 
   scenario 'a visitor goes to accessory show and clicks add_to_cart' do
-    skip "Waiting on cart to be built. Will need flash message in accessory#show"
     accessory = create(:accessory)
 
     visit accessory_path(accessory)
-    click_on 'Add to Cart'
+    save_and_open_page
+    click_button 'Add to Cart'
 
     expect(page).to have_content("You've added #{accessory.title} to your cart")
   end
