@@ -3,8 +3,8 @@ class Station < ApplicationRecord
                         :dock_count,
                         :city,
                         :installation_date,
-                        :latitude,
-                        :longitude
+                        :lat,
+                        :long
 
   before_save :generate_slug
 

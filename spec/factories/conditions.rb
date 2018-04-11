@@ -16,7 +16,7 @@ FactoryBot.define do
     max_visibility_miles 10
     sequence(:mean_visibility_miles) { rand(5..10)}
     sequence(:min_visibility_miles) { rand(0..10)}
-    sequence(:max_wind_speed_mph) { rand(7..30)}
+    sequence(:max_wind_Speed_mph) { rand(7..30)}
     sequence(:mean_wind_speed_mph) { rand(1..15)}
     sequence(:max_gust_speed_mph) { rand(6..40)}
     sequence(:precipitation_inches) { rand(0..2)}
