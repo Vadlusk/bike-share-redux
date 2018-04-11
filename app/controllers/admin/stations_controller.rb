@@ -1,4 +1,19 @@
 class Admin::StationsController < Admin::BaseController
+  def new
+    @station = Station.new
+  end
+
+  def create
+    @station = Station.new(station_params)
+    if @station.save
+      flash.notice = 'You successfully created this station'
+      redirect_to station_path(@station)
+    else
+      flash.notice = 'Station has NOT been created, please make sure you fill in all of the form'
+      render :new
+    end
+  end
+
   def edit
     @station = Station.find_by_slug(params[:id])
   end
