@@ -16,4 +16,8 @@ class Cart
   def total_item_count
     contents.values.sum
   end
+
+  def accessory_array
+    Accessory.find(contents.keys)
+  end
 end

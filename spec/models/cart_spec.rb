@@ -18,13 +18,16 @@ describe Cart do
         expect(cart.total_item_count).to eq(2)
       end
     end
-  end
-  context 'Class methods' do
-    context '::total_price' do
-      it 'calculates the total price' do
-        accessory_1, accessory_2, accessory_3 = create_list(:accessory, 3)
+    context '#accessory_array' do
+      it 'makes an active record collection of accessory objects' do
+        accessory_1 = create(:accessory)
+        accessory_2 = create(:accessory)
+        cart = Cart.new({'1' => 1, '2' => 1})
+        cart.add_accessory(accessory_1.id)
+        cart.add_accessory(accessory_2.id)
 
-        expect(Accessory.total_price).to eq(accessory_1.price + accessory_2.price + accessory_3.price)
+        expect(cart.accessory_array.length).to eq(2)
+        expect(cart.accessory_array.first).to be_an_instance_of(Accessory)
       end
     end
   end

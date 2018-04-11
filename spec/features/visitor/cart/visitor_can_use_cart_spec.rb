@@ -10,7 +10,6 @@ describe 'Visitor' do
       end
     end
     it 'displays all added accessories' do
-      skip "I'm still working on this one."
       visit '/cart'
 
       @accessories.each do |accessory|
@@ -19,7 +18,7 @@ describe 'Visitor' do
         expect(page).to have_content(accessory.quantity)
         expect(page).to have_content(accessory.quantity)
       end
-      expect(page).to have_content("Total: #{@cart.total_price}")
+      expect(page).to have_content("Total: #{total_price}")
     end
   end
 end
