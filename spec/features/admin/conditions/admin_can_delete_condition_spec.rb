@@ -18,6 +18,7 @@ describe 'Visitor' do
       expect(current_path).to eq(conditions_path)
 
       expect(page).to_not have_content(".condition-#{condition_1.id}")
+      expect(page).to have_content("Condition deleted")
     end
   end
 end
