@@ -10,6 +10,7 @@ describe 'visitor' do
 
     visit accessory_path(accessory)
 
+    expect(page).to have_content('Accessory Retired')
     expect(page).to have_content(accessory.title)
     expect(page).to have_content(accessory.description)
     expect(page).to have_content(accessory.price)
