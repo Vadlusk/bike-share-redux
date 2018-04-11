@@ -27,13 +27,4 @@ describe Accessory do
       expect(accessory.active?).to eq(false)
     end
   end
-  context 'Class methods' do
-    context '::total_price' do
-      it 'calculates the total price' do
-        accessory_1, accessory_2, accessory_3 = create_list(:accessory, 3)
-
-        expect(Accessory.total_price).to eq(accessory_1.price + accessory_2.price + accessory_3.price)
-      end
-    end
-  end
 end

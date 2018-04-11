@@ -17,7 +17,9 @@ class Cart
     contents.values.sum
   end
 
-  def accessory_array
-    Accessory.find(contents.keys)
+  def total_price
+    contents.map do |accessory, quantity|
+      Accessory.find(accessory).price * quantity
+    end.sum
   end
 end
