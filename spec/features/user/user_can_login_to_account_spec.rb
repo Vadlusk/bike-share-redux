@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe 'Visitor' do
-  describe 'as a registered' do
+  describe 'as a registered default user' do
     it 'can login to account with required credentials' do
-      visit '/'
+      visit root_path
       click_on "Login"
 
-      expect(current_path).to eq("/login")
+      expect(current_path).to eq(login_path)
 
       user = create(:user)
 
@@ -14,7 +14,7 @@ describe 'Visitor' do
       fill_in 'password', with: user.password
       click_on "Login"
 
-      expect(current_path).to eq("/dashboard")
+      expect(current_path).to eq(dashboard_path)
 
       within(".navbar") do
         expect(page).to have_content("Logged in as #{user.username}")
@@ -25,10 +25,10 @@ describe 'Visitor' do
     end
 
     it 'cannot login to account with incorrect credentials' do
-      visit '/'
+      visit root_path
       click_on "Login"
 
-      expect(current_path).to eq("/login")
+      expect(current_path).to eq(login_path)
 
       user = create(:user)
 
@@ -36,7 +36,7 @@ describe 'Visitor' do
       fill_in 'password', with: "bad_password"
       click_on "Login"
 
-      expect(current_path).to eq("/login")
+      expect(current_path).to eq(login_path)
 
       expect(page).to have_content("Invalid username and/or password")
     end
