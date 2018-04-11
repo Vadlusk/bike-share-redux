@@ -5,5 +5,12 @@
     <h6>
   </div>
 </header>
+<main>
+  <div class="station_show">
+    <h1><%= @user.username %></h1>
+    <!-- <h3>Bikes: </h3><p><%= @user.username %></p> -->
+    <h3>email: </h3><p><%= @user.email %></p>
+  </div>
+</main>
 
 <%= link_to "Logout", logout_path %>
