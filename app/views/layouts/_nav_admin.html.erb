@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-dark">
-  <%= link_to "Bike Share", '/dashboard', class: "navbar-brand" %>
+  <%= link_to "Bike Share", admin_dashboard_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -11,8 +11,8 @@
           Logged in as Admin User: <%= current_user.username %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Dashboard", '/dashboard', class: "dropdown-item" %>
-          <%= link_to "Logout", '/dashboard', class: "dropdown-item" %>
+          <%= link_to "Dashboard", admin_dashboard_path, class: "dropdown-item" %>
+          <%= link_to "Logout", admin_dashboard_path, class: "dropdown-item" %>
         </div>
       </li>
     </ul>
