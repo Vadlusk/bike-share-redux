@@ -5,7 +5,6 @@ describe 'visitor' do
     accessories = create_list(:accessory, 12)
 
     visit '/bike-shop'
-    save_and_open_page
 
     accessories.each do |accessory|
       expect(page).to have_content(accessory.title)
