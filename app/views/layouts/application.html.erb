@@ -13,6 +13,8 @@
 
     <%= render partial: "#{nav_bar}" %>
 
+    <p>Cart: <%= @cart.total_count %></p>
+
     <div id="notice">
       <% flash.each do |key, value| %>
         <div class=" <%= flash_class(key) %> ">
