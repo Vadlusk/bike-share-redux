@@ -3,5 +3,5 @@
   <%= accessory.description %>
   <%= accessory.price %>
   <img src="<%= accessory.image_url %>" alt="" class="accessory_image">
-  <%= button_to 'Add to Cart' %>
+  <%= button_to 'Add to Cart', carts_path(accessory_id: accessory.id) %>
 <% end %>

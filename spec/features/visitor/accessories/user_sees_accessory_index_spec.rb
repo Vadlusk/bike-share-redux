@@ -14,4 +14,28 @@ describe 'visitor' do
       expect(page).to have_button("Add to Cart")
     end
   end
+  scenario 'a visitor goes to /bike-shop and adds items to their cart' do
+    accessories = create_list(:accessory, 12)
+
+    visit '/bike-shop'
+    save_and_open_page
+
+    within('form:nth-of-type(2)') do
+      click_button("Add to Cart")
+    end
+
+    expect(page).to have_content("You've added 1 #{accessories[1].title} to your cart")
+
+    within('.cart') do
+      expect(page).to have_content("(1)")
+    end
+
+    within('form:nth-of-type(5)') do
+      click_button("Add to Cart")
+    end
+
+    within('.cart') do
+      expect(page).to have_content("(2)")
+    end
+  end
 end

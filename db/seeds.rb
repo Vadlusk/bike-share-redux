@@ -52,3 +52,17 @@ CSV.foreach('db/csv/weather.csv', headers: true) do |row|
   row["date"] = Date.strptime(row["date"], '%m/%d/%Y')
   Condition.create!(row.to_h)
 end
+
+Accessory.create!(title: "Helmet", description: "Protects your noggin", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Seat", description: "Protects your butt", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Wheel", description: "Protects the road", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Cleats", description: "Protects your feet", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Bag", description: "Protects your stuff", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Light", description: "Protects your life", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Spoke", description: "Protects your wheels", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Bell", description: "Protects you from others", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Bib", description: "Protects your butt", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Jersey", description: "Protects your torso", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Gloves", description: "Protects your hands", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Socks", description: "Protects your shoes from sweat", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "Gummies", description: "Protects your stomach", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
