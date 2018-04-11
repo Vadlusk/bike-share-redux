@@ -16,4 +16,15 @@ class Cart
   def total_item_count
     contents.values.sum
   end
+
+  def total_price
+    contents.map do |accessory, quantity|
+      Accessory.find(accessory).price * quantity
+    end.sum
+  end
+
+
+  def subtotal(accessory)
+    accessory.price * contents[accessory.id.to_s]
+  end
 end

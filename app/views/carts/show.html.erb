@@ -1,13 +1,13 @@
 <% @accessories.each do |accessory| %>
   <%= accessory.title %>
-  <%= accessory.price %>
+  <%= number_to_currency(accessory.price) %>
   <%= accessory.image_url %>
-  <%= accessory.quantity %>
+  <%= @cart.contents[accessory.id.to_s] %>
 <% end %>
 <h3>Subtotal</h3>
-<%= @accessories.each do |accessory| %>
-  <p><%= accessory.price %> x <%= accessory.quantity %> =
-  <%= accessory.subtotal %></p>
+<% @accessories.each do |accessory| %>
+  <p><%= number_to_currency(accessory.price) %> x <%= @cart.contents[accessory.id.to_s] %> =
+  <%= @cart.subtotal(accessory) %></p>
 <% end %>
 <h3>Total</h3>
 <%= @cart.total_price %>

@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def show
-    @accessories = @cart.contents
+    @accessories = Accessory.where(id: @cart.contents.keys)
   end
 
   def create

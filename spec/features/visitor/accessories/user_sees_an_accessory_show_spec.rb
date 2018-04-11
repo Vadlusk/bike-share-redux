@@ -21,7 +21,6 @@ describe 'visitor' do
 
     click_button 'Add to Cart'
 
-    expect(current_path).to eq(bike_shop_path)
     expect(page).to have_content("You've added 1 #{accessory.title} to your cart")
     expect(page).to have_content('(1)')
 
