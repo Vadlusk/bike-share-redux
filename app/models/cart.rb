@@ -6,7 +6,11 @@ class Cart
   end
 
   def add_accessory(id)
-    contents[id.to_s] += 1
+    if contents.empty? || contents[id.to_s].nil?
+      contents[id.to_s] = 1
+    else
+      contents[id.to_s] += 1
+    end
   end
 
   def total_item_count

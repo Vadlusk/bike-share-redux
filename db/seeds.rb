@@ -52,3 +52,4 @@ CSV.foreach('db/csv/weather.csv', headers: true) do |row|
   row["date"] = Date.strptime(row["date"], '%m/%d/%Y')
   Condition.create!(row.to_h)
 end
+Accessory
