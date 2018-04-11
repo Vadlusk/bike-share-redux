@@ -4,8 +4,6 @@ require 'rails_helper'
 describe 'Visitor' do
   context 'a visitor goes to the cart page' do
     it 'displays all added accessories' do
-      # accessories = create_list(:accessory, 5)
-
       accessory1 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
       accessory2 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
       accessory3 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
