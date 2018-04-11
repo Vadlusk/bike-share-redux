@@ -17,17 +17,17 @@ describe 'visitor' do
 
     visit accessory_path(accessory)
 
-    expect(page).to have_content('Cart: 0')
+    expect(page).to have_content('(0)')
 
     click_button 'Add to Cart'
 
     expect(current_path).to eq(accessory_path(accessory))
     expect(page).to have_content("You've added 1 #{accessory.title} to your cart")
-    expect(page).to have_content('Cart: 1')
+    expect(page).to have_content('(1)')
 
     click_button 'Add to Cart'
 
     expect(page).to have_content("You've added 2 #{accessory.title}s to your cart")
-    expect(page).to have_content('Cart: 2')
+    expect(page).to have_content('(2)')
   end
 end
