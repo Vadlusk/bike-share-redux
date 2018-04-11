@@ -1,6 +1,5 @@
 class Accessory < ApplicationRecord
   validates_presence_of :title, :description
-
   enum status: ['active', 'retired']
 
   def active?
