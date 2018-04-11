@@ -18,7 +18,6 @@ describe 'visitor' do
     accessories = create_list(:accessory, 12)
 
     visit '/bike-shop'
-    save_and_open_page
 
     within('form:nth-of-type(2)') do
       click_button("Add to Cart")
