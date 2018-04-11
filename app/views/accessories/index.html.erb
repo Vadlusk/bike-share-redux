@@ -1,0 +1,7 @@
+<% @accessories.each do |accessory| %>
+  <%= accessory.title %>
+  <%= accessory.description %>
+  <%= accessory.price %>
+  <img src="<%= accessory.image_url %>" alt="" class="accessory_image">
+  <%= button_to 'Add to Cart' %>
+<% end %>
