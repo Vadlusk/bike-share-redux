@@ -16,7 +16,6 @@ describe 'visitor' do
     accessory = create(:accessory)
 
     visit accessory_path(accessory)
-    save_and_open_page
     click_button 'Add to Cart'
 
     expect(page).to have_content("You've added #{accessory.title} to your cart")
