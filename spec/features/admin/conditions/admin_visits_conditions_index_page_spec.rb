@@ -7,11 +7,7 @@ describe 'Visitor' do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-<<<<<<< HEAD
       conditions = create_list(:condition, 5)
-=======
-      conditions = create_list(:condition, 10)
->>>>>>> Add admin conditions edit functionality
 
       visit conditions_path
 
@@ -22,10 +18,7 @@ describe 'Visitor' do
         expect(page).to have_content(condition.min_temperature_f)
         expect(page).to have_content(condition.mean_humidity)
         expect(page).to have_content(condition.mean_visibility_miles)
-<<<<<<< HEAD
-=======
         expect(page).to have_content(condition.min_visibility_miles)
->>>>>>> Add admin conditions edit functionality
         expect(page).to have_content(condition.mean_wind_speed_mph)
         expect(page).to have_content(condition.precipitation_inches)
       end

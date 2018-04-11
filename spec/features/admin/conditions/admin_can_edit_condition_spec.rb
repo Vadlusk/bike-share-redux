@@ -4,7 +4,6 @@ describe 'Visitor' do
   context 'as a registered admin user' do
     it 'can edit a condition' do
       admin = create(:admin)
-<<<<<<< HEAD
 
       condition = create(:condition)
 
@@ -73,27 +72,6 @@ describe 'Visitor' do
       expect(page).to have_content(mean_visibility)
       expect(page).to have_content(mean_wind_speed)
       expect(page).to have_content(precipitation)
-=======
-      new_max_temp = 1000
-      new_mean_temp = 2000
-      new_min_temp = 3000
-
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-
-      condition = create(:condition)
-
-      visit edit_admin_condition_path(condition)
-
-      fill_in 'condition[max_temperature_f]', with: new_max_temp
-      fill_in 'condition[mean_temperature_f]', with: new_mean_temp
-      fill_in 'condition[min_temperature_f]', with: new_min_temp
-      click_on 'Update Condition'
-
-      expect(current_path).to eq(condition_path(condition))
-      expect(page).to have_content(new_max_temp)
-      expect(page).to have_content(new_mean_temp)
-      expect(page).to have_content(new_min_temp)
->>>>>>> Add admin conditions edit functionality
     end
   end
 end
