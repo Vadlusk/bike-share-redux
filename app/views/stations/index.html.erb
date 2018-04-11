@@ -18,6 +18,7 @@
         <td>
           <div class="table-buttons">
             <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_admin_station_path(s) %>
+            <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, admin_station_path(s), method: :delete, data: { confirm: "Are you sure? You will permanently delete this station."} %>
           </div>
         </td>
       <% end %>

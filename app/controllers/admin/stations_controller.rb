@@ -15,6 +15,17 @@ class Admin::StationsController < Admin::BaseController
     end
   end
 
+  def destroy
+    @station = Station.find_by_slug(params[:id])
+    if @station.destroy
+      flash.notice = "You deleted the station successfully."
+      redirect_to stations_path
+    else
+      flash.notice = "You failed to deleted the station."
+      render stations_path
+    end
+  end
+
   private
 
   def station_params
