@@ -6,4 +6,8 @@ class Accessory < ApplicationRecord
     return true if status == 'active'
     return false if status == 'retired'
   end
+
+  def subtotal(count_in_cart)
+    price * count_in_cart
+  end
 end
