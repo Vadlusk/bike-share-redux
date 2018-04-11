@@ -61,7 +61,7 @@ describe 'user' do
       fill_in 'station[name]', with: 'Awesome Bike Place'
       click_on 'Update Station'
 
-      expect(current_path).to eq("/stations/awesome-bike-place")
+      expect(current_path).to eq('/stations/awesome-bike-place')
       expect(page).to have_content('This station has been updated.')
       expect(page).to_not have_content('Grrblllball')
       expect(page).to have_content('Awesome Bike Place')
