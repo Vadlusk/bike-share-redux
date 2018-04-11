@@ -1,6 +1,10 @@
-<%= @station.name %>
-<%= @station.dock_count %>
-<%= @station.city %>
-<%= @station.installation_date %>
-<%= @station.lat %>
-<%= @station.long %>
+<main>
+  <div class="station_show">
+    <h1><%= @station.name %></h1>
+    <h3>Bikes: </h3><p><%= @station.dock_count %></p>
+    <h3>City: </h3><p><%= @station.city %></p>
+    <h3>Built: </h3><p><%= @station.installation_date %></p>
+    <h3>Latitude: </h3><p><%= @station.lat %>°</p>
+    <h3>Longitude: </h3><p><%= @station.long %>°</p>
+  </div>
+</main>

@@ -12,5 +12,9 @@ describe 'visitor' do
       expect(page).to have_content(station.city)
       expect(page).to have_content(station.built)
     end
+
+    click_on "#{stations.first.name}"
+
+    expect(current_path).to eq("/stations/#{stations.first.slug}")
   end
 end
