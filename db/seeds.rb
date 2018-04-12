@@ -23,6 +23,7 @@ require 'csv'
 ActiveRecord::Base.connection.reset_pk_sequence!(:stations)
 ActiveRecord::Base.connection.reset_pk_sequence!(:conditions)
 ActiveRecord::Base.connection.reset_pk_sequence!(:users)
+ActiveRecord::Base.connection.reset_pk_sequence!(:accessories)
 Station.destroy_all
 Trip.destroy_all
 Condition.destroy_all
