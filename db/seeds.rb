@@ -26,6 +26,8 @@ ActiveRecord::Base.connection.reset_pk_sequence!(:users)
 Station.destroy_all
 Trip.destroy_all
 Condition.destroy_all
+Accessory.destroy_all
+User.destroy_all
 
 def zip_cleaner(zip)
   if zip
@@ -68,3 +70,7 @@ Accessory.create!(title: "Jersey", description: "Protects your torso", price: 10
 Accessory.create!(title: "Gloves", description: "Protects your hands", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
 Accessory.create!(title: "Socks", description: "Protects your shoes from sweat", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
 Accessory.create!(title: "Gummies", description: "Protects your stomach", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+Accessory.create!(title: "retired", description: "Protects nothing", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 1)
+
+User.create!(username: "admin", email: "admin@admin.com", password: "password", role: 1)
+User.create!(username: "default", email: "default@default.com", password: "password")
