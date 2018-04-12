@@ -1,10 +1,22 @@
-<%= @trip.duration %>
-<%= @trip.start_date %>
-<%= @trip.start_station_name %>
-<%= @trip.start_station_id %>
-<%= @trip.end_date %>
-<%= @trip.end_station_name %>
-<%= @trip.end_station_id %>
-<%= @trip.bike_id %>
-<%= @trip.subscription_type %>
-<%= @trip.zip_code %>
+<header>
+  <div class="header-title">
+    <h6>
+      Trip # <%= @trip.id %> starting <%= format_date(@trip.start_date) %>.
+    <h6>
+  </div>
+</header>
+
+<div class="card-container">
+  <div class="card-info">
+    <span><h5>Duration:</h5><h6><%= @trip.duration %></h6></span>
+    <span><h5>Start Date: </h5><h6><%= @trip.start_date %></h6></span>
+    <span><h5>Start Station Name: </h5><h6><%= @trip.start_station_name %></h6></span>
+    <span><h5>Start Station ID: </h5><h6><%= @trip.start_station_id %></h6></span>
+    <span><h5>End Date: </h5><h6><%= @trip.end_date %></h6></span>
+    <span><h5>End Station Name: </h5><h6><%= @trip.end_station_name %></h6></span>
+    <span><h5>End Station ID: </h5><h6><%= @trip.end_station_id %></h6></span>
+    <span><h5>Bike ID: </h5><h6><%= @trip.bike_id %></h6></span>
+    <span><h5>Subscription Type: </h5><h6><%= @trip.subscription_type %></h6></span>
+    <span><h5>Zip Code: </h5><h6><%= @trip.zip_code %></h6></span>
+  </div>
+</div>
