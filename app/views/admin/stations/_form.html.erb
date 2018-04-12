@@ -12,10 +12,10 @@
   <%= f.date_field :installation_date %>
 
   <%= f.label :lat  %>
-  <%= f.number_field  :lat %>
+  <%= f.number_field :lat, :step => 0.000001 %>
 
   <%= f.label :long  %>
-  <%= f.number_field  :long %>
+  <%= f.number_field :long, :step => 0.000001 %>
 
   <div class="cancel-submit">
     <%= link_to "Cancel", stations_path, class: 'btn btn-outline-light' %>

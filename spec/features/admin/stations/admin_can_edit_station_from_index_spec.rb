@@ -72,5 +72,22 @@ describe 'user' do
       expect(page).to have_content(station.long)
     end
 
+    it 'admin cannot edit with improper lat or long' do
+      station = create(:station)
+
+      admin = create(:admin)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit edit_admin_station_path(station)
+
+      fill_in 'station[lat]', with: 1000
+
+      click_on 'Update Station'
+
+      expect(page).to have_button('Update Station')
+      expect(page).to have_content('This station has NOT been updated.')
+      expect(page).to_not have_content('This station has been updated.')
+    end
   end
 end
