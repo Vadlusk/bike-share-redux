@@ -8,6 +8,8 @@ describe Station do
     it {should validate_presence_of(:installation_date)}
     it {should validate_presence_of(:lat)}
     it {should validate_presence_of(:long)}
+    it { should validate_inclusion_of(:lat).in_range(-90..90) }
+    it { should validate_inclusion_of(:long).in_range(-180..180) }
   end
 
   describe '#generate_slug' do
