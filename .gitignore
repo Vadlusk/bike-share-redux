@@ -17,5 +17,6 @@
 /yarn-error.log
 
 .byebug_history
+/db/csv
 /coverage
 /db/schema.rb
