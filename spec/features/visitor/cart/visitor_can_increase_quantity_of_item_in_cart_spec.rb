@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Visitor' do
   context 'a visitor goes to the cart page' do
-    it 'removes item from cart' do
+    it 'increases item quantity in cart' do
       accessories = create_list(:accessory, 5)
 
       visit bike_shop_path
@@ -17,11 +17,9 @@ describe 'Visitor' do
       fill_in 'quantity', with: 10
 
       expect(page).to have_content("Quantity: 10")
-      expect(page).to_not have_content(accessories[0].description)
-
-      click_on("#{accessories[0].title}")
-
-      expect(current_path).to eq(accessory_path(accessories[0]))
+      expect(page).to have_content("$100.00 x 10 = $1000.00")
+      expect(page).to have_content("$200.00")
+      expect(current_path).to eq("/cart")
     end
   end
 
