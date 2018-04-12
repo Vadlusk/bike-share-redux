@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Station do
+<<<<<<< HEAD
   describe "validations" do
     it {should validate_presence_of(:name)}
     it {should validate_presence_of(:dock_count)}
@@ -11,28 +12,119 @@ describe Station do
     it { should validate_inclusion_of(:lat).in_range(-90..90) }
     it { should validate_inclusion_of(:long).in_range(-180..180) }
   end
+=======
+  describe 'Field validations' do
+    context 'invalid attributes' do
+      it 'is invalid without a name' do
+        station = Station.create(
+          name: '',
+          dock_count: 30,
+          city: 'San Jose',
+          installation_date: Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M'),
+          lat: 90,
+          long: 180
+        )
 
-  describe '#generate_slug' do
-    it 'should parameterize the name' do
-      station = create(:station)
+        expect(station).to_not be_valid
+      end
+      it 'is invalid without a dock count' do
+        station = Station.create(
+          name: 'Station',
+          dock_count: '',
+          city: 'San Jose',
+          installation_date: Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M'),
+          lat: 90,
+          long: 180
+        )
 
-      expect(station.slug).to eq(station.name.parameterize)
+        expect(station).to_not be_valid
+      end
+      it 'is invalid without a city' do
+        station = Station.create(
+          name: 'Station',
+          dock_count: 30,
+          city: '',
+          installation_date: Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M'),
+          lat: 90,
+          long: 180
+        )
+
+        expect(station).to_not be_valid
+      end
+      it 'is invalid without an installation date' do
+        station = Station.create(
+          name: 'Station',
+          dock_count: 30,
+          city: 'San Jose',
+          installation_date: '',
+          lat: 90,
+          long: 180
+        )
+
+        expect(station).to_not be_valid
+      end
+      it 'is invalid without lat' do
+        station = Station.create(
+          name: 'Station',
+          dock_count: 30,
+          city: 'San Jose',
+          installation_date: Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M'),
+          lat: '',
+          long: 180
+        )
+
+        expect(station).to_not be_valid
+      end
+      it 'is invalid without long' do
+        station = Station.create(
+          name: 'Station',
+          dock_count: 30,
+          city: 'San Jose',
+          installation_date: Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M'),
+          lat: 90,
+          long: ''
+        )
+>>>>>>> Add field validations to stations spec.
+
+        expect(station).to_not be_valid
+      end
+    end
+    context 'valid attributes' do
+      it 'is valid with all attributes' do
+        station = Station.create(
+          name: 'Station',
+          dock_count: 30,
+          city: 'San Jose',
+          installation_date: Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M'),
+          lat: 90,
+          long: 180,
+        )
+
+        expect(station).to be_valid
+      end
     end
   end
+  describe 'instance methods' do
+    describe '#generate_slug' do
+      it 'parameterizes the name' do
+        station = create(:station)
 
-  describe '#to_param' do
-    it 'uses slug as param instead of id' do
-      station = create(:station)
-
-      expect(station.to_param).to eq(station.slug)
+        expect(station.slug).to eq(station.name.parameterize)
+      end
     end
-  end
+    describe '#to_param' do
+      it 'uses slug as param instead of id' do
+        station = create(:station)
 
-  describe '#built' do
-    it 'changes date formatting' do
-      station = create(:station)
+        expect(station.to_param).to eq(station.slug)
+      end
+    end
+    describe '#built' do
+      it 'changes date formatting' do
+        station = create(:station)
 
-      expect(station.built).to eq(station.installation_date.strftime("%B %d, %Y"))
+        expect(station.built).to eq(station.installation_date.strftime('%B %d, %Y'))
+      end
     end
   end
 end
