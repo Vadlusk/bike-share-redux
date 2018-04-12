@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'users#show'
     resources :stations, only: [:update, :edit, :destroy, :new, :create]
-    resources :conditions, only: [:edit, :update, :destroy]
+    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 end

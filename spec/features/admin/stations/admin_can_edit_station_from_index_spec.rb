@@ -66,7 +66,7 @@ describe 'user' do
       expect(page).to_not have_content('Grrblllball')
       expect(page).to have_content('Awesome Bike Place')
       expect(page).to have_content(station.dock_count)
-      expect(page).to have_content(station.installation_date)
+      expect(page).to have_content(station.built)
       expect(page).to have_content(station.city)
       expect(page).to have_content(station.lat)
       expect(page).to have_content(station.long)
