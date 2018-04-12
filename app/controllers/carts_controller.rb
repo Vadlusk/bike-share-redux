@@ -13,4 +13,12 @@ class CartsController < ApplicationController
     flash[:success] = "You've added #{pluralize(session[:cart][accessory.id.to_s], accessory.title)} to your cart"
     redirect_to bike_shop_path
   end
+
+  def destroy
+    accessory = Accessory.find(params[:accessory_id])
+
+    @cart.remove_accessory(params[:accessory_id])
+    flash[:success] = %Q(Successfully removed #{view_context.link_to(accessory.title, accessory_path(accessory))} from your cart)
+    redirect_to '/cart'
+  end
 end

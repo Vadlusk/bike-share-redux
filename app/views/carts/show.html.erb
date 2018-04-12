@@ -3,7 +3,9 @@
   <%= number_to_currency(accessory.price) %>
   <img src="<%= accessory.image_url %>" alt="" class="accessory_image">
   <%= @cart.contents[accessory.id.to_s] %>
+  <%= link_to "Remove", cart_path(@cart, accessory_id: accessory.id), method: :delete %>
 <% end %>
+
 <h3>Subtotal</h3>
 <% @accessories.each do |accessory| %>
   <p><%= number_to_currency(accessory.price) %> x <%= @cart.contents[accessory.id.to_s] %> =
