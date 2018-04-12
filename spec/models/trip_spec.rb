@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Trip do
-  describe "Field validations" do
-    context "invalid attributes" do
-      it "is invalid without a zip code" do
+  describe 'Field validations' do
+    context 'invalid attributes' do
+      it 'is invalid without a zip code' do
         trip = Trip.create(
           duration: 1000,
           start_date: Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M'),
@@ -20,8 +20,8 @@ describe Trip do
         expect(trip).to_not be_valid
       end
     end
-    context "valid attributes" do
-      it "is valid with all attributes" do
+    context 'valid attributes' do
+      it 'is valid with all attributes' do
         trip = Trip.create(
           duration: 1000,
           start_date: Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M'),
