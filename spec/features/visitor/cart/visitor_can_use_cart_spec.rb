@@ -29,7 +29,7 @@ describe 'Visitor' do
         click_button("Add to Cart")
       end
 
-      visit cart_path
+      visit '/cart'
 
       accessories.each do |accessory|
         expect(page).to have_content(accessory.title)
@@ -74,7 +74,7 @@ describe 'Visitor' do
       fill_in 'user[password]', with: "password"
       fill_in 'user[password_confirmation]', with: "password"
 
-      visit cart_path
+      visit '/cart'
 
       accessories.each do |accessory|
         expect(page).to have_content(accessory.title)

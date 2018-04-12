@@ -13,6 +13,10 @@ class Cart
     end
   end
 
+  def remove_accessory(id)
+    @contents.delete(id)
+  end
+
   def total_item_count
     contents.values.sum
   end
