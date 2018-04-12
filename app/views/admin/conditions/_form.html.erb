@@ -1,0 +1,78 @@
+<%= form_for [ :admin, @condition ] do |f| %>
+  <%= f.label :date  %>
+  <%= f.date_field :date %>
+
+  <%= f.label :max_temperature_f  %>
+  <%= f.number_field :max_temperature_f  %>
+
+  <%= f.label :mean_temperature_f  %>
+  <%= f.number_field :mean_temperature_f  %>
+
+  <%= f.label :min_temperature_f  %>
+  <%= f.number_field :min_temperature_f  %>
+
+  <%= f.label :max_dew_point_f  %>
+  <%= f.number_field :max_dew_point_f  %>
+
+  <%= f.label :mean_dew_point_f  %>
+  <%= f.number_field :mean_dew_point_f  %>
+
+  <%= f.label :min_dew_point_f  %>
+  <%= f.number_field :min_dew_point_f  %>
+
+  <%= f.label :max_humidity  %>
+  <%= f.number_field :max_humidity  %>
+
+  <%= f.label :mean_humidity  %>
+  <%= f.number_field :mean_humidity  %>
+
+  <%= f.label :min_humidity  %>
+  <%= f.number_field :min_humidity  %>
+
+  <%= f.label :max_sea_level_pressure_inches  %>
+  <%= f.number_field :max_sea_level_pressure_inches  %>
+
+  <%= f.label :mean_sea_level_pressure_inches  %>
+  <%= f.number_field :mean_sea_level_pressure_inches  %>
+
+  <%= f.label :min_sea_level_pressure_inches  %>
+  <%= f.number_field :min_sea_level_pressure_inches  %>
+
+  <%= f.label :max_visibility_miles  %>
+  <%= f.number_field :max_visibility_miles  %>
+
+  <%= f.label :mean_visibility_miles  %>
+  <%= f.number_field :mean_visibility_miles  %>
+
+  <%= f.label :min_visibility_miles  %>
+  <%= f.number_field :min_visibility_miles  %>
+
+  <%= f.label :max_wind_Speed_mph  %>
+  <%= f.number_field :max_wind_Speed_mph  %>
+
+  <%= f.label :mean_wind_speed_mph  %>
+  <%= f.number_field :mean_wind_speed_mph  %>
+
+  <%= f.label :max_gust_speed_mph  %>
+  <%= f.number_field :max_gust_speed_mph  %>
+
+  <%= f.label :precipitation_inches  %>
+  <%= f.number_field :precipitation_inches  %>
+
+  <%= f.label :cloud_cover  %>
+  <%= f.number_field :cloud_cover  %>
+
+  <%= f.label :events  %>
+  <%= f.text_field :events  %>
+
+  <%= f.label :wind_dir_degrees  %>
+  <%= f.number_field :wind_dir_degrees  %>
+
+  <%= f.label :zip_code  %>
+  <%= f.text_field :zip_code  %>
+
+  <div class="cancel-submit">
+    <%= link_to "Cancel", :back, class: 'btn btn-outline-light' %>
+    <%= f.submit class: 'btn btn-outline-light' %>
+  </div>
+<% end %>

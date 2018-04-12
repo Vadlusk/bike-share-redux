@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :carts, only: [:create, :destroy, :update, :edit]
   resources :trips, only: [:index, :show]
-  resources :conditions, only: %i[index show]
+  resources :conditions, only: [:index, :show]
   resources :stations, only: [:index, :show], param: :slug
   resources :accessories, only: [:show]
   get '/bike-shop', to: 'accessories#index'
@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'users#show'
     resources :stations, only: [:update, :edit, :destroy, :new, :create]
+    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 end

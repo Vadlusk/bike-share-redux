@@ -19,4 +19,8 @@ module ApplicationHelper
       when "admin"   then "layouts/nav_admin"
     end
   end
+
+  def format_date(date)
+    date.strftime("%B %d, %Y")
+  end
 end
