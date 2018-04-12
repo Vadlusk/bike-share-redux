@@ -1,13 +1,33 @@
-<% @trips.each do |trip| %>
-  <%= trip.duration %>
-  <%= trip.start_date %>
-  <%= trip.start_station_name %>
-  <%= trip.start_station_id %>
-  <%= trip.end_date %>
-  <%= trip.end_station_name %>
-  <%= trip.end_station_id %>
-  <%= trip.bike_id %>
-  <%= trip.subscription_type %>
-  <%= trip.zip_code %>
-<% end %>
+<table class="table table-striped table-hover">
+  <tr>
+
+  </tr>
+    <th>Trip ID</th>
+    <th>Duration</th>
+    <th>Start Date</th>
+    <th>Start Station Name</th>
+    <th>Start Station ID</th>
+    <th>Trip End Date</th>
+    <th>End Station Name</th>
+    <th>End Station ID</th>
+    <th>Bike ID</th>
+    <th>Subscription Type</th>
+    <th>Zip Code</th>
+  </tr>
+  <% @trips.each do |trip| %>
+    <tr class="trip-<%= trip.id %>">
+      <td><%= link_to trip.id, trip_path(trip) %></td>
+      <td><%= trip.duration %></td>
+      <td><%= trip.start_date %></td>
+      <td><%= trip.start_station_name %></td>
+      <td><%= trip.start_station_id %></td>
+      <td><%= trip.end_date %></td>
+      <td><%= trip.end_station_name %></td>
+      <td><%= trip.end_station_id %></td>
+      <td><%= trip.bike_id %></td>
+      <td><%= trip.subscription_type %></td>
+      <td><%= trip.zip_code %></td>
+    </tr>
+  <% end %>
+</table>
 <%= will_paginate @trips %>

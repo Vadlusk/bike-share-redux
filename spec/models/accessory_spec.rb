@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 describe Accessory do
-  describe 'validations' do
+  context 'Field validations' do
+    context ''
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:description) }
   end

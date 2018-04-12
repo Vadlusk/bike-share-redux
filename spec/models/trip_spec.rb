@@ -6,7 +6,6 @@ describe Trip do
       it "is invalid without a name" do
       end
     end
-
     context "valid attributes" do
       it "is valid with all attributes" do
       end
