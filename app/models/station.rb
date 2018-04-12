@@ -7,6 +7,8 @@ class Station < ApplicationRecord
                         :long
 
   before_save :generate_slug
+  validates :lat, :inclusion => -90..90
+  validates :long, :inclusion => -180..180
 
   def generate_slug
     self.slug = name.parameterize
