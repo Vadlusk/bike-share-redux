@@ -104,26 +104,27 @@ describe Station do
       end
     end
   end
-  describe '#generate_slug' do
-    it 'should parameterize the name' do
-      station = create(:station)
-      expect(station.slug).to eq(station.name.parameterize)
+  describe 'instance methods' do
+    describe '#generate_slug' do
+      it 'parameterizes the name' do
+        station = create(:station)
+
+        expect(station.slug).to eq(station.name.parameterize)
+      end
     end
-  end
+    describe '#to_param' do
+      it 'uses slug as param instead of id' do
+        station = create(:station)
 
-  describe '#to_param' do
-    it 'uses slug as param instead of id' do
-      station = create(:station)
-
-      expect(station.to_param).to eq(station.slug)
+        expect(station.to_param).to eq(station.slug)
+      end
     end
-  end
+    describe '#built' do
+      it 'changes date formatting' do
+        station = create(:station)
 
-  describe '#built' do
-    it 'changes date formatting' do
-      station = create(:station)
-
-      expect(station.built).to eq(station.installation_date.strftime('%B %d, %Y'))
+        expect(station.built).to eq(station.installation_date.strftime('%B %d, %Y'))
+      end
     end
   end
 end
