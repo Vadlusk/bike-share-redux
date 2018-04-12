@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :carts, only: [:create, :destroy]
+  resources :carts, only: [:create, :destroy, :update, :edit]
   resources :trips, only: [:index, :show]
   resources :conditions, only: %i[index show]
   resources :stations, only: [:index, :show], param: :slug

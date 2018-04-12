@@ -21,4 +21,10 @@ class CartsController < ApplicationController
     flash[:success] = %Q(Successfully removed #{view_context.link_to(accessory.title, accessory_path(accessory))} from your cart)
     redirect_to '/cart'
   end
+
+  def update
+    @cart.increment_accessory(params[:accessory_id])
+    accessory = Accessory.find(params[:accessory_id])
+    redirect_to '/cart'
+  end
 end
