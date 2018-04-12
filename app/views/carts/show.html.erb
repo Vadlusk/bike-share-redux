@@ -4,12 +4,18 @@
   <img src="<%= accessory.image_url %>" alt="" class="accessory_image">
   Quantity: <%= @cart.contents[accessory.id.to_s] %>
 
+
   <%= link_to "+", cart_path(@cart, accessory_id: accessory.id), method: :put %>
 
 
-  <%= number_to_currency(accessory.price) %> x <%= @cart.contents[accessory.id.to_s] %> =
-  <%= number_to_currency(@cart.subtotal(accessory)) %>
   <%= link_to "Remove", cart_path(@cart, accessory_id: accessory.id), method: :delete %>
+  <br>
+<% end %>
+<h3>Subtotal</h3>
+<% @accessories.each do |accessory| %>
+  <p><%= accessory.title %> - <%= number_to_currency(accessory.price) %> x <%= @cart.contents[accessory.id.to_s] %> =
+  <%= number_to_currency(@cart.subtotal(accessory)) %></p>
+
 <% end %>
 <h3>Total</h3>
 Total: <%= number_to_currency(@cart.total_price) %>
