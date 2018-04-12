@@ -8,7 +8,7 @@
 
 <h3>Subtotal</h3>
 <% @accessories.each do |accessory| %>
-  <p><%= number_to_currency(accessory.price) %> x <%= @cart.contents[accessory.id.to_s] %> =
+  <p><%= accessory.title %> - <%= number_to_currency(accessory.price) %> x <%= @cart.contents[accessory.id.to_s] %> =
   <%= number_to_currency(@cart.subtotal(accessory)) %></p>
 <% end %>
 <h3>Total</h3>

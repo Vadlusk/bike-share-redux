@@ -20,7 +20,9 @@ require 'csv'
 #     Status.create!(row.to_h)
 #   end
 # end
-
+ActiveRecord::Base.connection.reset_pk_sequence!(:stations)
+ActiveRecord::Base.connection.reset_pk_sequence!(:conditions)
+ActiveRecord::Base.connection.reset_pk_sequence!(:users)
 Station.destroy_all
 Trip.destroy_all
 Condition.destroy_all
