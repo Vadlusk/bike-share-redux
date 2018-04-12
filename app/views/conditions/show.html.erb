@@ -1,24 +1,26 @@
-<%= @condition.date %>
-<%= @condition.max_temperature_f %>
-<%= @condition.mean_temperature_f %>
-<%= @condition.min_temperature_f %>
-<%= @condition.max_dew_point_f%>
-<%= @condition.mean_dew_point_f %>
-<%= @condition.min_dew_point_f %>
-<%= @condition.max_humidity %>
-<%= @condition.mean_humidity %>
-<%= @condition.min_humidity %>
-<%= @condition.max_sea_level_pressure_inches %>
-<%= @condition.mean_sea_level_pressure_inches %>
-<%= @condition.min_sea_level_pressure_inches %>
-<%= @condition.max_visibility_miles %>
-<%= @condition.mean_visibility_miles %>
-<%= @condition.min_visibility_miles %>
-<%= @condition.max_wind_Speed_mph %>
-<%= @condition.mean_wind_speed_mph %>
-<%= @condition.max_gust_speed_mph %>
-<%= @condition.precipitation_inches %>
-<%= @condition.cloud_cover %>
-<%= @condition.events %>
-<%= @condition.wind_dir_degrees %>
-<%= @condition.zip_code %>
+<header>
+  <div class="header-title">
+    <h6>
+      Conditions in <%= @condition.zip_code %> on <%= format_date(@condition.date) %>
+    <h6>
+  </div>
+</header>
+
+<div class="card-container">
+  <div class="card-info">
+    <span><h5>Date:</h5><h6><%= @condition.date %></h6></span>
+    <span><h5>Max Temperature: </h5><h6><%= @condition.max_temperature_f %></h6></span>
+    <span><h5>Mean Temperature: </h5><h6><%= @condition.mean_temperature_f %></h6></span>
+    <span><h5>Min Temperature: </h5><h6><%= @condition.min_temperature_f %></h6></span>
+    <span><h5>Mean Humidity: </h5><h6><%= @condition.mean_humidity %></h6></span>
+    <span><h5>Mean Visibility (in Miles): </h5><h6><%= @condition.mean_visibility_miles %></h6></span>
+    <span><h5>Mean Wind Speed (mph): </h5><h6> <%= @condition.mean_wind_speed_mph %></h6></span>
+    <span><h5>Precipitation (inches): </h5><h6> <%= @condition.precipitation_inches %></h6></span>
+    <% if current_user && current_user.admin? %>
+      <div class="card-buttons">
+        <%= link_to '<i class="fas fa-edit"></i> Edit Condition Report'.html_safe, edit_admin_condition_path(@condition) %>
+        <%= link_to '<i class="fas fa-trash-alt"></i> Delete Condition Report'.html_safe, condition_path(@condition), method: :delete, data: { confirm: "You are about to delete this destination."} %>
+      </div>
+    <% end %>
+  </div>
+</div>
