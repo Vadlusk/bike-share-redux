@@ -7,7 +7,7 @@ describe 'Visitor' do
       accessories = create_list(:accessory, 5)
 
       visit bike_shop_path
-      2.times do
+      5.times do
         within('form:nth-of-type(1)') do
           click_button("Add to Cart")
         end
