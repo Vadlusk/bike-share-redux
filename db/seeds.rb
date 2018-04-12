@@ -27,6 +27,7 @@ Station.destroy_all
 Trip.destroy_all
 Condition.destroy_all
 Accessory.destroy_all
+User.destroy_all
 
 def zip_cleaner(zip)
   if zip
