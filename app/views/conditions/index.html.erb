@@ -8,6 +8,9 @@
       <th>Mean Visibility (in Miles)</th>
       <th>Mean Wind Speed (mph)</th>
       <th>Precipitation (inches)</th>
+      <% if current_user && current_user.admin? %>
+        <th></th>
+      <% end %>
     </tr>
   <% @conditions.each do |condition| %>
     <tr class="condition-<%= condition.id %>">
@@ -19,6 +22,14 @@
       <td><%= condition.mean_visibility_miles %></td>
       <td><%= condition.mean_wind_speed_mph %></td>
       <td><%= condition.precipitation_inches %></td>
+      <% if current_user && current_user.admin? %>
+        <td>
+          <div class="table-buttons">
+            <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_admin_condition_path(condition) %>
+            <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, admin_condition_path(condition), method: :delete, data: { confirm: "You are about to delete this user."} %>
+          </div>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

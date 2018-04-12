@@ -13,7 +13,6 @@ describe 'user sees all conditions' do
       expect(page).to have_content(condition.min_temperature_f)
       expect(page).to have_content(condition.mean_humidity)
       expect(page).to have_content(condition.mean_visibility_miles)
-      expect(page).to have_content(condition.min_visibility_miles)
       expect(page).to have_content(condition.mean_wind_speed_mph)
       expect(page).to have_content(condition.precipitation_inches)
     end
