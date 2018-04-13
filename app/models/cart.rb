@@ -26,7 +26,7 @@ class Cart
   end
 
   def total_price
-    contents.map do |accessory, quantity|
+    @total_price ||= contents.map do |accessory, quantity|
       Accessory.find(accessory).price * quantity
     end.sum
   end
