@@ -8,7 +8,7 @@ describe 'Visitor' do
 
       visit bike_shop_path
       5.times do
-        within('form:nth-of-type(1)') do
+        within('.card-container:nth-of-type(1)') do
           click_button("Add to Cart")
         end
       end
