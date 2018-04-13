@@ -11,7 +11,7 @@
   <% @accessories.each do |accessory| %>
     <div class="card-container">
       <div class="card-info">
-        <div>
+        <div class="accessory-<%= accessory.id %>">
           <h3><%= accessory.title %></h3>
           <span><h5>Description: </h5><h6><%= accessory.description %></h6></span>
           <span><h5>Price: </h5><h6><%= number_to_currency(accessory.price)%></h6></span>
