@@ -15,7 +15,7 @@
           <h3><%= accessory.title %></h3>
           <span><h5>Description: </h5><h6><%= accessory.description %></h6></span>
           <span><h5>Price: </h5><h6><%= number_to_currency(accessory.price)%></h6></span>
-          <%= link_to 'Add to Cart', carts_path(accessory_id: accessory.id) %>
+          <%= link_to 'Add to Cart', cart_path(@cart, accessory_id: accessory.id), method: :put %>
         </div>
         <div class="card-image">
           <img src="<%= accessory.image_url %>" alt="" class="accessory_image">
