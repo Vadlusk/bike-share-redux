@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe Station do
-<<<<<<< HEAD
-
-=======
->>>>>>> Pass tests.
   describe "validations" do
     it {should validate_presence_of(:name)}
     it {should validate_presence_of(:dock_count)}
@@ -15,10 +11,6 @@ describe Station do
     it { should validate_inclusion_of(:lat).in_range(-90..90) }
     it { should validate_inclusion_of(:long).in_range(-180..180) }
   end
-<<<<<<< HEAD
-
-=======
->>>>>>> Pass tests.
   describe 'Field validations' do
     context 'invalid attributes' do
       it 'is invalid without a name' do
