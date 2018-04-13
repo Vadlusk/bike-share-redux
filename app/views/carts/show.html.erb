@@ -19,3 +19,9 @@
 <% end %>
 <h3>Total</h3>
 Total: <%= number_to_currency(@cart.total_price) %>
+
+<% if current_user %>
+  <%= link_to "Checkout", orders_path(user_id: current_user.id, cart_items: @cart.contents), method: :post %>
+<% else %>
+  <%= link_to "Checkout", login_path %>
+<% end %>
