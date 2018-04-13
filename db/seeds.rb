@@ -44,13 +44,11 @@ CSV.foreach('db/csv/station.csv', headers: true) do |row|
 end
 
 
-CSV.foreach('db/csv/trip.csv', headers: true).with_index do |row, index|
-  break if index >= 1000
+CSV.foreach('db/csv/trip-trunc.csv', headers: true) do |row|
   row["start_date"] = Date.strptime(row["start_date"], '%m/%d/%Y %k:%M')
   row["end_date"] =  Date.strptime(row["end_date"], '%m/%d/%Y %k:%M')
   row["zip_code"] = zip_cleaner(row["zip_code"])
   Trip.create!(row.to_h)
-  puts "Created trip #{index + 1}"
 end
 
 CSV.foreach('db/csv/weather.csv', headers: true) do |row|
