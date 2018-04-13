@@ -1,7 +1,28 @@
-<% @accessories.each do |accessory| %>
-  <%= accessory.title %>
-  <%= accessory.description %>
-  <%= accessory.price %>
-  <img src="<%= accessory.image_url %>" alt="" class="accessory_image">
-  <%= button_to 'Add to Cart', carts_path(accessory_id: accessory.id) %>
-<% end %>
+
+<header>
+  <div class="header-title">
+    <h6>
+      Bike Shop
+    <h6>
+  </div>
+</header>
+
+<div class="accessories">
+  <% @accessories.each do |accessory| %>
+    <div class="card-container">
+      <div class="card-info">
+        <div>
+          <h3><%= accessory.title %></h3>
+          <span><h5>Description: </h5><h6><%= accessory.description %></h6></span>
+          <span><h5>Price: </h5><h6><%= number_to_currency(accessory.price)%></h6></span>
+          <%= button_to 'Add to Cart', carts_path(accessory_id: accessory.id) %>
+        </div>
+        <div class="card-image">
+          <img src="<%= accessory.image_url %>" alt="" class="accessory_image">
+        </div>
+        <% if current_user && current_user.admin? %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -15,23 +15,19 @@ describe 'visitor' do
     end
   end
   scenario 'a visitor goes to /bike-shop and adds items to their cart' do
-    accessories = create_list(:accessory, 12)
+    accessory = create(:accessory)
 
     visit '/bike-shop'
 
-    within('form:nth-of-type(2)') do
-      click_button("Add to Cart")
-    end
+    click_on("Add to Cart")
 
-    expect(page).to have_content("You've added 1 #{accessories[1].title} to your cart")
+    expect(page).to have_content("You've added 1 #{accessory.title} to your cart")
 
     within('.cart') do
       expect(page).to have_content("(1)")
     end
 
-    within('form:nth-of-type(5)') do
-      click_button("Add to Cart")
-    end
+    click_on("Add to Cart")
 
     within('.cart') do
       expect(page).to have_content("(2)")

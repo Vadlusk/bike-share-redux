@@ -19,14 +19,21 @@ describe 'visitor' do
 
     expect(page).to have_content('(0)')
 
-    click_button 'Add to Cart'
+    click_on 'Add to Cart'
 
-    expect(page).to have_content("You've added 1 #{accessory.title} to your cart")
+    within ('#notice') do
+      expect(page).to have_content("You've added 1 #{accessory.title} to your cart")
+    end
+
     expect(page).to have_content('(1)')
 
-    click_button 'Add to Cart'
+    visit accessory_path(accessory)
+    click_on 'Add to Cart'
 
-    expect(page).to have_content("You've added 2 #{accessory.title}s to your cart")
+    within ('#notice') do
+      expect(page).to have_content("You've added 2 #{accessory.title}s to your cart")
+    end
+
     expect(page).to have_content('(2)')
   end
 end

@@ -13,19 +13,19 @@ describe 'Visitor' do
       accessories = [accessory1, accessory2, accessory3, accessory4, accessory5]
       visit bike_shop_path
 
-      within('form:nth-of-type(1)') do
+      within('.card-container:nth-of-type(1)') do
         click_button("Add to Cart")
       end
-      within('form:nth-of-type(2)') do
+      within('.card-container:nth-of-type(2)') do
         click_button("Add to Cart")
       end
-      within('form:nth-of-type(3)') do
+      within('.card-container:nth-of-type(3)') do
         click_button("Add to Cart")
       end
-      within('form:nth-of-type(4)') do
+      within('.card-container:nth-of-type(4)') do
         click_button("Add to Cart")
       end
-      within('form:nth-of-type(5)') do
+      within('.card-container:nth-of-type(5)') do
         click_button("Add to Cart")
       end
 
@@ -50,19 +50,19 @@ describe 'Visitor' do
 
       visit bike_shop_path
 
-      within('form:nth-of-type(1)') do
+      within('.card-container:nth-of-type(1)') do
         click_button("Add to Cart")
       end
-      within('form:nth-of-type(2)') do
+      within('.card-container:nth-of-type(2)') do
         click_button("Add to Cart")
       end
-      within('form:nth-of-type(3)') do
+      within('.card-container:nth-of-type(3)') do
         click_button("Add to Cart")
       end
-      within('form:nth-of-type(4)') do
+      within('.card-container:nth-of-type(4)') do
         click_button("Add to Cart")
       end
-      within('form:nth-of-type(5)') do
+      within('.card-container:nth-of-type(5)') do
         click_button("Add to Cart")
       end
 
