@@ -22,5 +22,6 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'users#show'
     resources :stations, only: [:update, :edit, :destroy, :new, :create]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+    resources :trips, only: [:new, :create]
   end
 end
