@@ -48,6 +48,13 @@ describe Trip do
 
         expect(Trip.average_duration).to eq(average)
       end
+      it 'returns the longest ride' do
+        trips = create_list(:trip, 10)
+
+        longest = trips.max_by(&:duration)
+        
+        expect(Trip.longest_ride).to eq(longest)
+      end
     end
   end
 end
