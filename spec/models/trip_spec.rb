@@ -52,8 +52,15 @@ describe Trip do
         trips = create_list(:trip, 10)
 
         longest = trips.max_by(&:duration)
-        
+
         expect(Trip.longest_ride).to eq(longest)
+      end
+      it 'returns the shortest ride' do
+        trips = create_list(:trip, 10)
+
+        shortest = trips.min_by(&:duration)
+
+        expect(Trip.shortest_ride).to eq(shortest)
       end
     end
   end
