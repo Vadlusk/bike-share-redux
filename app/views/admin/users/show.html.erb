@@ -6,7 +6,6 @@
   </div>
 </header>
 
-<<<<<<< HEAD
 <main>
   <div class="station_show">
     <h1><%= @user.username %></h1>
@@ -16,6 +15,3 @@
 </main>
 
 <%= link_to "Logout", logout_path %>
-=======
-<%= link_to "Logout", '/dashboard' %>
->>>>>>> Add authorization tests for admin login. Add admin namespace to routes, with admin/user#show sub-resource. Update sessions controller to redirect admin to admin_dashboard_path. Add Admin::UsersController and admin/users#show view.
