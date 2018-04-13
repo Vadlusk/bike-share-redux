@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :conditions, only: [:index, :show]
   resources :stations, only: [:index, :show], param: :slug
   resources :accessories, only: [:show]
+  resources :orders, only: [:create]
   get '/bike-shop', to: 'accessories#index'
 
   root controller: 'welcome', action: :index
