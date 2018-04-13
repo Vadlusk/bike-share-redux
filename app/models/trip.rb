@@ -21,4 +21,13 @@ class Trip < ApplicationRecord
   def self.shortest_ride
     find_by(duration: minimum(:duration))
   end
+
+  def self.busiest_starting_station
+    busiest = select('start_station_id, count(start_station_id) as trips')
+              .group('start_station_id')
+              .order('trips DESC')
+              .limit(1)
+    # binding.pry
+    Station.find(busiest.first.start_station_id)
+  end
 end

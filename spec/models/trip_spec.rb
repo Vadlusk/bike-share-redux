@@ -73,6 +73,7 @@ describe Trip do
             station[1].count
           end
         busiest_station = Station.find(busiest[0])
+        # binding.pry
 
         expect(Trip.busiest_starting_station).to eq(busiest_station)
       end
