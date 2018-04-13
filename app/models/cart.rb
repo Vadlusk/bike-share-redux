@@ -39,6 +39,5 @@ class Cart
     contents.map do |accessory_id, quantity |
       order.order_accessories.create!(accessory_id: accessory_id, quantity: quantity)
     end
-    @contents = Hash.new(0)
   end
 end
