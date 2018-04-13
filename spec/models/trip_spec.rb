@@ -64,7 +64,7 @@ describe Trip do
       end
       it 'returns the station with the most rides as a starting place' do
         trips = create_list(:trip, 100)
-        stations = create_list(:station, 100)
+        create_list(:station, 100)
 
         grouped_by_station = trips.group_by(&:start_station_id)
 
@@ -73,9 +73,22 @@ describe Trip do
             station[1].count
           end
         busiest_station = Station.find(busiest[0])
-        # binding.pry
 
         expect(Trip.busiest_starting_station).to eq(busiest_station)
+      end
+      it 'returns the station with the most rides as ending place' do
+        trips = create_list(:trip, 100)
+        create_list(:station, 100)
+
+        grouped_by_station = trips.group_by(&:end_station_id)
+
+        busiest =
+          grouped_by_station.max_by do |station|
+            station[1].count
+          end
+        busiest_station = Station.find(busiest[0])
+
+        expect(Trip.busiest_ending_station).to eq(busiest_station)
       end
     end
   end

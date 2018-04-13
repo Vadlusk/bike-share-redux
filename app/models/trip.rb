@@ -27,7 +27,16 @@ class Trip < ApplicationRecord
               .group('start_station_id')
               .order('trips DESC')
               .limit(1)
-    # binding.pry
+
     Station.find(busiest.first.start_station_id)
+  end
+
+  def self.busiest_ending_station
+    busiest = select('end_station_id, count(end_station_id) as trips')
+              .group('end_station_id')
+              .order('trips DESC')
+              .limit(1)
+
+    Station.find(busiest.first.end_station_id)
   end
 end
