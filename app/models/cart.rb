@@ -26,7 +26,7 @@ class Cart
   end
 
   def total_price
-    @total_price ||= contents.map do |accessory_id, quantity|
+    contents.map do |accessory_id, quantity|
       Accessory.find(accessory_id).price * quantity
     end.sum
   end
