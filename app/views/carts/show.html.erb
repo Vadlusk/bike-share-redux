@@ -1,27 +1,34 @@
-<% @accessories.each do |accessory| %>
-  <%= accessory.title %>
-  <%= number_to_currency(accessory.price) %>
-  <img src="<%= accessory.image_url %>" alt="" class="accessory_image">
-  Quantity: <%= @cart.contents[accessory.id.to_s] %>
-
-
-  <%= link_to "+", cart_path(@cart, accessory_id: accessory.id), method: :put %>
-
-
-  <%= link_to "Remove", cart_path(@cart, accessory_id: accessory.id), method: :delete %>
-  <br>
-<% end %>
-<h3>Subtotal</h3>
-<% @accessories.each do |accessory| %>
-  <p><%= accessory.title %> - <%= number_to_currency(accessory.price) %> x <%= @cart.contents[accessory.id.to_s] %> =
-  <%= number_to_currency(@cart.subtotal(accessory)) %></p>
-
-<% end %>
-<h3>Total</h3>
-Total: <%= number_to_currency(@cart.total_price) %>
-
-<% if current_user %>
-  <%= link_to "Checkout", orders_path(user_id: current_user.id, cart_items: @cart.contents), method: :post %>
+<% if @cart.contents == {} %>
+  <main class="empty-cart">
+    <p>There is nothing in your cart. Go to the <%= link_to "Bike Shop", bike_shop_path %> to add accessories!</p>
+  </main>
 <% else %>
-  <%= link_to "Checkout", login_path %>
+  <% @accessories.each do |accessory| %>
+    <%= accessory.title %>
+    <%= number_to_currency(accessory.price) %>
+    <img src="<%= accessory.image_url %>" alt="" class="accessory_image">
+    Quantity: <%= @cart.contents[accessory.id.to_s] %>
+
+
+    <%= link_to "+", cart_path(@cart, accessory_id: accessory.id), method: :put %>
+
+
+    <%= link_to "Remove", cart_path(@cart, accessory_id: accessory.id), method: :delete %>
+    <br>
+  <% end %>
+
+  <h3>Subtotal</h3>
+  <% @accessories.each do |accessory| %>
+    <p><%= accessory.title %> - <%= number_to_currency(accessory.price) %> x <%= @cart.contents[accessory.id.to_s] %> =
+    <%= number_to_currency(@cart.subtotal(accessory)) %></p>
+  <% end %>
+
+  <h3>Total</h3>
+  Total: <%= number_to_currency(@cart.total_price) %>
+
+  <% if current_user %>
+    <%= link_to "Checkout", orders_path(user_id: current_user.id, cart_items: @cart.contents), method: :post %>
+  <% else %>
+    <%= link_to "Checkout", login_path %>
+  <% end %>
 <% end %>
