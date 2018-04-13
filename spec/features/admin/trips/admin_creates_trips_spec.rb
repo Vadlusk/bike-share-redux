@@ -19,6 +19,7 @@ describe 'Admin' do
     fill_in 'trip[zip_code]', with: 80210
     click_on 'Create Trip'
 
+<<<<<<< HEAD
     save_and_open_page
     expect(current_path).to eq(trip_path(Trip.last.id))
     expect(page).to have_content('You successfully created this trip')
@@ -27,6 +28,15 @@ describe 'Admin' do
     expect(page).to have_content('station name')
     expect(page).to have_content('900')
     expect(page).to have_content('2003-03-01')
+=======
+    expect(current_path).to eq(trip_path(Trip.last.id))
+    expect(page).to have_content('You successfully created this trip')
+    expect(page).to have_content('100')
+    expect(page).to have_content('January 01, 2003')
+    expect(page).to have_content('station name')
+    expect(page).to have_content('900')
+    expect(page).to have_content('March 01, 2003')
+>>>>>>> Add routes.
     expect(page).to have_content('end station name')
     expect(page).to have_content('1000')
     expect(page).to have_content('974')
