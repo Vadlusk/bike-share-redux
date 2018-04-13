@@ -39,4 +39,15 @@ describe Trip do
       end
     end
   end
+  describe 'Analysis methods' do
+    context 'average duration' do
+      it 'returns the average duration of all rides' do
+        trips = create_list(:trip, 10)
+
+        average = trips.map(&:duration).sum/trips.count
+
+        expect(Trip.average_duration).to eq(average)
+      end
+    end
+  end
 end

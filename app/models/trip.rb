@@ -9,4 +9,8 @@ class Trip < ApplicationRecord
             :bike_id,
             :subscription_type,
             :zip_code, presence: true
+
+  def self.average_duration
+    average(:duration).to_i
+  end
 end
