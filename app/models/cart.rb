@@ -26,12 +26,19 @@ class Cart
   end
 
   def total_price
-    @total_price ||= contents.map do |accessory, quantity|
-      Accessory.find(accessory).price * quantity
+    @total_price ||= contents.map do |accessory_id, quantity|
+      Accessory.find(accessory_id).price * quantity
     end.sum
   end
 
   def subtotal(accessory)
     accessory.price * contents[accessory.id.to_s]
+  end
+
+  def checkout(order)
+    contents.map do |accessory_id, quantity |
+      order.order_accessories.create!(accessory_id: accessory_id, quantity: quantity)
+    end
+    @contents = Hash.new(0)
   end
 end
