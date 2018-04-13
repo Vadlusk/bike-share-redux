@@ -10,10 +10,7 @@ Rails.application.routes.draw do
 
   root controller: 'welcome', action: :index
 
-<<<<<<< HEAD
   get  '/cart',      to: 'carts#show'
-=======
->>>>>>> Add authorization tests for admin login. Add admin namespace to routes, with admin/user#show sub-resource. Update sessions controller to redirect admin to admin_dashboard_path. Add Admin::UsersController and admin/users#show view.
   get  '/register',  to: 'users#new'
   post '/register',  to: 'users#create'
   get  '/dashboard', to: 'users#show'
@@ -24,10 +21,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: 'users#show'
-<<<<<<< HEAD
     resources :stations, only: [:update, :edit, :destroy, :new, :create]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
-=======
->>>>>>> Add authorization tests for admin login. Add admin namespace to routes, with admin/user#show sub-resource. Update sessions controller to redirect admin to admin_dashboard_path. Add Admin::UsersController and admin/users#show view.
   end
 end
