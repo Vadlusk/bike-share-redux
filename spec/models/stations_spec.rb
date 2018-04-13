@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 describe Station do
+<<<<<<< HEAD
 
+=======
+>>>>>>> Add trip creation.
   describe "validations" do
     it {should validate_presence_of(:name)}
     it {should validate_presence_of(:dock_count)}
@@ -12,7 +15,10 @@ describe Station do
     it { should validate_inclusion_of(:lat).in_range(-90..90) }
     it { should validate_inclusion_of(:long).in_range(-180..180) }
   end
+<<<<<<< HEAD
 
+=======
+>>>>>>> Add trip creation.
   describe 'Field validations' do
     context 'invalid attributes' do
       it 'is invalid without a name' do
@@ -84,7 +90,10 @@ describe Station do
           lat: 90,
           long: ''
         )
+<<<<<<< HEAD
 
+=======
+>>>>>>> Add trip creation.
         expect(station).to_not be_valid
       end
     end
