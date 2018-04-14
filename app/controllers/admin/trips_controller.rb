@@ -1,4 +1,6 @@
 class Admin::TripsController < Admin::BaseController
+  before_action :set_trip, only: %i[edit update destroy]
+
   def new
     @trip = Trip.new
   end
@@ -14,6 +16,26 @@ class Admin::TripsController < Admin::BaseController
     end
   end
 
+  def edit; end
+
+  def update
+    if @trip.update(trip_params)
+      flash[:success] = 'You successfully updated this trip'
+      redirect_to trip_path(@trip)
+    else
+      flash[:error] = 'Failed to update trip'
+      render :edit
+    end
+  end
+
+  def destroy
+    if @trip.destroy
+      flash[:success] = 'Successfully deleted trip'
+    else
+      flash[:error] = 'Failed to delete trip'
+    end
+    redirect_to trips_path
+  end
   private
 
       def trip_params
@@ -29,5 +51,9 @@ class Admin::TripsController < Admin::BaseController
           :subscription_type,
           :zip_code
         )
+      end
+
+      def set_trip
+        @trip = Trip.find(params[:id])
       end
 end

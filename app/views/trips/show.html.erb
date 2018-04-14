@@ -18,5 +18,9 @@
     <span><h5>Bike ID: </h5><h6><%= @trip.bike_id %></h6></span>
     <span><h5>Subscription Type: </h5><h6><%= @trip.subscription_type %></h6></span>
     <span><h5>Zip Code: </h5><h6><%= @trip.zip_code %></h6></span>
+    <% if current_admin? %>
+      <td><%= link_to 'Delete', admin_trip_path(@trip), method: :delete, data: { confirm: "Are you sure? You will permanently delete this trip."} %></td>
+      <td><%= link_to 'Edit', edit_admin_trip_path(@trip) %></td>
+    <% end %>
   </div>
 </div>

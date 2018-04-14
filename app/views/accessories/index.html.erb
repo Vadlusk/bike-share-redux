@@ -20,7 +20,7 @@
         <div class="card-image">
           <img src="<%= accessory.image_url %>" alt="" class="accessory_image">
         </div>
-        <% if current_user && current_user.admin? %>
+        <% if current_admin? %>
         <% end %>
       </div>
     </div>
