@@ -23,8 +23,15 @@ class CartsController < ApplicationController
   end
 
   def update
-    @cart.increment_accessory(params[:accessory_id])
     accessory = Accessory.find(params[:accessory_id])
+    if params[:delta] == 'increase'
+      @cart.increment_accessory(params[:accessory_id])
+    elsif params[:delta] == 'decrease'
+      @cart.decrement_accessory(params[:accessory_id])
+      unless @cart.contents.keys.include?(params[:accessory_id])
+        flash[:success] = %Q(Successfully removed #{view_context.link_to(accessory.title, accessory_path(accessory))} from your cart)
+      end
+    end
     redirect_to '/cart'
   end
 end
