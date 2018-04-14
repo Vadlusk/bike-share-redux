@@ -16,7 +16,7 @@
     <span><h5>Mean Visibility (in Miles): </h5><h6><%= @condition.mean_visibility_miles %></h6></span>
     <span><h5>Mean Wind Speed (mph): </h5><h6> <%= @condition.mean_wind_speed_mph %></h6></span>
     <span><h5>Precipitation (inches): </h5><h6> <%= @condition.precipitation_inches %></h6></span>
-    <% if current_user && current_user.admin? %>
+    <% if current_admin? %>
       <div class="card-buttons">
         <%= link_to '<i class="fas fa-edit"></i> Edit Condition Report'.html_safe, edit_admin_condition_path(@condition) %>
         <%= link_to '<i class="fas fa-trash-alt"></i> Delete Condition Report'.html_safe, condition_path(@condition), method: :delete, data: { confirm: "You are about to delete this destination."} %>
