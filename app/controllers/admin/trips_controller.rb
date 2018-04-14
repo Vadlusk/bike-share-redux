@@ -24,6 +24,7 @@ class Admin::TripsController < Admin::BaseController
       redirect_to trip_path(@trip)
     else
       flash[:error] = 'Failed to update trip'
+      render :edit
     end
   end
 
