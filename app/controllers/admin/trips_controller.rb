@@ -1,5 +1,5 @@
 class Admin::TripsController < Admin::BaseController
-  before_action :set_trip, only: %i[edit update]
+  before_action :set_trip, only: %i[edit update destroy]
 
   def new
     @trip = Trip.new
@@ -28,6 +28,14 @@ class Admin::TripsController < Admin::BaseController
     end
   end
 
+  def destroy
+    if @trip.destroy
+      flash[:success] = 'Successfully deleted trip'
+    else
+      flash[:error] = 'Failed to delete trip'
+    end
+    redirect_to trips_path
+  end
   private
 
       def trip_params
