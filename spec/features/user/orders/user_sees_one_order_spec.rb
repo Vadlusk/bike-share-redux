@@ -5,9 +5,14 @@ describe 'User' do
     it 'shows info for that order' do
       user        = create(:user)
       order       = create(:order)
-      accessories = create_list(:order_accessories, 10)
+      accessories = create_list(:order_accessory, 10)
 
-      visit dashboard_path
+      visit root_path
+      click_on "Login"
+
+      fill_in 'username', with: user.username
+      fill_in 'password', with: user.password
+      click_on "Login"
       click_on order.id
 
       expect(current_path).to eq("orders/#{order.id}")
