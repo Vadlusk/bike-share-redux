@@ -21,6 +21,14 @@ class Cart
     @contents[id] += 1
   end
 
+  def decrement_accessory(id)
+    if @contents[id] == 1
+      remove_accessory(id)
+    else
+      @contents[id] -= 1
+    end
+  end
+
   def total_item_count
     contents.values.sum
   end
