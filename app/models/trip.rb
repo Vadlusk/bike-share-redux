@@ -39,4 +39,12 @@ class Trip < ApplicationRecord
 
     Station.find(busiest.first.end_station_id)
   end
+
+  def self.monthly_ride_count
+    group("date_part('month', start_date)").count
+  end
+
+  def self.yearly_ride_count
+    group("date_part('year', start_date)").count
+  end
 end
