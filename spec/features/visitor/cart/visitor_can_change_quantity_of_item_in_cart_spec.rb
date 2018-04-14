@@ -20,6 +20,28 @@ describe 'Visitor' do
       expect(page).to have_content("Total: $200.00")
       expect(current_path).to eq("/cart")
     end
-  end
 
+    it 'decreases item quantity in cart' do
+      Accessory.create!(title: "help", description: "Bad", price: 100, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+
+      visit bike_shop_path
+
+      within('form:nth-of-type(1)') do
+        click_button("Add to Cart")
+      end
+
+      visit '/cart'
+
+      click_on "+"
+
+      expect(page).to have_content("Quantity: 2")
+
+      click_on "-"
+
+      expect(page).to have_content("Quantity: 1")
+      expect(page).to have_content("$100.00 x 1 = $100.00")
+      expect(page).to have_content("Total: $100.00")
+      expect(current_path).to eq("/cart")
+    end
+  end
 end
