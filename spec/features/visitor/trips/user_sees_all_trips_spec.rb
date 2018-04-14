@@ -8,10 +8,10 @@ describe 'Visitor' do
 
     trips.each do |trip|
       expect(page).to have_content(trip.duration)
-      expect(page).to have_content(trip.start_date)
+      expect(page).to have_content(trip.start_date.strftime("%B %d, %Y"))
       expect(page).to have_content(trip.start_station_name)
       expect(page).to have_content(trip.start_station_id)
-      expect(page).to have_content(trip.end_date)
+      expect(page).to have_content(trip.end_date.strftime("%B %d, %Y"))
       expect(page).to have_content(trip.end_station_name)
       expect(page).to have_content(trip.end_station_id)
       expect(page).to have_content(trip.bike_id)
@@ -24,8 +24,8 @@ describe 'Visitor' do
 
     visit trips_path
 
-    expect(page).to have_content("#{trips[0].duration} #{trips[0].start_date} #{trips[0].start_station_name}")
-    expect(page).to_not have_content("#{trips[33].duration} #{trips[33].start_date} #{trips[33].start_station_name}")
+    expect(page).to have_content("#{trips[0].duration} #{trips[0].start_date.strftime("%B %d, %Y")} #{trips[0].start_station_name}")
+    expect(page).to_not have_content("#{trips[33].duration} #{trips[33].start_date.strftime("%B %d, %Y")} #{trips[33].start_station_name}")
     expect(page).to have_content('← Previous 1 2 Next →')
   end
 end
