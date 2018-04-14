@@ -10,7 +10,8 @@
     Quantity: <%= @cart.contents[accessory.id.to_s] %>
 
 
-    <%= link_to "+", cart_path(@cart, accessory_id: accessory.id), method: :put %>
+    <%= link_to "+", cart_path(@cart, accessory_id: accessory.id, delta: 'increase'), method: :put %>
+    <%= link_to "-", cart_path(@cart, accessory_id: accessory.id, delta: 'decrease'), method: :put %>
 
 
     <%= link_to "Remove", cart_path(@cart, accessory_id: accessory.id), method: :delete %>
