@@ -14,7 +14,7 @@
     </tr>
   <% @conditions.each do |condition| %>
     <tr class="condition-<%= condition.id %>">
-      <td><%= link_to condition.date, condition_path(condition) %></td>
+      <td><%= link_to format_date(condition.date), condition_path(condition) %></td>
       <td><%= condition.max_temperature_f %>°</td>
       <td><%= condition.mean_temperature_f %>°</td>
       <td><%= condition.min_temperature_f %>°</td>

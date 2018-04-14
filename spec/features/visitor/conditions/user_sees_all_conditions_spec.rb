@@ -7,7 +7,7 @@ describe 'user sees all conditions' do
     visit conditions_path
 
     conditions.each do |condition|
-      expect(page).to have_content(condition.date)
+      expect(page).to have_content(condition.date.strftime("%B %d, %Y"))
       expect(page).to have_content(condition.max_temperature_f)
       expect(page).to have_content(condition.mean_temperature_f)
       expect(page).to have_content(condition.min_temperature_f)
