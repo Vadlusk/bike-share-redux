@@ -1,9 +1,13 @@
-<%= @accessory.title %>
-<%= @accessory.description %>
-<%= @accessory.price %>
-<img src="<%= @accessory.image_url %>" alt="" class="accessory_image">
-<% if @active %>
-  <%= button_to 'Add to Cart', carts_path(accessory_id: @accessory.id) %>
-<% else %>
-  <p>Accessory Retired</p>
-<% end %>
+<div class="card-container">
+  <div class="card-info">
+    <h1><%= @accessory.title %></h1>
+    <p><img src="<%= @accessory.image_url %>" alt="<%= @accessory.title %>" class="accessory_image">
+    <%= @accessory.description %></p>
+    <p><%= @accessory.price %></p>
+    <% if @active %>
+      <%= button_to 'Add to Cart', carts_path(accessory_id: @accessory.id) %>
+    <% else %>
+      <p>Accessory Retired</p>
+    <% end %>
+  </div>
+</div>
