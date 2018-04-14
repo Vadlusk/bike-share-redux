@@ -13,7 +13,7 @@
       <td><a href="/stations/<%= s.slug %>"><%= s.name %></a></td>
       <td><%= s.dock_count %></td>
       <td><%= s.city %></td>
-      <td><%= s.built %></td>
+      <td><%= format_date(s.installation_date) %></td>
       <% if current_admin? %>
         <td>
           <div class="table-buttons">

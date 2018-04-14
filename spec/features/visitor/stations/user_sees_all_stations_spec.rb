@@ -10,8 +10,15 @@ describe 'visitor' do
 
     expect(page).to have_content(station_1.name)
     expect(page).to have_content(station_2.name)
+    expect(page).to have_content(station_3.name)
     expect(page).to have_content(station_1.dock_count)
+    expect(page).to have_content(station_2.dock_count)
+    expect(page).to have_content(station_3.dock_count)
     expect(page).to have_content(station_1.city)
-    expect(page).to have_content(station_1.built)
+    expect(page).to have_content(station_2.city)
+    expect(page).to have_content(station_3.city)
+    expect(page).to have_content(station_1.installation_date.strftime("%B %d, %Y"))
+    expect(page).to have_content(station_2.installation_date.strftime("%B %d, %Y"))
+    expect(page).to have_content(station_3.installation_date.strftime("%B %d, %Y"))
   end
 end

@@ -118,12 +118,5 @@ describe Station do
         expect(station.to_param).to eq(station.slug)
       end
     end
-    describe '#built' do
-      it 'changes date formatting' do
-        station = create(:station)
-
-        expect(station.built).to eq(station.installation_date.strftime('%B %d, %Y'))
-      end
-    end
   end
 end

@@ -4,7 +4,7 @@
       <h1><%= @station.name %></h1>
       <h3>Dock Count: </h3><p><%= @station.dock_count %></p>
       <h3>City: </h3><p><%= @station.city %></p>
-      <h3>Installation Date: </h3><p><%= @station.built %></p>
+      <h3>Installation Date: </h3><p><%= format_date(@station.installation_date) %></p>
       <h3>Latitude: </h3><p><%= @station.lat %>°</p>
       <h3>Longitude: </h3><p><%= @station.long %>°</p>
       <% if current_admin? %>

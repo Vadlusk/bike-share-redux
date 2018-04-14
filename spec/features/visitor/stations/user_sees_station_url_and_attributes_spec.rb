@@ -9,9 +9,9 @@ describe 'visitor' do
     expect(page).to have_content(station.name)
     expect(page).to have_content(station.dock_count)
     expect(page).to have_content(station.city)
-    expect(page).to have_content(station.built)
     expect(page).to have_content(station.lat)
     expect(page).to have_content(station.long)
+    expect(page).to have_content(station.installation_date.strftime("%B %d, %Y"))
   end
 
   scenario 'visitor sees station name in URL' do
@@ -23,6 +23,6 @@ describe 'visitor' do
     expect(page).to have_content(station.name)
     expect(page).to have_content(station.dock_count)
     expect(page).to have_content(station.city)
-    expect(page).to have_content(station.built)
+    expect(page).to have_content(station.installation_date.strftime("%B %d, %Y"))
   end
 end
