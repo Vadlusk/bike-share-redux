@@ -66,6 +66,9 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+  config.before(:each, :js => true) do
+   DatabaseCleaner.strategy = :deletion
+  end
 end
 
 Shoulda::Matchers.configure do |config|

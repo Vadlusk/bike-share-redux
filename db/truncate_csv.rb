@@ -11,14 +11,14 @@ require 'pry'
 
 # csv = CSV.open('db/csv-truncated/trip-trunc.csv')
 
-CSV.open('db/csv-truncated/trip-trunc.csv', "a+") do |csv|
+CSV.open('db/csv/trip-trunc.csv', "a+") do |csv|
   csv << ["id","duration","start_date","start_station_name","start_station_id","end_date","end_station_name","end_station_id","bike_id","subscription_type","zip_code"]
 end
 
 CSV.foreach('db/csv/trip.csv', headers: true).with_index do |row, index|
   next if index.zero?
-  break if index >= 1000
-  CSV.open('db/csv-truncated/trip-trunc.csv', "a+") do |csv|
+  next unless index%700 == 0
+  CSV.open('db/csv/trip-trunc.csv', "a+") do |csv|
     csv << [row["id"],row["duration"],row["start_date"],row["start_station_name"],row["start_station_id"],row["end_date"],row["end_station_name"],row["end_station_id"],row["bike_id"],row["subscription_type"],row["zip_code"]]
   end
 end
