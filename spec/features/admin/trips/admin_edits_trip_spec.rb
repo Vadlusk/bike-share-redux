@@ -3,8 +3,10 @@ require 'rails_helper'
 describe 'Admin' do
   context 'edits a trip' do
     it 'is possible with correct use of fields' do
-      trip = create(:trip)
+      admin = create(:admin)
+      trip  = create(:trip)
 
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       visit edit_admin_trip_path(trip)
 
       fill_in 'trip[duration]', with: 100

@@ -14,6 +14,9 @@ class Admin::TripsController < Admin::BaseController
     end
   end
 
+  def edit
+  end
+
   private
 
       def trip_params
