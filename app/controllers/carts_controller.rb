@@ -28,10 +28,9 @@ class CartsController < ApplicationController
       @cart.increment_accessory(params[:accessory_id])
     elsif params[:delta] == 'decrease'
       @cart.decrement_accessory(params[:accessory_id])
-      # byebug
-        unless @cart.contents.keys.include?(params[:accessory_id])
-          flash[:success] = %Q(Successfully removed #{view_context.link_to(accessory.title, accessory_path(accessory))} from your cart)
-        end
+      unless @cart.contents.keys.include?(params[:accessory_id])
+        flash[:success] = %Q(Successfully removed #{view_context.link_to(accessory.title, accessory_path(accessory))} from your cart)
+      end
     end
     redirect_to '/cart'
   end
