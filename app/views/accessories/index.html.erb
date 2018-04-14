@@ -12,7 +12,7 @@
     <div class="card-container">
       <div class="card-info">
         <div class="accessory-<%= accessory.id %>">
-          <h3><%= accessory.title %></h3>
+          <h3><%= link_to accessory.title, accessory_path(accessory) %></h3>
           <span><h5>Description: </h5><h6><%= accessory.description %></h6></span>
           <span><h5>Price: </h5><h6><%= number_to_currency(accessory.price)%></h6></span>
           <%= button_to 'Add to Cart', carts_path(accessory_id: accessory.id) %>
