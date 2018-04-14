@@ -22,6 +22,13 @@ class Condition < ApplicationRecord
       .count("trips.id")
   end
 
+  def self.trips_by_visibility(range)
+    joins("JOIN trips ON conditions.date = trips.start_date")
+      .where(mean_visibility_miles: [range])
+      .group("conditions.date")
+      .count("trips.id")
+  end
+
   def self.min_trips_by_temperature
     breakdown = Hash.new(0)
     temperature_ranges.each do |key, value|
@@ -82,26 +89,25 @@ class Condition < ApplicationRecord
   end
 
   def self.wind_ranges
-   {"0 mph to 3.99 mph"=>0..3.99,
-    "4 mph to 7.99 mph"=>4..7.99,
-    "8 mph to 11.99 mph"=>8..11.99,
-    "12 mph to 15.99 mph"=>12..15.99,
-    "16 mph to 19.99 mph"=>16..19.99,
-    "20 mph to 23.99 mph"=>20..23.99,
-    "24 mph to 27.99 mph"=>24..23.99,
-    "28 mph to 31.99 mph"=>28..31.99,
-    "32 mph to 35.99 mph"=>32..35.99,
-    "36 mph to 39.99 mph"=>36..39.99,
-    "40 mph to 43.99 mph"=>40..43.99}
+   {"0 mph to 4 mph"=>0..4,
+    "5 mph to 9 mph"=>5..9,
+    "10 mph to 14 mph"=>10..14,
+    "15 mph to 19 mph"=>15..19,
+    "20 mph to 24 mph"=>20..24,
+    "25 mph to 29 mph"=>25..29,
+    "30 mph to 34 mph"=>30..35,
+    "35 mph to 39 mph"=>35..39,
+    "40 mph to 44 mph"=>40..44,
+    "45 mph to 49 mph"=>45..49}
   end
 
   def self.visibility_ranges
-   {"0 miles to 3.99 miles"=>0..3.99,
-    "4 miles to 7.99 miles"=>4..7.99,
-    "8 miles to 11.99 miles"=>8..11.99,
-    "12 miles to 15.99 miles"=>12..15.99,
-    "16 miles to 19.99 miles"=>16..19.99,
-    "20 miles to 23.99 miles"=>20..23.99}
+   {"0 miles to 4 miles"=>0..4,
+    "5 miles to 9 miles"=>5..9,
+    "10 miles to 14 miles"=>10..14,
+    "15 miles to 19 miles"=>15..19,
+    "20 miles to 24 miles"=>20..24,
+    "25 miles to 29 miles"=>25..29}
   end
 end
 

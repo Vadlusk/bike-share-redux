@@ -108,15 +108,32 @@ describe Condition do
       date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
       date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
       date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
-      create(:condition, date: date_1, mean_wind_speed_mph: 4.00)
-      create(:condition, date: date_2, mean_wind_speed_mph: 6.99)
-      create(:condition, date: date_3, mean_wind_speed_mph: 5.00)
+      create(:condition, date: date_1, mean_wind_speed_mph: 5)
+      create(:condition, date: date_2, mean_wind_speed_mph: 7)
+      create(:condition, date: date_3, mean_wind_speed_mph: 9)
       create_list(:trip, 5, start_date: date_1)
       create_list(:trip, 2, start_date: date_2)
       create_list(:trip, 3, start_date: date_3)
 
-      actual = Condition.trips_by_wind_speed([4.00..7.99])
+      actual = Condition.trips_by_wind_speed([5..9])
       expected =  {date_1=>5, date_2=>2, date_3=>3}
+
+      expect(actual).to eq(expected)
+    end
+
+    it '.trips_by_visibility' do
+      date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
+      date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
+      date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
+      create(:condition, date: date_1, mean_visibility_miles: 24)
+      create(:condition, date: date_2, mean_visibility_miles: 23)
+      create(:condition, date: date_3, mean_visibility_miles: 21)
+      create_list(:trip, 10, start_date: date_1)
+      create_list(:trip, 20, start_date: date_2)
+      create_list(:trip, 23, start_date: date_3)
+
+      actual = Condition.trips_by_visibility([20..24])
+      expected =  {date_1=>10, date_2=>20, date_3=>23}
 
       expect(actual).to eq(expected)
     end
