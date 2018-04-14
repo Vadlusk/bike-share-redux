@@ -13,7 +13,7 @@ describe 'Admin' do
       fill_in 'trip[start_date]', with: '01/01/2003'
       fill_in 'trip[start_station_name]', with: 'station name'
       fill_in 'trip[start_station_id]', with: 900
-      fill_in 'trip[end_date]', with: '01/03/2003'
+      fill_in 'trip[end_date]', with: '03/01/2003'
       fill_in 'trip[end_station_name]', with: 'end station name'
       fill_in 'trip[end_station_id]', with: 1000
       fill_in 'trip[bike_id]', with: 974
@@ -24,10 +24,10 @@ describe 'Admin' do
       expect(current_path).to eq(trip_path(trip))
       expect(page).to have_content('You successfully updated this trip')
       expect(page).to have_content('100')
-      expect(page).to have_content('2003-01-01')
+      expect(page).to have_content('January 01, 2003')
       expect(page).to have_content('station name')
       expect(page).to have_content('900')
-      expect(page).to have_content('2003-03-01')
+      expect(page).to have_content('January 03, 2003')
       expect(page).to have_content('end station name')
       expect(page).to have_content('1000')
       expect(page).to have_content('974')
