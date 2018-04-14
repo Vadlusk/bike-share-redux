@@ -15,9 +15,9 @@
   <% @conditions.each do |condition| %>
     <tr class="condition-<%= condition.id %>">
       <td><%= link_to condition.date, condition_path(condition) %></td>
-      <td><%= condition.max_temperature_f %></td>
-      <td><%= condition.mean_temperature_f %></td>
-      <td><%= condition.min_temperature_f %></td>
+      <td><%= condition.max_temperature_f %>°</td>
+      <td><%= condition.mean_temperature_f %>°</td>
+      <td><%= condition.min_temperature_f %>°</td>
       <td><%= condition.mean_humidity %></td>
       <td><%= condition.mean_visibility_miles %></td>
       <td><%= condition.mean_wind_speed_mph %></td>
