@@ -17,8 +17,4 @@ class Station < ApplicationRecord
   def to_param
     slug
   end
-
-  def built
-    installation_date.strftime("%B %d, %Y")
-  end
 end
