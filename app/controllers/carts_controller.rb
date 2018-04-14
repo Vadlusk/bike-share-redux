@@ -23,8 +23,12 @@ class CartsController < ApplicationController
   end
 
   def update
-    @cart.increment_accessory(params[:accessory_id])
-    accessory = Accessory.find(params[:accessory_id])
+    if params[:delta] == 'increase'
+      @cart.increment_accessory(params[:accessory_id])
+    elsif params[:delta] == 'decrease'
+      @cart.decrement_accessory(params[:accessory_id])
+    end
+    Accessory.find(params[:accessory_id])
     redirect_to '/cart'
   end
 end
