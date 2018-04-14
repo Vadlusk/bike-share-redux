@@ -22,7 +22,11 @@ class Cart
   end
 
   def decrement_accessory(id)
-    @contents[id] -= 1
+    if @contents[id] == 1
+      remove_accessory(id)
+    else
+      @contents[id] -= 1
+    end
   end
 
   def total_item_count
