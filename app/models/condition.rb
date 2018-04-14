@@ -8,7 +8,6 @@ class Condition < ApplicationRecord
       .count("trips.id")
   end
 
-
   def self.min_trips_by_temperature
     breakdown = Hash.new(0)
     temperature_ranges.each do |key, value|
@@ -25,12 +24,27 @@ class Condition < ApplicationRecord
     breakdown
   end
 
+  def self.avg_trips_by_temperature
+    breakdown = Hash.new(0)
+    temperature_ranges.each.each do |key, value|
+      breakdown[key] = return_avg(trips_by_temperature(value))
+    end
+    breakdown
+  end
+
   def self.return_min(hash)
+    return [nil, 0] if hash.empty?
     hash.min_by{ |key, value| value }
   end
 
   def self.return_max(hash)
+    return [nil, 0] if hash.empty?
     hash.max_by{ |key, value| value }
+  end
+
+  def self.return_avg(hash)
+    return 0 if hash.empty?
+    hash.values.sum / hash.keys.length
   end
 
   def self.temperature_ranges
