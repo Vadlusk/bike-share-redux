@@ -84,7 +84,41 @@ describe Condition do
       actual = Condition.trips_by_temperature([70..80])
       expected =  {date_1=>3, date_2=>5, date_3=>2}
 
-      expect(expected).to eq(actual)
+      expect(actual).to eq(expected)
+    end
+
+    it '.trips_by_precipitation' do
+      date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
+      date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
+      date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
+      create(:condition, date: date_1, precipitation_inches: 1.49)
+      create(:condition, date: date_2, precipitation_inches: 1.00)
+      create(:condition, date: date_3, precipitation_inches: 1.25)
+      create_list(:trip, 3, start_date: date_1)
+      create_list(:trip, 6, start_date: date_2)
+      create_list(:trip, 1, start_date: date_3)
+
+      actual = Condition.trips_by_precipitation([1.00..1.49])
+      expected =  {date_1=>3, date_2=>6, date_3=>1}
+
+      expect(actual).to eq(expected)
+    end
+
+    it '.trips_by_wind_speed' do
+      date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
+      date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
+      date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
+      create(:condition, date: date_1, mean_wind_speed_mph: 4.00)
+      create(:condition, date: date_2, mean_wind_speed_mph: 6.99)
+      create(:condition, date: date_3, mean_wind_speed_mph: 5.00)
+      create_list(:trip, 5, start_date: date_1)
+      create_list(:trip, 2, start_date: date_2)
+      create_list(:trip, 3, start_date: date_3)
+
+      actual = Condition.trips_by_wind_speed([4.00..7.99])
+      expected =  {date_1=>5, date_2=>2, date_3=>3}
+
+      expect(actual).to eq(expected)
     end
 
 
