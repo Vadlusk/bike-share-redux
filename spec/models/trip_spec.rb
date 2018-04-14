@@ -90,6 +90,41 @@ describe Trip do
 
         expect(Trip.busiest_ending_station).to eq(busiest_station)
       end
+      it 'returns Month by Month breakdown of number of rides with subtotals for each year' do
+        # trips = create_list(:trip, 100)
+        trip1 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip2 = Trip.create(duration: 1000, start_date: Date.strptime('2/27/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip3 = Trip.create(duration: 1000, start_date: Date.strptime('3/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip4 = Trip.create(duration: 1000, start_date: Date.strptime('4/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip5 = Trip.create(duration: 1000, start_date: Date.strptime('5/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip6 = Trip.create(duration: 1000, start_date: Date.strptime('6/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip7 = Trip.create(duration: 1000, start_date: Date.strptime('7/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip8 = Trip.create(duration: 1000, start_date: Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip9 = Trip.create(duration: 1000, start_date: Date.strptime('9/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip10 = Trip.create(duration: 1000, start_date: Date.strptime('10/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip11 = Trip.create(duration: 1000, start_date: Date.strptime('11/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip12 = Trip.create(duration: 1000, start_date: Date.strptime('12/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip13 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2014 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trips = [trip1, trip2, trip3, trip4, trip5, trip6, trip7, trip8, trip9, trip10, trip11, trip12, trip13]
+
+        grouped_by_month = trips.group_by do |each_trip|
+          each_trip.start_date.month
+        end
+
+        grouped_by_year = trips.group_by do |each_trip|
+          each_trip.start_date.year
+        end
+
+        jan_ride_count = grouped_by_month[1].count
+        june_ride_count = grouped_by_month[6].count
+        ride_count_2013 = grouped_by_year[2013]
+        ride_count_2014 = grouped_by_year[2014]
+
+        expect(Trip.monthly_ride_count['january']).to eq(jan_ride_count)
+        expect(Trip.monthly_ride_count['june']).to eq(june_ride_count)
+        expect(Trip.yearly_ride_count[2013]).to eq(ride_count_2013)
+        expect(Trip.monthly_ride_count[2014]).to eq(ride_count_2014)
+      end
     end
   end
 end
