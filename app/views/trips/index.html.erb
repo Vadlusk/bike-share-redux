@@ -27,6 +27,11 @@
       <td><%= trip.bike_id %></td>
       <td><%= trip.subscription_type %></td>
       <td><%= trip.zip_code %></td>
+      <td>
+        <% if current_user && current_user.admin? %>
+          <%= link_to 'Delete', admin_trip_path(trip), method: :delete, data: { confirm: "Are you sure? You will permanently delete this trip."} %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>
