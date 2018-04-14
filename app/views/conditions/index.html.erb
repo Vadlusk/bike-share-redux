@@ -26,7 +26,7 @@
         <td>
           <div class="table-buttons">
             <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_admin_condition_path(condition) %>
-            <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, admin_condition_path(condition), method: :delete, data: { confirm: "You are about to delete this user."} %>
+            <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, admin_condition_path(condition), method: :delete, data: { confirm: "Are you sure? You will permanently delete this condition."} %>
           </div>
         </td>
       <% end %>
