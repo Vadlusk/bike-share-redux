@@ -124,8 +124,7 @@ describe Trip do
         trip10 = Trip.create(duration: 1000, start_date: Date.strptime('10/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
         trip11 = Trip.create(duration: 1000, start_date: Date.strptime('11/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
         trip12 = Trip.create(duration: 1000, start_date: Date.strptime('12/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
-        trip13 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2014 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
-        trips = [trip1, trip2, trip3, trip4, trip5, trip6, trip7, trip8, trip9, trip10, trip11, trip12, trip13]
+        trips = [trip1, trip2, trip3, trip4, trip5, trip6, trip7, trip8, trip9, trip10, trip11, trip12]
 
         grouped_by_month = trips.group_by do |each_trip|
           each_trip.start_date.month
@@ -136,14 +135,12 @@ describe Trip do
         end
 
         jan_ride_count = grouped_by_month[1].count
-        june_ride_count = grouped_by_month[6].count
+        dec_ride_count = grouped_by_month[12].count
         ride_count_2013 = grouped_by_year[2013].count
-        ride_count_2014 = grouped_by_year[2014].count
 
-        expect(Trip.monthly_ride_count[1.0]).to eq(jan_ride_count)
-        expect(Trip.monthly_ride_count[6.0]).to eq(june_ride_count)
-        expect(Trip.yearly_ride_count[2013.0]).to eq(ride_count_2013)
-        expect(Trip.yearly_ride_count[2014.0]).to eq(ride_count_2014)
+        expect(Trip.monthly_ride_count.first.count).to eq(jan_ride_count)
+        expect(Trip.monthly_ride_count.last.count).to eq(dec_ride_count)
+        expect(Trip.yearly_ride_count.first.count).to eq(ride_count_2013)
       end
       it 'returns the Most ridden bike with total number of rides for that bike' do
         trip1 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1, subscription_type: 'Subscriber', zip_code: '94703')
