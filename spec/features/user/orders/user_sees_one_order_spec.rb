@@ -21,7 +21,6 @@ describe 'User' do
       click_on "Login"
       click_on order.id
 
-      save_and_open_page
       expect(current_path).to eq("/orders/#{order.id}")
       order_accessories.each do |order_accessory|
         expect(page).to have_content(order_accessory.accessory.title)
@@ -30,7 +29,7 @@ describe 'User' do
       end
       expect(page).to have_content(order.total_price)
       expect(page).to have_content(order.status)
-      expect(page).to have_content(order.created_at)
+      expect(page).to have_content(order.created_at.strftime("%B %d, %Y"))
     end
   end
 end
