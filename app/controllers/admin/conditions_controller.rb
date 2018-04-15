@@ -14,6 +14,9 @@ class Admin::ConditionsController < Admin::BaseController
     end
   end
 
+  def index
+  end
+
   def edit
     @condition = Condition.find(params[:id])
   end
