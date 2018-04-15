@@ -167,6 +167,16 @@ describe Trip do
         expect(Trip.least_popular_bike.bike_id).to eq(min_bike[0])
         expect(Trip.least_popular_bike.count).to eq(min_bike[1].count)
       end
+      it 'returns the User subscription type breakout with both count and percentage' do
+        trips = create_list(:trip, 100)
+
+        grouped_by_sub = trips.group_by(&:subscription_type)
+        subscriber_count = grouped_by_sub['Subscriber'].count
+        customer_count = grouped_by_sub['Customer'].count
+
+        # expect(Trip.least_popular_bike.bike_id).to eq(min_bike[0])
+        # expect(Trip.least_popular_bike.count).to eq(min_bike[1].count)
+      end
     end
   end
 end
