@@ -21,6 +21,7 @@ describe 'User' do
       click_on "Login"
       click_on order.id
 
+      save_and_open_page
       expect(current_path).to eq("/orders/#{order.id}")
       order_accessories.each do |order_accessory|
         expect(page).to have_content(order_accessory.accessory.title)
