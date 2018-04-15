@@ -156,6 +156,17 @@ describe Trip do
         expect(Trip.most_popular_bike.bike_id).to eq(maxed_bike[0])
         expect(Trip.most_popular_bike.count).to eq(maxed_bike[1].count)
       end
+      it 'returns the least ridden bike with total number of rides for that bike' do
+        trips = create_list(:trip, 100)
+
+        grouped_by_bike = trips.group_by(&:bike_id)
+        min_bike = grouped_by_bike.min_by do |bike|
+          bike[1].count
+        end
+
+        expect(Trip.least_popular_bike.bike_id).to eq(min_bike[0])
+        expect(Trip.least_popular_bike.count).to eq(min_bike[1].count)
+      end
     end
   end
 end

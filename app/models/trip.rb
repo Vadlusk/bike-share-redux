@@ -54,4 +54,11 @@ class Trip < ApplicationRecord
     .order('count DESC')
     .first
   end
+
+  def self.least_popular_bike
+    select('bike_id, count(bike_id) as count')
+    .group('bike_id')
+    .order('count ASC')
+    .first
+  end
 end
