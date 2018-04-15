@@ -1,1 +1,22 @@
 Average Trip Duration: <%= @trips.average_duration %>
+Longest Trip: Trip #<%= @trips.longest_ride.id %> (Duration: <%= @trips.longest_ride.duration %>)
+Shortest Trip: Trip #<%= @trips.shortest_ride.id %> (Duration: <%= @trips.shortest_ride.duration %>)
+Busiest Starting Station: station #<%= @trips.busiest_starting_station.id %>
+Busiest Ending Station: station #<%= @trips.busiest_ending_station.id %>
+
+<%= @trips.monthly_ride_count.each do |month_data| %>
+  <%= "#{month_data.month.strftime('%B %Y')} Rides: #{month_data.count}" %>
+<% end %>
+
+<%= @trips.yearly_ride_count.each do |year_data| %>
+  <%= "#{year_data.year.strftime('%Y')} Rides: #{year_data.count}" %>
+<% end %>
+
+Most Ridden Bike: bike #<%= @trips.most_popular_bike.bike_id %> (Number of rides: <%= @trips.most_popular_bike.count %>)
+Least Ridden Bike: bike #<%= @trips.least_popular_bike.bike_id %> (Number of rides: <%= @trips.least_popular_bike.count %>)
+
+Subscription type: Subscriber (Number of users: <%= @trips.user_sub_type.find_by(subscription_type: "Subscriber").count %>, % of all users: <%= @trips.user_sub_type.find_by(subscription_type: "Subscriber").count / @trips.count.to_f %>)
+Subscription type: Customer (Number of users: <%= @trips.user_sub_type.find_by(subscription_type: "Customer").count %>, % of all users: <%= @trips.user_sub_type.find_by(subscription_type: "Customer").count / @trips.count.to_f %>)
+
+Busiest Date: <%= @trips.busiest_date.date %> (Ride Count: <%= @trips.busiest_date.count %>)
+Slowest Date: <%= @trips.slowest_date.date %> (Ride Count: <%= @trips.slowest_date.count %>)

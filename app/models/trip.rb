@@ -41,11 +41,15 @@ class Trip < ApplicationRecord
   end
 
   def self.monthly_ride_count
-    group("date_part('month', start_date)").count
+    select("DATE_TRUNC('month', start_date) as month, count(*) as count")
+    .group('month')
+    .order('month')
   end
 
   def self.yearly_ride_count
-    group("date_part('year', start_date)").count
+    select("DATE_TRUNC('year', start_date) as year, count(*) as count")
+    .group('year')
+    .order('year')
   end
 
   def self.most_popular_bike
