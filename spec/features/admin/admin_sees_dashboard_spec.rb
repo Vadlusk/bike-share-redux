@@ -42,5 +42,22 @@ describe 'Admin' do
         expect(page).to have_link(order.id)
       end
     end
+    it 'can sort orders by status' do
+      admin     = create(:admin)
+      ordered   = create(:order, status: 'ordered')
+      completed = create(:order, status: 'completed')
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+      visit admin_dashboard_path
+      click_on 'Ordered'
+
+      expect(page).to have_content(ordered.id)
+      expect(page).to_not have_content(completed.id)
+
+      click_on 'Completed'
+
+      expect(page).to have_content(completed.id)
+      expect(page).to_not have_content(ordered.id)
+    end
   end
 end

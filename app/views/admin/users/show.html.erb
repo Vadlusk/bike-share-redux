@@ -15,10 +15,10 @@
     </div>
   </div>
   <div>
-    Paid: <%= @orders.status_total('paid') %>
-    Ordered: <%= @orders.status_total('ordered') %>
-    Cancelled: <%= @orders.status_total('cancelled') %>
-    Completed: <%= @orders.status_total('completed') %>
+    <p>Paid: <%= @orders.status_total('paid') %></p>
+    <p>Ordered: <%= @orders.status_total('ordered') %></p>
+    <p>Cancelled: <%= @orders.status_total('cancelled') %></p>
+    <p>Completed: <%= @orders.status_total('completed') %></p>
   </div>
   <table class="table table-striped table-hover">
     <tr>
