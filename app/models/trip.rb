@@ -67,4 +67,11 @@ class Trip < ApplicationRecord
     .group('subscription_type')
     .order('count')
   end
+
+  def self.busiest_date
+    select('date(start_date) as date, count(start_date) as count')
+    .group('date')
+    .order('count DESC')
+    .first
+  end
 end

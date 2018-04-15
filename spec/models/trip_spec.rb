@@ -219,7 +219,7 @@ describe Trip do
         end
 
         expect(Trip.busiest_date.date).to eq(busiest_date[0])
-        expect(Trip.busiest_date.count).to eq(busiest_date[1])
+        expect(Trip.busiest_date.count).to eq(busiest_date[1].count)
       end
     end
   end
