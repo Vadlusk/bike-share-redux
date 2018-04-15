@@ -14,4 +14,20 @@
       <h3>email: </h3><p><%= @user.email %></p>
     </div>
   </div>
+  <table>
+    <tr>
+      <th>Order Number</th>
+      <th>Username</th>
+      <th>Purchase Date</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <% @orders.each do |order| %>
+        <td><%= order.id %></td>
+        <td><%= order.user.username %></td>
+        <td><%= order.created_at %></td>
+        <td><%= order.status %></td>
+      <% end %>
+    </tr>
+  </table>
 </main>
