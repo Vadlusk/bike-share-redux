@@ -23,6 +23,6 @@ class OrdersController < ApplicationController
     end
 
     def require_correct_user
-      render file: 'public/404' unless current_user.id == @order.id
+      render file: 'public/404' unless current_user.id == @order.id || current_admin?
     end
 end
