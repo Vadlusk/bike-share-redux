@@ -146,7 +146,15 @@ describe Trip do
         expect(Trip.yearly_ride_count[2014.0]).to eq(ride_count_2014)
       end
       it 'returns the Most ridden bike with total number of rides for that bike' do
-        trips = create_list(:trip, 100)
+        trip1 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1, subscription_type: 'Subscriber', zip_code: '94703')
+        trip2 = Trip.create(duration: 1000, start_date: Date.strptime('2/27/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1, subscription_type: 'Subscriber', zip_code: '94703')
+        trip3 = Trip.create(duration: 1000, start_date: Date.strptime('3/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1, subscription_type: 'Subscriber', zip_code: '94703')
+        trip4 = Trip.create(duration: 1000, start_date: Date.strptime('4/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1, subscription_type: 'Subscriber', zip_code: '94703')
+        trip5 = Trip.create(duration: 1000, start_date: Date.strptime('5/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 2, subscription_type: 'Subscriber', zip_code: '94703')
+        trip6 = Trip.create(duration: 1000, start_date: Date.strptime('6/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 2, subscription_type: 'Subscriber', zip_code: '94703')
+        trip7 = Trip.create(duration: 1000, start_date: Date.strptime('6/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 3, subscription_type: 'Subscriber', zip_code: '94703')
+        trip8 = Trip.create(duration: 1000, start_date: Date.strptime('7/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 3, subscription_type: 'Subscriber', zip_code: '94703')
+        trips = [trip1, trip2, trip3, trip4, trip5, trip6, trip7, trip8]
 
         grouped_by_bike = trips.group_by(&:bike_id)
         maxed_bike = grouped_by_bike.max_by do |bike|
@@ -157,7 +165,15 @@ describe Trip do
         expect(Trip.most_popular_bike.count).to eq(maxed_bike[1].count)
       end
       it 'returns the least ridden bike with total number of rides for that bike' do
-        trips = create_list(:trip, 100)
+        trip1 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1, subscription_type: 'Subscriber', zip_code: '94703')
+        trip2 = Trip.create(duration: 1000, start_date: Date.strptime('2/27/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1, subscription_type: 'Subscriber', zip_code: '94703')
+        trip3 = Trip.create(duration: 1000, start_date: Date.strptime('3/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1, subscription_type: 'Subscriber', zip_code: '94703')
+        trip4 = Trip.create(duration: 1000, start_date: Date.strptime('4/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 2, subscription_type: 'Subscriber', zip_code: '94703')
+        trip5 = Trip.create(duration: 1000, start_date: Date.strptime('5/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 2, subscription_type: 'Subscriber', zip_code: '94703')
+        trip6 = Trip.create(duration: 1000, start_date: Date.strptime('6/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 2, subscription_type: 'Subscriber', zip_code: '94703')
+        trip7 = Trip.create(duration: 1000, start_date: Date.strptime('6/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 3, subscription_type: 'Subscriber', zip_code: '94703')
+        trip8 = Trip.create(duration: 1000, start_date: Date.strptime('7/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 3, subscription_type: 'Subscriber', zip_code: '94703')
+        trips = [trip1, trip2, trip3, trip4, trip5, trip6, trip7, trip8]
 
         grouped_by_bike = trips.group_by(&:bike_id)
         min_bike = grouped_by_bike.min_by do |bike|
@@ -173,9 +189,14 @@ describe Trip do
         grouped_by_sub = trips.group_by(&:subscription_type)
         subscriber_count = grouped_by_sub['Subscriber'].count
         customer_count = grouped_by_sub['Customer'].count
+        subscription_percent = subscriber_count/trips.count.to_f
+        customer_percent = customer_count/trips.count.to_f
+        binding.pry
 
-        # expect(Trip.least_popular_bike.bike_id).to eq(min_bike[0])
-        # expect(Trip.least_popular_bike.count).to eq(min_bike[1].count)
+        expect(Trip.user_sub_type.subscription_count).to eq(subscriber_count)
+        expect(Trip.user_sub_type.subscription_percent).to eq(subscriber_count)
+        expect(Trip.user_sub_type.customer_count).to eq(customer_count)
+        expect(Trip.user_sub_type.customer_percent).to eq(customer_count)
       end
     end
   end
