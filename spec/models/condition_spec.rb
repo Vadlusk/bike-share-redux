@@ -2,70 +2,36 @@ require 'rails_helper'
 
 describe Condition do
   describe 'validations' do
-    context 'valid attributes' do
-      it 'is valid with all attributes' do
-        condition = Condition.create!(
-          date: '10/12/2013',
-          max_temperature_f: 60,
-          mean_temperature_f: 50,
-          min_temperature_f: 40,
-          max_dew_point_f: 40,
-          mean_dew_point_f: 40,
-          min_dew_point_f: 30,
-          max_humidity: 75,
-          mean_humidity: 50,
-          min_humidity: 10,
-          max_sea_level_pressure_inches: 29.95,
-          mean_sea_level_pressure_inches: 30.00,
-          min_sea_level_pressure_inches: 29.80,
-          max_visibility_miles: 10,
-          mean_visibility_miles: 5,
-          min_visibility_miles: 0,
-          max_wind_Speed_mph: 7,
-          mean_wind_speed_mph: 1,
-          max_gust_speed_mph: 6,
-          precipitation_inches: 0,
-          cloud_cover: 4,
-          events: 'rain',
-          wind_dir_degrees: 180,
-          zip_code: 80210
-        )
+    it {should validate_presence_of(:date)}
+    it 'is valid with all attributes' do
+      condition = Condition.create!(
+        date: '10/12/2013',
+        max_temperature_f: 60,
+        mean_temperature_f: 50,
+        min_temperature_f: 40,
+        max_dew_point_f: 40,
+        mean_dew_point_f: 40,
+        min_dew_point_f: 30,
+        max_humidity: 75,
+        mean_humidity: 50,
+        min_humidity: 10,
+        max_sea_level_pressure_inches: 29.95,
+        mean_sea_level_pressure_inches: 30.00,
+        min_sea_level_pressure_inches: 29.80,
+        max_visibility_miles: 10,
+        mean_visibility_miles: 5,
+        min_visibility_miles: 0,
+        max_wind_Speed_mph: 7,
+        mean_wind_speed_mph: 1,
+        max_gust_speed_mph: 6,
+        precipitation_inches: 0,
+        cloud_cover: 4,
+        events: 'rain',
+        wind_dir_degrees: 180,
+        zip_code: 80210
+      )
 
-        expect(condition).to be_valid
-      end
-    end
-
-    context 'invalid attributes' do
-      it 'is invalid without a date' do
-        condition = Condition.create(
-          date: '',
-          max_temperature_f: 60,
-          mean_temperature_f: 50,
-          min_temperature_f: 40,
-          max_dew_point_f: 40,
-          mean_dew_point_f: 40,
-          min_dew_point_f: 30,
-          max_humidity: 75,
-          mean_humidity: 50,
-          min_humidity: 10,
-          max_sea_level_pressure_inches: 29.95,
-          mean_sea_level_pressure_inches: 30.00,
-          min_sea_level_pressure_inches: 29.80,
-          max_visibility_miles: 10,
-          mean_visibility_miles: 5,
-          min_visibility_miles: 0,
-          max_wind_Speed_mph: 7,
-          mean_wind_speed_mph: 1,
-          max_gust_speed_mph: 6,
-          precipitation_inches: 0,
-          cloud_cover: 4,
-          events: 'rain',
-          wind_dir_degrees: 180,
-          zip_code: 80210
-        )
-
-        expect(condition).to_not be_valid
-      end
+      expect(condition).to be_valid
     end
   end
 
@@ -173,7 +139,7 @@ describe Condition do
     end
 
     describe '.max_trips_by' do
-      it 'returns max trips by temperature' do
+      it 'can return max trips by temperature' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -197,7 +163,7 @@ describe Condition do
         expect(actual).to eq(expected)
       end
 
-      it 'returns max trips by precipitation' do
+      it 'can return max trips by precipitation' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -220,7 +186,7 @@ describe Condition do
         expect(actual).to eq(expected)
       end
 
-      it 'returns max trips by wind speed' do
+      it 'can return max trips by wind speed' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -246,7 +212,7 @@ describe Condition do
         expect(actual).to eq(expected)
       end
 
-      it 'returns max trips by visibility' do
+      it 'can return max trips by visibility' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -270,7 +236,7 @@ describe Condition do
     end
 
     describe '.min_trips_by' do
-      it 'returns min trips by temperature' do
+      it 'can return min trips by temperature' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -294,7 +260,7 @@ describe Condition do
         expect(actual).to eq(expected)
       end
 
-      it 'returns min trips by precipitation' do
+      it 'can return min trips by precipitation' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -317,7 +283,7 @@ describe Condition do
         expect(actual).to eq(expected)
       end
 
-      it 'returns min trips by wind speed' do
+      it 'can return min trips by wind speed' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -343,7 +309,7 @@ describe Condition do
         expect(actual).to eq(expected)
       end
 
-      it 'returns min trips by visibility' do
+      it 'can return min trips by visibility' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -367,7 +333,7 @@ describe Condition do
     end
 
     describe '.avg_trips_by' do
-      it 'returns avg trips by temperature' do
+      it 'can return avg trips by temperature' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -391,7 +357,7 @@ describe Condition do
         expect(actual).to eq(expected)
       end
 
-      it 'returns avg trips by precipitation' do
+      it 'can return avg trips by precipitation' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -414,7 +380,7 @@ describe Condition do
         expect(actual).to eq(expected)
       end
 
-      it 'returns avg trips by wind speed' do
+      it 'can return avg trips by wind speed' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -440,7 +406,7 @@ describe Condition do
         expect(actual).to eq(expected)
       end
 
-      it 'returns avg trips by visibility' do
+      it 'can return avg trips by visibility' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
