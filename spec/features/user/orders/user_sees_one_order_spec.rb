@@ -32,4 +32,22 @@ describe 'User' do
       expect(page).to have_content(order.created_at.strftime("%B %d, %Y"))
     end
   end
+  context 'cannot visit an order show page' do
+    scenario 'if order is not theirs' do
+      user     = create(:user)
+      bad_user = create(:user)
+      order    = user.orders.create!(status: 'paid')
+
+      visit root_path
+      click_on "Login"
+
+      fill_in 'username', with: bad_user.username
+      fill_in 'password', with: bad_user.password
+      click_on "Login"
+
+      visit order_path(order)
+
+      expect(page).to have_content('404')
+    end
+  end
 end
