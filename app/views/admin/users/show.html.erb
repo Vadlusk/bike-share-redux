@@ -16,6 +16,12 @@
   </div>
   <table>
     <tr>
+      <th>Paid: <%= @orders.status_total('paid') %></th>
+      <th>Ordered: <%= @orders.status_total('ordered') %></th>
+      <th>Cancelled: <%= @orders.status_total('cancelled') %></th>
+      <th>Completed: <%= @orders.status_total('completed') %></th>
+    </tr>
+    <tr>
       <th>Order Number</th>
       <th>Username</th>
       <th>Purchase Date</th>

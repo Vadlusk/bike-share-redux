@@ -33,4 +33,19 @@ describe Order do
       end
     end
   end
+  context 'class methods' do
+    context '#status_total' do
+      it 'gets the total orders for a given status' do
+        create_list(:order, 8, status: 'paid')
+        create_list(:order, 5, status: 'ordered')
+        create_list(:order, 2, status: 'cancelled')
+        create_list(:order, 7, status: 'completed')
+
+        expect(Order.status_total('paid')).to eq(8)
+        expect(Order.status_total('ordered')).to eq(5)
+        expect(Order.status_total('cancelled')).to eq(2)
+        expect(Order.status_total('completed')).to eq(7)
+      end
+    end
+  end
 end
