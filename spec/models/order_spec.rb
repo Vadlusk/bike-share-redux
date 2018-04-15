@@ -1,7 +1,36 @@
 require 'rails_helper'
 
-describe Order, type: :model do
-  describe 'validations' do
-    it {should validate_presence_of(:user_id)}
+describe Order do
+  context 'field validations' do
+    context 'valid attributes' do
+      it 'is valid with all attributes' do
+        user  = create(:user)
+        order = Order.create(user_id: user.id)
+
+        expect(user).to be_valid
+      end
+    end
+    context 'invalid attributes' do
+      it 'is invalid without a user' do
+        order = Order.create()
+
+        expect(order).to_not be_valid
+      end
+    end
+  end
+  context 'instance methods' do
+    context '#total_price' do
+      it 'calculates the price for an order' do
+        order = create(:order)
+        accessory_1       = create(:accessory)
+        order_accessory_1 = accessory_1.order_accessories.create(quantity: 3, order_id: order.id)
+        accessory_2       = create(:accessory)
+        order_accessory_2 = accessory_2.order_accessories.create(quantity: 1, order_id: order.id)
+        accessory_3       = create(:accessory)
+        order_accessory_3 = accessory_3.order_accessories.create(quantity: 20, order_id: order.id)
+
+        expect(order.total_price).to eq(accessory_1.price * order_accessory_1.quantity + accessory_2.price * order_accessory_2.quantity + accessory_3.price * order_accessory_3.quantity)
+      end
+    end
   end
 end

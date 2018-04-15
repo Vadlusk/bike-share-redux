@@ -1,0 +1,9 @@
+
+<%= @order.total_price %>
+<%= @order.status %>
+<%= @order.created_at %>
+<% @order.order_accessories.each do |order_accessory| %>
+  <%= order_accessory.accessory.title %>
+  <%= order_accessory.quantity %>
+  <%= order_accessory.subtotal %>
+<% end %>
