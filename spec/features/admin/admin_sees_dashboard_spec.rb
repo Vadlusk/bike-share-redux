@@ -59,5 +59,46 @@ describe 'Admin' do
       expect(page).to have_content(completed.user.username)
       expect(page).to_not have_content(ordered.user.username)
     end
+    it 'can cancel orders that are ordered' do
+      admin   = create(:admin)
+      ordered = create(:order, status: 'ordered')
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+      visit admin_dashboard_path
+      click_on 'Cancel'
+
+      expect(page).to_not have_content(ordered.user.username)
+    end
+    it 'can cancel orders that are paid' do
+      admin   = create(:admin)
+      paid    = create(:order, status: 'paid')
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+      visit admin_dashboard_path
+      save_and_open_page
+      click_on 'Delete'
+
+      expect(page).to_not have_content(paid.user.username)
+    end
+    it 'can mark as paid ordered orders' do
+      admin     = create(:admin)
+      ordered   = create(:order, status: 'ordered')
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+      visit admin_dashboard_path
+      click_on 'Mark as Paid'
+
+      expect(ordered.status).to eq('paid')
+    end
+    it 'can mark as completed orders that are paid' do
+      admin     = create(:admin)
+      paid    = create(:order, status: 'paid')
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+      visit admin_dashboard_path
+      click_on 'Mark as Completed'
+
+      expect(paid.status).to eq('completed')
+    end
   end
 end
