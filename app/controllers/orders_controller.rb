@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show require_correct_user]
+  before_action :set_order, only: %i[show update require_correct_user]
   before_action :require_correct_user, only: %i[show]
 
   def create
@@ -16,7 +16,15 @@ class OrdersController < ApplicationController
 
   def show; end
 
+  def update
+    @order.update(status: params[:status])
+  end
+
   private
+
+    def order_params
+      params.require(:order).permit(:status)
+    end
 
     def set_order
       @order = Order.find(params[:id])
