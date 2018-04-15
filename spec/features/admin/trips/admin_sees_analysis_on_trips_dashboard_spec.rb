@@ -18,7 +18,6 @@ describe 'Admin' do
       trip11 = Trip.create(duration: 1, start_date: Date.strptime('11/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 80, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 2, bike_id: 1030, subscription_type: 'Customer', zip_code: '94703')
       trip12 = Trip.create(duration: 30, start_date: Date.strptime('12/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 67, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 1, bike_id: 1200, subscription_type: 'Customer', zip_code: '94703')
       trip13 = Trip.create(duration: 5000, start_date: Date.strptime('1/29/2014 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1010, subscription_type: 'Customer', zip_code: '94703')
-      trips = [trip1, trip2, trip3, trip4, trip5, trip6, trip7, trip8, trip9, trip10, trip11, trip12, trip13]
 
       # Expectations
       average_duration = Trip.average_duration
@@ -52,11 +51,11 @@ describe 'Admin' do
       slowest_date = Trip.slowest_date
       # ----
 
-      visit '/trips_dashboard'
+      visit '/trips-dashboard'
 
       #Expectations
-      expect(current_path).to eq('/trips_dashboard')
-      expect(page).to have_content(average_duration)
+      expect(current_path).to eq('/trips-dashboard')
+      expect(page).to have_content("Average Trip Duration: #{average_duration}")
       expect(page).to have_content(longest_ride)
       expect(page).to have_content(shortest_ride)
       expect(page).to have_content(busiest_starting_station)
