@@ -1,9 +1,23 @@
+<header>
+  <div class="header-title">
+    <h6>
+      Order <%= @order.status %> on <%= @order.created_at %> for <%= @order.total_price %>
+    <h6>
+  </div>
+</header>
 
-<%= @order.total_price %>
-<%= @order.status %>
-<%= @order.created_at %>
-<% @order.order_accessories.each do |order_accessory| %>
-  <%= order_accessory.accessory.title %>
-  <%= order_accessory.quantity %>
-  <%= order_accessory.subtotal %>
-<% end %>
+<h6>Accessories purchased</h6>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>quantity</th>
+    <th>Subtotal</th>
+  </tr>
+  <% @order.order_accessories.each do |order_accessory| %>
+    <tr>
+      <td><%= link_to order_accessory.accessory.title, accessory_path(order_accessory.accessory) %></td>
+      <td><%= order_accessory.quantity %></td>
+      <td><%= order_accessory.subtotal %></td>
+    </tr>
+  <% end %>
+</table>
