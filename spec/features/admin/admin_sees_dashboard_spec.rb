@@ -67,7 +67,7 @@ describe 'Admin' do
       visit admin_dashboard_path
       click_on 'Cancel'
 
-      expect(page).to_not have_content(ordered.user.username)
+      expect(ordered.status).to eq('cancelled')
     end
     it 'can cancel orders that are paid' do
       admin   = create(:admin)
@@ -75,10 +75,9 @@ describe 'Admin' do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       visit admin_dashboard_path
-      save_and_open_page
-      click_on 'Delete'
+      click_on 'Cancel'
 
-      expect(page).to_not have_content(paid.user.username)
+      expect(paid.status).to eq('cancelled')
     end
     it 'can mark as paid ordered orders' do
       admin     = create(:admin)
