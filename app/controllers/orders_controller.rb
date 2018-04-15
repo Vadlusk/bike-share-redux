@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: %i[show]
+
   def create
     @order = Order.new(user_id: params[:user_id])
     if @order.save
@@ -10,4 +12,12 @@ class OrdersController < ApplicationController
       redirect_to cart_path
     end
   end
+
+  def show; end
+
+  private
+
+    def set_order
+      @order = Order.find(params[:id])
+    end
 end
