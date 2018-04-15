@@ -61,4 +61,10 @@ class Trip < ApplicationRecord
     .order('count ASC')
     .first
   end
+
+  def self.user_sub_type
+    select('subscription_type, count(subscription_type) as count')
+    .group('subscription_type')
+    .order('count')
+  end
 end

@@ -186,17 +186,21 @@ describe Trip do
       it 'returns the User subscription type breakout with both count and percentage' do
         trips = create_list(:trip, 100)
 
+        # Ruby version
         grouped_by_sub = trips.group_by(&:subscription_type)
-        subscriber_count = grouped_by_sub['Subscriber'].count
-        customer_count = grouped_by_sub['Customer'].count
-        subscription_percent = subscriber_count/trips.count.to_f
-        customer_percent = customer_count/trips.count.to_f
-        binding.pry
+        ruby_subscriber_count = grouped_by_sub['Subscriber'].count
+        ruby_customer_count = grouped_by_sub['Customer'].count
+        ruby_subscription_percent = ruby_subscriber_count / trips.count.to_f
+        ruby_customer_percent = ruby_customer_count / trips.count.to_f
 
-        expect(Trip.user_sub_type.subscription_count).to eq(subscriber_count)
-        expect(Trip.user_sub_type.subscription_percent).to eq(subscriber_count)
-        expect(Trip.user_sub_type.customer_count).to eq(customer_count)
-        expect(Trip.user_sub_type.customer_percent).to eq(customer_count)
+        # ActiveRecord version
+        ar_subscriber = Trip.user_sub_type.find_by(subscription_type: "Subscriber")
+        ar_customer = Trip.user_sub_type.find_by(subscription_type: "Customer")
+
+        expect(ar_subscriber.count).to eq(ruby_subscriber_count)
+        expect(ar_customer.count).to eq(ruby_customer_count)
+        expect(ar_subscriber.count / trips.count.to_f).to eq(ruby_subscription_percent)
+        expect(ar_customer.count / trips.count.to_f).to eq(ruby_customer_percent)
       end
     end
   end
