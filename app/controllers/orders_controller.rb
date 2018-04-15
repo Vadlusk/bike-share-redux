@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show]
+  before_action :set_order, only: %i[show require_correct_user]
+  before_action :require_correct_user, only: %i[show]
 
   def create
     @order = Order.new(user_id: params[:user_id])
@@ -19,5 +20,9 @@ class OrdersController < ApplicationController
 
     def set_order
       @order = Order.find(params[:id])
+    end
+
+    def require_correct_user
+      render file: 'public/404' unless current_user.id == @order.id
     end
 end
