@@ -9,7 +9,7 @@ FactoryBot.define do
     end_date Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M')
     end_station_name { ['2nd at South Park', 'San Francisco Caltrain 2 (330 Townsend)', 'South Van Ness at Market', 'Mountain View City Hall'].sample }
     end_station_id { rand(1..100) }
-    bike_id { rand(1..1000) }
+    bike_id { rand(1..10) }
     subscription_type { %w[Subscriber Customer].sample }
     zip_code '94703'
   end

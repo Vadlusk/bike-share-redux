@@ -145,6 +145,17 @@ describe Trip do
         expect(Trip.yearly_ride_count[2013.0]).to eq(ride_count_2013)
         expect(Trip.yearly_ride_count[2014.0]).to eq(ride_count_2014)
       end
+      it 'returns the Most ridden bike with total number of rides for that bike' do
+        trips = create_list(:trip, 100)
+
+        grouped_by_bike = trips.group_by(&:bike_id)
+        maxed_bike = grouped_by_bike.max_by do |bike|
+          bike[1].count
+        end
+
+        expect(Trip.most_popular_bike.bike_id).to eq(maxed_bike[0])
+        expect(Trip.most_popular_bike.count).to eq(maxed_bike[1].count)
+      end
     end
   end
 end

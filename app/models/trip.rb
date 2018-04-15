@@ -47,4 +47,11 @@ class Trip < ApplicationRecord
   def self.yearly_ride_count
     group("date_part('year', start_date)").count
   end
+
+  def self.most_popular_bike
+    select('bike_id, count(bike_id) as count')
+    .group('bike_id')
+    .order('count DESC')
+    .first
+  end
 end
