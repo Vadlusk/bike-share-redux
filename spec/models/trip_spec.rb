@@ -192,10 +192,12 @@ describe Trip do
         ruby_customer_count = grouped_by_sub['Customer'].count
         ruby_subscription_percent = ruby_subscriber_count / trips.count.to_f
         ruby_customer_percent = ruby_customer_count / trips.count.to_f
+        # ----
 
         # ActiveRecord version
         ar_subscriber = Trip.user_sub_type.find_by(subscription_type: "Subscriber")
         ar_customer = Trip.user_sub_type.find_by(subscription_type: "Customer")
+        # ----
 
         expect(ar_subscriber.count).to eq(ruby_subscriber_count)
         expect(ar_customer.count).to eq(ruby_customer_count)
@@ -214,12 +216,35 @@ describe Trip do
           each_trip.start_date.to_date
         end
 
-        busiest_date = grouped_by_date.max_by do |date|
+        busiest = grouped_by_date.max_by do |date|
           date[1].count
         end
+        # ----
 
-        expect(Trip.busiest_date.date).to eq(busiest_date[0])
-        expect(Trip.busiest_date.count).to eq(busiest_date[1].count)
+        expect(Trip.busiest_date.date).to eq(busiest[0])
+        expect(Trip.busiest_date.count).to eq(busiest[1].count)
+      end
+      it 'returns the Single date with the lowest number of trips with a count of those trips' do
+        trip1 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip2 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip3 = Trip.create(duration: 1000, start_date: Date.strptime('2/27/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip4 = Trip.create(duration: 1000, start_date: Date.strptime('4/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip5 = Trip.create(duration: 1000, start_date: Date.strptime('4/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip6 = Trip.create(duration: 1000, start_date: Date.strptime('4/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trips = [trip1, trip2, trip3, trip4, trip5, trip6]
+
+        # Ruby version
+        grouped_by_date = trips.group_by do |each_trip|
+          each_trip.start_date.to_date
+        end
+
+        slowest = grouped_by_date.min_by do |date|
+          date[1].count
+        end
+        # ----
+
+        expect(Trip.slowest_date.date).to eq(slowest[0])
+        expect(Trip.slowest_date.count).to eq(slowest[1].count)
       end
     end
   end

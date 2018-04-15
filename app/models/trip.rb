@@ -74,4 +74,11 @@ class Trip < ApplicationRecord
     .order('count DESC')
     .first
   end
+
+  def self.slowest_date
+    select('date(start_date) as date, count(start_date) as count')
+    .group('date')
+    .order('count DESC')
+    .last
+  end
 end
