@@ -70,35 +70,35 @@ describe 'User' do
 
         within(".highest_rides_by_precipitation") do
           expect(page).to have_content("Highest Number of Rides by Precipitation")
-          expect(page).to have_content("0.00\" inches to 0.49\": 0")
-          expect(page).to have_content("0.50\" inches to 0.99\": 0")
-          expect(page).to have_content("1.00\" inches to 1.49\": 15")
-          expect(page).to have_content("1.50\" inches to 1.99\": 0")
-          expect(page).to have_content("2.00\" inches to 2.49\": 0")
-          expect(page).to have_content("2.50\" inches to 2.99\": 0")
-          expect(page).to have_content("3.00\" inches to 3.49\": 0")
+          expect(page).to have_content("0.00\" to 0.49\": 0")
+          expect(page).to have_content("0.50\" to 0.99\": 0")
+          expect(page).to have_content("1.00\" to 1.49\": 15")
+          expect(page).to have_content("1.50\" to 1.99\": 0")
+          expect(page).to have_content("2.00\" to 2.49\": 0")
+          expect(page).to have_content("2.50\" to 2.99\": 0")
+          expect(page).to have_content("3.00\" to 3.49\": 0")
         end
 
         within(".lowest_rides_by_precipitation") do
           expect(page).to have_content("Lowest Number of Rides by Precipitation")
-          expect(page).to have_content("0.00\" inches to 0.49\": 0")
-          expect(page).to have_content("0.50\" inches to 0.99\": 0")
-          expect(page).to have_content("1.00\" inches to 1.49\": 5")
-          expect(page).to have_content("1.50\" inches to 1.99\": 0")
-          expect(page).to have_content("2.00\" inches to 2.49\": 0")
-          expect(page).to have_content("2.50\" inches to 2.99\": 0")
-          expect(page).to have_content("3.00\" inches to 3.49\": 0")
+          expect(page).to have_content("0.00\" to 0.49\": 0")
+          expect(page).to have_content("0.50\" to 0.99\": 0")
+          expect(page).to have_content("1.00\" to 1.49\": 5")
+          expect(page).to have_content("1.50\" to 1.99\": 0")
+          expect(page).to have_content("2.00\" to 2.49\": 0")
+          expect(page).to have_content("2.50\" to 2.99\": 0")
+          expect(page).to have_content("3.00\" to 3.49\": 0")
         end
 
         within(".average_rides_by_precipitation") do
           expect(page).to have_content("Average Number of Rides by Precipitation")
-          expect(page).to have_content("0.00\" inches to 0.49\": 0")
-          expect(page).to have_content("0.50\" inches to 0.99\": 0")
-          expect(page).to have_content("1.00\" inches to 1.49\": 10")
-          expect(page).to have_content("1.50\" inches to 1.99\": 0")
-          expect(page).to have_content("2.00\" inches to 2.49\": 0")
-          expect(page).to have_content("2.50\" inches to 2.99\": 0")
-          expect(page).to have_content("3.00\" inches to 3.49\": 0")
+          expect(page).to have_content("0.00\" to 0.49\": 0")
+          expect(page).to have_content("0.50\" to 0.99\": 0")
+          expect(page).to have_content("1.00\" to 1.49\": 10")
+          expect(page).to have_content("1.50\" to 1.99\": 0")
+          expect(page).to have_content("2.00\" to 2.49\": 0")
+          expect(page).to have_content("2.50\" to 2.99\": 0")
+          expect(page).to have_content("3.00\" to 3.49\": 0")
         end
       end
 

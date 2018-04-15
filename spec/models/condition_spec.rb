@@ -175,13 +175,13 @@ describe Condition do
         create_list(:trip, 1, start_date: date_3)
 
         actual = Condition.max_trips_by(Condition.precipitation_ranges, :trips_by_precipitation)
-        expected = {"0.00\" inches to 0.49\""=>[nil, 0],
-                    "0.50\" inches to 0.99\""=>[nil, 0],
-                    "1.00\" inches to 1.49\""=>[date_1, 6],
-                    "1.50\" inches to 1.99\""=>[nil, 0],
-                    "2.00\" inches to 2.49\""=>[nil, 0],
-                    "2.50\" inches to 2.99\""=>[nil, 0],
-                    "3.00\" inches to 3.49\""=>[nil, 0]}
+        expected = {"0.00\" to 0.49\""=>[nil, 0],
+                    "0.50\" to 0.99\""=>[nil, 0],
+                    "1.00\" to 1.49\""=>[date_1, 6],
+                    "1.50\" to 1.99\""=>[nil, 0],
+                    "2.00\" to 2.49\""=>[nil, 0],
+                    "2.50\" to 2.99\""=>[nil, 0],
+                    "3.00\" to 3.49\""=>[nil, 0]}
 
         expect(actual).to eq(expected)
       end
@@ -272,13 +272,13 @@ describe Condition do
         create_list(:trip, 6, start_date: date_3)
 
         actual = Condition.min_trips_by(Condition.precipitation_ranges, :trips_by_precipitation)
-        expected = {"0.00\" inches to 0.49\""=>[nil, 0],
-                    "0.50\" inches to 0.99\""=>[nil, 0],
-                    "1.00\" inches to 1.49\""=>[date_1, 1],
-                    "1.50\" inches to 1.99\""=>[nil, 0],
-                    "2.00\" inches to 2.49\""=>[nil, 0],
-                    "2.50\" inches to 2.99\""=>[nil, 0],
-                    "3.00\" inches to 3.49\""=>[nil, 0]}
+        expected = {"0.00\" to 0.49\""=>[nil, 0],
+                    "0.50\" to 0.99\""=>[nil, 0],
+                    "1.00\" to 1.49\""=>[date_1, 1],
+                    "1.50\" to 1.99\""=>[nil, 0],
+                    "2.00\" to 2.49\""=>[nil, 0],
+                    "2.50\" to 2.99\""=>[nil, 0],
+                    "3.00\" to 3.49\""=>[nil, 0]}
 
         expect(actual).to eq(expected)
       end
@@ -369,13 +369,13 @@ describe Condition do
         create_list(:trip, 6, start_date: date_3)
 
         actual = Condition.avg_trips_by(Condition.precipitation_ranges, :trips_by_precipitation)
-        expected = {"0.00\" inches to 0.49\""=>0,
-                    "0.50\" inches to 0.99\""=>0,
-                    "1.00\" inches to 1.49\""=>3.33,
-                    "1.50\" inches to 1.99\""=>0,
-                    "2.00\" inches to 2.49\""=>0,
-                    "2.50\" inches to 2.99\""=>0,
-                    "3.00\" inches to 3.49\""=>0}
+        expected = {"0.00\" to 0.49\""=>0,
+                    "0.50\" to 0.99\""=>0,
+                    "1.00\" to 1.49\""=>3.33,
+                    "1.50\" to 1.99\""=>0,
+                    "2.00\" to 2.49\""=>0,
+                    "2.50\" to 2.99\""=>0,
+                    "3.00\" to 3.49\""=>0}
 
         expect(actual).to eq(expected)
       end
