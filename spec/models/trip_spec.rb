@@ -202,6 +202,25 @@ describe Trip do
         expect(ar_subscriber.count / trips.count.to_f).to eq(ruby_subscription_percent)
         expect(ar_customer.count / trips.count.to_f).to eq(ruby_customer_percent)
       end
+      it 'returns the Single date with the highest number of trips with a count of those trips' do
+        trip1 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip2 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip3 = Trip.create(duration: 1000, start_date: Date.strptime('2/27/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trip4 = Trip.create(duration: 1000, start_date: Date.strptime('4/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94703')
+        trips = [trip1, trip2, trip3, trip4]
+
+        # Ruby version
+        grouped_by_date = trips.group_by do |each_trip|
+          each_trip.start_date.to_date
+        end
+
+        busiest_date = grouped_by_date.max_by do |date|
+          date[1].count
+        end
+
+        expect(Trip.busiest_date.date).to eq(busiest_date[0])
+        expect(Trip.busiest_date.count).to eq(busiest_date[1])
+      end
     end
   end
 end
