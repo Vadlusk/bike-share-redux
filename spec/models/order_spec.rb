@@ -22,14 +22,14 @@ describe Order do
     context '#total_price' do
       it 'calculates the price for an order' do
         order = create(:order)
-        accessory_1       = create(:accessory)
+        accessory_1       = create(:accessory, price: 5)
         order_accessory_1 = accessory_1.order_accessories.create(quantity: 3, order_id: order.id)
-        accessory_2       = create(:accessory)
+        accessory_2       = create(:accessory, price: 30)
         order_accessory_2 = accessory_2.order_accessories.create(quantity: 1, order_id: order.id)
-        accessory_3       = create(:accessory)
+        accessory_3       = create(:accessory, price: 10)
         order_accessory_3 = accessory_3.order_accessories.create(quantity: 20, order_id: order.id)
 
-        expect(order.total_price).to eq(accessory_1.price * order_accessory_1.quantity + accessory_2.price * order_accessory_2.quantity + accessory_3.price * order_accessory_3.quantity)
+        expect(order.total_price).to eq(245)
       end
     end
   end
