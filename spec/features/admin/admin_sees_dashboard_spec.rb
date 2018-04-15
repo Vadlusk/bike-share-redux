@@ -26,10 +26,10 @@ describe 'Admin' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       visit admin_dashboard_path
 
-      expect(page).to have_content('Paid: 8')
-      expect(page).to have_content('Ordered: 5')
-      expect(page).to have_content('Cancelled: 2')
-      expect(page).to have_content('Completed: 7')
+      expect(page).to have_content(': 8')
+      expect(page).to have_content(': 5')
+      expect(page).to have_content(': 2')
+      expect(page).to have_content(': 7')
     end
     it 'has links to go to each order show' do
       admin  = create(:admin)
@@ -51,13 +51,13 @@ describe 'Admin' do
       visit admin_dashboard_path
       click_on 'Ordered'
 
-      expect(page).to have_content(ordered.id)
-      expect(page).to_not have_content(completed.id)
+      expect(page).to have_content(ordered.user.username)
+      expect(page).to_not have_content(completed.user.username)
 
       click_on 'Completed'
 
-      expect(page).to have_content(completed.id)
-      expect(page).to_not have_content(ordered.id)
+      expect(page).to have_content(completed.user.username)
+      expect(page).to_not have_content(ordered.user.username)
     end
   end
 end
