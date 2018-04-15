@@ -31,5 +31,16 @@ describe 'Admin' do
       expect(page).to have_content('Cancelled: 2')
       expect(page).to have_content('Completed: 7')
     end
+    it 'has links to go to each order show' do
+      admin  = create(:admin)
+      orders = create_list(:order, 8)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+      visit admin_dashboard_path
+
+      orders.each do |order|
+        expect(page).to have_link(order.id)
+      end
+    end
   end
 end
