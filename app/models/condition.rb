@@ -1,54 +1,54 @@
 class Condition < ApplicationRecord
   validates :date, presence: true
 
-  def self.trips_by_temperature(range)
+  def self.trips_by_temperature(*range)
     joins("JOIN trips ON conditions.date = trips.start_date")
       .where(max_temperature_f: [range])
       .group("conditions.date")
       .count("trips.id")
   end
 
-  def self.trips_by_precipitation(range)
+  def self.trips_by_precipitation(*range)
     joins("JOIN trips ON conditions.date = trips.start_date")
       .where(precipitation_inches: [range])
       .group("conditions.date")
       .count("trips.id")
   end
 
-  def self.trips_by_wind_speed(range)
+  def self.trips_by_wind_speed(*range)
     joins("JOIN trips ON conditions.date = trips.start_date")
       .where(mean_wind_speed_mph: [range])
       .group("conditions.date")
       .count("trips.id")
   end
 
-  def self.trips_by_visibility(range)
+  def self.trips_by_visibility(*range)
     joins("JOIN trips ON conditions.date = trips.start_date")
       .where(mean_visibility_miles: [range])
       .group("conditions.date")
       .count("trips.id")
   end
 
-  def self.min_trips_by_temperature
+  def self.min_trips_by(ranges, trips)
     breakdown = Hash.new(0)
-    temperature_ranges.each do |key, value|
-      breakdown[key] = return_min(trips_by_temperature(value))
+    ranges.each do |key, value|
+      breakdown[key] = return_min(send(trips, value))
     end
     breakdown
   end
 
-  def self.max_trips_by_temperature
+  def self.max_trips_by(ranges, trips)
     breakdown = Hash.new(0)
-    temperature_ranges.each.each do |key, value|
-      breakdown[key] = return_max(trips_by_temperature(value))
+    ranges.each do |key, value|
+      breakdown[key] = return_max(send(trips, value))
     end
     breakdown
   end
 
-  def self.avg_trips_by_temperature
+  def self.avg_trips_by(ranges, trips)
     breakdown = Hash.new(0)
-    temperature_ranges.each.each do |key, value|
-      breakdown[key] = return_avg(trips_by_temperature(value))
+    ranges.each do |key, value|
+      breakdown[key] = return_avg(send(trips, value))
     end
     breakdown
   end
@@ -65,7 +65,7 @@ class Condition < ApplicationRecord
 
   def self.return_avg(hash)
     return 0 if hash.empty?
-    hash.values.sum / hash.keys.length
+    (hash.values.sum / hash.keys.length.to_f).round(2)
   end
 
   def self.temperature_ranges
@@ -110,13 +110,3 @@ class Condition < ApplicationRecord
     "25 miles to 29 miles"=>25..29}
   end
 end
-
-
-
-# def self.trips_by_temperature_breakdown
-#   breakdown = Hash.new(0)
-#   temperature_ranges.each do |key, value|
-#     breakdown[key] = trips_by_temperature(value)
-#   end
-#   breakdown
-# end
