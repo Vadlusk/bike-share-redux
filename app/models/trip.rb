@@ -41,10 +41,48 @@ class Trip < ApplicationRecord
   end
 
   def self.monthly_ride_count
-    group("date_part('month', start_date)").count
+    select("DATE_TRUNC('month', start_date) as month, count(*) as count")
+    .group('month')
+    .order('month')
   end
 
   def self.yearly_ride_count
-    group("date_part('year', start_date)").count
+    select("DATE_TRUNC('year', start_date) as year, count(*) as count")
+    .group('year')
+    .order('year')
+  end
+
+  def self.most_popular_bike
+    select('bike_id, count(bike_id) as count')
+    .group('bike_id')
+    .order('count DESC')
+    .first
+  end
+
+  def self.least_popular_bike
+    select('bike_id, count(bike_id) as count')
+    .group('bike_id')
+    .order('count ASC')
+    .first
+  end
+
+  def self.user_sub_type
+    select('subscription_type, count(subscription_type) as count')
+    .group('subscription_type')
+    .order('count')
+  end
+
+  def self.busiest_date
+    select('date(start_date) as date, count(start_date) as count')
+    .group('date')
+    .order('count DESC')
+    .first
+  end
+
+  def self.slowest_date
+    select('date(start_date) as date, count(start_date) as count')
+    .group('date')
+    .order('count DESC')
+    .last
   end
 end
