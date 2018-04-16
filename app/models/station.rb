@@ -35,6 +35,6 @@ class Station < ApplicationRecord
   end
 
   def self.most_station
-    "#{order(:dock_count).last.name} #{most_bikes}"
+    [].push(Station.find_by(dock_count: most_bikes))
   end
 end
