@@ -87,10 +87,10 @@ class Trip < ApplicationRecord
   end
 
   def self.busiest_day_weather
-    Condition.find_by(date: busiest_date.date, zip_code: 94701)
+    Condition.find_by(date: busiest_date.date, zip_code: 94107)
   end
 
   def self.slowest_day_weather
-    Condition.find_by(date: slowest_date.date, zip_code: 94701)
+    Condition.find_by(date: slowest_date.date, zip_code: 94107)
   end
 end

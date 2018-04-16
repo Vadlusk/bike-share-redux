@@ -11,7 +11,7 @@
         <div class="dashboard-section">
           <div class="dashboard-info duration">
             <h1>Duration</h1>
-            <h3>Average Trip Duration: <%= @trips.average_duration %></h3>
+            <h3>Average Trip Duration: <%= @trips.average_duration/3153600000.to_f %> centuries</h3>
           </div>
           <div class="dashboard-info longest-trip">
             <h1>Longest Trip</h1>
@@ -57,8 +57,10 @@
           </div>
           <div class="dashboard-info average_rides_by_temperature">
             <h1>Date Analysis</h1>
-            <h3>Busiest Date: <%= @trips.busiest_date.date %> (Ride Count: <%= @trips.busiest_date.count %>)</h3></br>
+            <h3>Busiest Date: <%= @trips.busiest_date.date %> (Ride Count: <%= @trips.busiest_date.count %>)</h3>
+            <h3>Temperature on <%= @trips.busiest_date.date %>: <%= @trips.busiest_day_weather.mean_temperature_f %></br>
             <h3>Slowest Date: <%= @trips.slowest_date.date %> (Ride Count: <%= @trips.slowest_date.count %>)</h3>
+            <h3>Temperature on <%= @trips.slowest_date.date %>: <%= @trips.slowest_day_weather.mean_temperature_f %></br>
           </div>
         </div>
 
@@ -71,7 +73,7 @@
               <% @trips.monthly_ride_count.each do |month_data| %>
                 <h3><%= "#{month_data.month.strftime('%B %Y')} Rides: #{month_data.count}" %></h3></br>
               <% end %>
-          </div>
+            </div>
           </div>
         </div>
       </div>

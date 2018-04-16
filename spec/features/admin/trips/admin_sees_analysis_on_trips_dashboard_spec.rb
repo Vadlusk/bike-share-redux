@@ -18,6 +18,9 @@ describe 'Admin' do
       trip11 = Trip.create(duration: 1, start_date: Date.strptime('11/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 80, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 2, bike_id: 170, subscription_type: 'Customer', zip_code: '94703')
       trip12 = Trip.create(duration: 30, start_date: Date.strptime('12/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 67, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 1, bike_id: 100, subscription_type: 'Customer', zip_code: '94703')
       trip13 = Trip.create(duration: 5000, start_date: Date.strptime('1/29/2014 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1010, subscription_type: 'Customer', zip_code: '94703')
+      trip14 = Trip.create(duration: 5000, start_date: Date.strptime('1/29/2014 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1010, subscription_type: 'Customer', zip_code: '94703')
+      condition1 = create(:condition, zip_code: 94701, date: trip13.start_date)
+      condition2 = create(:condition, zip_code: 94701, date: trip5.start_date)
 
       # Expectations
       average_duration = Trip.average_duration
@@ -35,6 +38,7 @@ describe 'Admin' do
       customer_percent = customer_count / Trip.count.to_f
       busiest_date = Trip.busiest_date
       slowest_date = Trip.slowest_date
+      # binding.pry
       busiest_date_weather = Trip.busiest_day_weather.mean_temperature_f
       slowest_date_weather = Trip.slowest_day_weather.mean_temperature_f
       # ----
@@ -64,8 +68,8 @@ describe 'Admin' do
       expect(page).to have_content("% of all users: #{(customer_percent * 100).round(3)}")
       expect(page).to have_content("Busiest Date: #{busiest_date.date} (Ride Count: #{busiest_date.count}")
       expect(page).to have_content("Slowest Date: #{slowest_date.date} (Ride Count: #{slowest_date.count}")
-      expect(page).to have_content("Temperature: #{busiest_date_weather}")
-      expect(page).to have_content("Temperature: #{slowest_date_weather}")
+      expect(page).to have_content("Temperature on #{busiest_date.date}: #{busiest_date_weather}")
+      expect(page).to have_content("Temperature on #{slowest_date.date}: #{slowest_date_weather}")
     end
   end
 end
