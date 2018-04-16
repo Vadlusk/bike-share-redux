@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-dark">
-  <%= link_to "Bike Share", admin_dashboard_path, class: "navbar-brand" %>
+  <%= link_to "Bike Share", root_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,17 +12,44 @@
             <%= link_to "Bike Shop", bike_shop_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Conditions", conditions_path, class: "nav-link" %>
+            <div class='dropdowns'>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id='navbarDropdown' role='button' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Conditions
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to "Dashboard", conditions_dashboard_path, class: "dropdown-item" %>
+                  <%= link_to "Index", conditions_path, class: "dropdown-item" %>
+                </div>
+              </li>
+            </li>
           </li>
           <li class="nav-item">
-            <%= link_to "Trips", trips_path, class: "nav-link" %>
+            <div class='dropdowns'>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id='navbarDropdown' role='button' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Trips
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to "Dashboard", trips_dashboard_path, class: "dropdown-item" %>
+                  <%= link_to "Index", trips_path, class: "dropdown-item" %>
+                </div>
+              </li>
+            </li>
           </li>
           <li class="nav-item">
-            <%= link_to "Stations", stations_path, class: "nav-link" %>
+            <div class='dropdowns'>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id='navbarDropdown' role='button' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Stations
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to "Dashboard", stations_dashboard_path, class: "dropdown-item" %>
+                  <%= link_to "Index", stations_path, class: "dropdown-item" %>
+                </div>
+              </li>
+            </li>
           </li>
-        </div>
-
-        <div class="dropdowns">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               New

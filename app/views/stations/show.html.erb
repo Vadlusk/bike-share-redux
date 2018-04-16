@@ -1,7 +1,12 @@
+<header>
+  <div class="header-title">
+    <h6>
+      <%= @station.name %>
+  </div>
+</header>
 <main>
   <div class="card-container">
     <div class="card-info">
-      <h1><%= @station.name %></h1>
       <h3>Dock Count: </h3><p><%= @station.dock_count %></p>
       <h3>City: </h3><p><%= @station.city %></p>
       <h3>Installation Date: </h3><p><%= format_date(@station.installation_date) %></p>
