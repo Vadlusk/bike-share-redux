@@ -35,6 +35,8 @@ describe 'Admin' do
       customer_percent = customer_count / Trip.count.to_f
       busiest_date = Trip.busiest_date
       slowest_date = Trip.slowest_date
+      busiest_date_weather = Trip.busiest_day_weather.mean_temperature_f
+      slowest_date_weather = Trip.slowest_day_weather.mean_temperature_f
       # ----
 
       visit '/trips-dashboard'
@@ -62,6 +64,8 @@ describe 'Admin' do
       expect(page).to have_content("% of all users: #{(customer_percent * 100).round(3)}")
       expect(page).to have_content("Busiest Date: #{busiest_date.date} (Ride Count: #{busiest_date.count}")
       expect(page).to have_content("Slowest Date: #{slowest_date.date} (Ride Count: #{slowest_date.count}")
+      expect(page).to have_content("Temperature: #{busiest_date_weather}")
+      expect(page).to have_content("Temperature: #{slowest_date_weather}")
     end
   end
 end
