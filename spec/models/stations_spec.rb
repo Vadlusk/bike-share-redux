@@ -197,5 +197,14 @@ describe Station do
         expect(stations.newest_station).to eq(station)
       end
     end
+    describe '#oldest_station' do
+      it 'returns the station installed least recently' do
+        create_list(:station, 12)
+        station = create(:station, installation_date: '1920-01-30')
+        stations = Station.all
+
+        expect(stations.oldest_station).to eq(station)
+      end
+    end
   end
 end
