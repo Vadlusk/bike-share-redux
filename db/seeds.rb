@@ -20,10 +20,6 @@ require 'csv'
 #     Status.create!(row.to_h)
 #   end
 # end
-ActiveRecord::Base.connection.reset_pk_sequence!(:stations)
-ActiveRecord::Base.connection.reset_pk_sequence!(:conditions)
-ActiveRecord::Base.connection.reset_pk_sequence!(:users)
-ActiveRecord::Base.connection.reset_pk_sequence!(:accessories)
 Station.destroy_all
 Trip.destroy_all
 Condition.destroy_all
@@ -73,3 +69,8 @@ Accessory.create!(title: "retired", description: "Protects nothing", price: 100.
 
 User.create!(username: "admin", email: "admin@admin.com", password: "password", role: 1)
 User.create!(username: "default", email: "default@default.com", password: "password")
+
+ActiveRecord::Base.connection.reset_pk_sequence!(:stations)
+ActiveRecord::Base.connection.reset_pk_sequence!(:conditions)
+ActiveRecord::Base.connection.reset_pk_sequence!(:users)
+ActiveRecord::Base.connection.reset_pk_sequence!(:accessories)
