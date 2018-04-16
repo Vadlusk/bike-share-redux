@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   validates :user_id, presence: true
-  has_many :order_accessories
+  has_many :order_accessories, dependent: :destroy
   belongs_to :user
 
   enum status: %w[ordered completed paid cancelled]

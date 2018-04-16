@@ -1,6 +1,6 @@
 class Accessory < ApplicationRecord
   validates_presence_of :title, :description
-  has_many :order_accessories
+  has_many :order_accessories, dependent: :destroy
   enum status: ['active', 'retired']
 
   def active?
