@@ -1,22 +1,71 @@
-Average Trip Duration: <%= @trips.average_duration %></br>
-Longest Trip: Trip #<%= @trips.longest_ride.id %> (Duration: <%= @trips.longest_ride.duration %>)</br>
-Shortest Trip: Trip #<%= @trips.shortest_ride.id %> (Duration: <%= @trips.shortest_ride.duration %>)</br>
-Busiest Starting Station: station #<%= @trips.busiest_starting_station.id %></br>
-Busiest Ending Station: station #<%= @trips.busiest_ending_station.id %></br>
+<header>
+  <div class="header-title">
+    <h6>
+      Trips Dashboard
+      <h6>
+      </div>
+    </header>
 
-<% @trips.monthly_ride_count.each do |month_data| %>
-  <%= "#{month_data.month.strftime('%B %Y')} Rides: #{month_data.count}" %></br>
-<% end %>
+    <main>
+      <div class="card-container">
+        <div class="dashboard-section">
+          <div class="dashboard-info duration">
+            <h1>Duration</h1>
+            <h3>Average Trip Duration: <%= @trips.average_duration %></h3>
+          </div>
+          <div class="dashboard-info longest-trip">
+            <h1>Longest Trip</h1>
+            <h3>Trip #: <%= @trips.longest_ride.id %></h3></br>
+            <h3>Duration: <%= @trips.longest_ride.duration %></h3>
+          </div>
+          <div class="dashboard-info average_rides_by_temperature">
+            <h1>Shortest Trip</h1>
+            <h3>Trip #: <%= @trips.shortest_ride.id %></h3></br>
+            <h3>Duration: <%= @trips.shortest_ride.duration %></h3>
+          </div>
+        </div>
 
-<% @trips.yearly_ride_count.each do |year_data| %>
-  <%= "#{year_data.year.strftime('%Y')} Rides: #{year_data.count}" %></br>
-<% end %>
+        <div class="dashboard-section">
+          <div class="dashboard-info busiest-station">
+            <h1>Busiest Stations</h1>
+            <h3>Starting Station: Station #<%= @trips.busiest_starting_station.id %></br></h3>
+            <h3>Ending Station: Station #<%= @trips.busiest_ending_station.id %>
+          </div>
+          <div class="dashboard-info monthly-breakout">
+            <h1>Montly Ride Counts</h1>
+            <% @trips.monthly_ride_count.each do |month_data| %>
+              <h3><%= "#{month_data.month.strftime('%B %Y')} Rides: #{month_data.count}" %></h3></br>
+            <% end %>
+          </div>
+          <div class="dashboard-info yearly-breakout">
+            <h1>Yearly Ride Counts</h1>
+            <% @trips.yearly_ride_count.each do |year_data| %>
+              <h3><%= "#{year_data.year.strftime('%Y')} Rides: #{year_data.count}" %></h3></br>
+            <% end %>
+          </div>
+        </div>
 
-Most Ridden Bike: bike #<%= @trips.most_popular_bike.bike_id %> (Number of rides: <%= @trips.most_popular_bike.count %>)</br>
-Least Ridden Bike: bike #<%= @trips.least_popular_bike.bike_id %> (Number of rides: <%= @trips.least_popular_bike.count %>)</br>
+        <div class="dashboard-section">
+          <div class="dashboard-info bike">
+            <h1>Bike analysis</h1>
+            <h3>Most Ridden Bike: <%= @trips.most_popular_bike.bike_id %> (<%= @trips.most_popular_bike.count %> rides)</h3>
+            <h3>Least Ridden Bike: <%= @trips.least_popular_bike.bike_id %> (<%= @trips.least_popular_bike.count %> ride(s))</h3>
+          </div>
+          <div class="dashboard-info longest-trip">
+            <h1>Subscription Analysis</h1>
+            <h4>Type: Subscriber</h4></br>
+            <h6>Number of users: <%= @trips.user_sub_type.find_by(subscription_type: "Subscriber").count %></h6>
+            <h6>% of all users: <%= number_to_percentage((@trips.user_sub_type.find_by(subscription_type: "Subscriber").count / @trips.count.to_f) * 100) %></h6>
+            <h4>Type: Customer</h4></br>
+            <h6>Number of users: <%= @trips.user_sub_type.find_by(subscription_type: "Customer").count %></h6>
+            <h6>% of all users: <%= number_to_percentage((@trips.user_sub_type.find_by(subscription_type: "Customer").count / @trips.count.to_f) * 100) %></h6>
 
-Subscription type: Subscriber (Number of users: <%= @trips.user_sub_type.find_by(subscription_type: "Subscriber").count %>, % of all users: <%= number_to_percentage((@trips.user_sub_type.find_by(subscription_type: "Subscriber").count / @trips.count.to_f) * 100) %>)</br>
-Subscription type: Customer (Number of users: <%= @trips.user_sub_type.find_by(subscription_type: "Customer").count %>, % of all users: <%= number_to_percentage((@trips.user_sub_type.find_by(subscription_type: "Customer").count / @trips.count.to_f) * 100) %>)</br>
-
-Busiest Date: <%= @trips.busiest_date.date %> (Ride Count: <%= @trips.busiest_date.count %>)</br>
-Slowest Date: <%= @trips.slowest_date.date %> (Ride Count: <%= @trips.slowest_date.count %>)</br>
+          </div>
+          <div class="dashboard-info average_rides_by_temperature">
+            <h1>Date Analysis</h1>
+            <h3>Busiest Date: <%= @trips.busiest_date.date %> (Ride Count: <%= @trips.busiest_date.count %>)</h3></br>
+            <h3>Slowest Date: <%= @trips.slowest_date.date %> (Ride Count: <%= @trips.slowest_date.count %>)</h3>
+          </div>
+        </div>
+      </div>
+    </main>
