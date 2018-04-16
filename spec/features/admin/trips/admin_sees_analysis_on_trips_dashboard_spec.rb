@@ -42,20 +42,24 @@ describe 'Admin' do
       #Expectations
       expect(current_path).to eq('/trips-dashboard')
       expect(page).to have_content("Average Trip Duration: #{average_duration}")
-      expect(page).to have_content("Longest Trip: Trip ##{longest_ride.id} (Duration: #{longest_ride.duration}")
-      expect(page).to have_content("Shortest Trip: Trip ##{shortest_ride.id} (Duration: #{shortest_ride.duration}")
-      expect(page).to have_content("Busiest Starting Station: station ##{busiest_starting_station.id}")
-      expect(page).to have_content("Busiest Ending Station: station ##{busiest_ending_station.id}")
+      expect(page).to have_content("Trip #: #{longest_ride.id}")
+      expect(page).to have_content("Duration: #{longest_ride.duration}")
+      expect(page).to have_content("Trip #: #{shortest_ride.id}")
+      expect(page).to have_content("Duration: #{shortest_ride.duration}")
+      expect(page).to have_content("Starting Station: Station ##{busiest_starting_station.id}")
+      expect(page).to have_content("Ending Station: Station ##{busiest_ending_station.id}")
       monthly_ride_count.each do |month_data|
         expect(page).to have_content("#{month_data.month.strftime('%B %Y')} Rides: #{month_data.count}")
       end
       yearly_ride_count.each do |year_data|
         expect(page).to have_content("#{year_data.year.strftime('%Y')} Rides: #{year_data.count}")
       end
-      expect(page).to have_content("Most Ridden Bike: bike ##{most_popular_bike.bike_id} (Number of rides: #{most_popular_bike.count}")
-      expect(page).to have_content("Least Ridden Bike: bike ##{least_popular_bike.bike_id} (Number of rides: #{least_popular_bike.count}")
-      expect(page).to have_content("Subscription type: Subscriber (Number of users: #{subscriber_count}, % of all users: #{subscriber_percent}")
-      expect(page).to have_content("Subscription type: Customer (Number of users: #{customer_count}, % of all users: #{customer_percent}")
+      expect(page).to have_content("Most Ridden Bike: #{most_popular_bike.bike_id} (#{most_popular_bike.count} rides)")
+      expect(page).to have_content("Least Ridden Bike: #{least_popular_bike.bike_id} (#{least_popular_bike.count} ride(s))")
+      expect(page).to have_content("Number of users: #{subscriber_count}")
+      expect(page).to have_content("% of all users: #{(subscriber_percent * 100).round(3)}")
+      expect(page).to have_content("Number of users: #{customer_count}")
+      expect(page).to have_content("% of all users: #{(customer_percent * 100).round(3)}")
       expect(page).to have_content("Busiest Date: #{busiest_date.date} (Ride Count: #{busiest_date.count}")
       expect(page).to have_content("Slowest Date: #{slowest_date.date} (Ride Count: #{slowest_date.count}")
     end
