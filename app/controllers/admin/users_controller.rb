@@ -1,4 +1,6 @@
 class Admin::UsersController < Admin::BaseController
+  before_action :require_admin
+
   def show
     @user   = current_user
     if params[:status]
@@ -7,4 +9,9 @@ class Admin::UsersController < Admin::BaseController
       @orders = Order.order(:created_at)
     end
   end
+
+  private
+    def require_admin
+      render file: 'public/404' unless current_user.admin?
+    end
 end
