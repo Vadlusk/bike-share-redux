@@ -243,6 +243,22 @@ describe Trip do
         expect(Trip.slowest_date.date).to eq(slowest[0])
         expect(Trip.slowest_date.count).to eq(slowest[1].count)
       end
+      it 'returns the Weather on the day with the highest rides.' do
+        trip1 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94701')
+        trip2 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94701')
+        trip3 = Trip.create(duration: 1000, start_date: Date.strptime('2/27/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94701')
+        condition = create(:condition, zip_code: 94701, date: trip1.start_date)
+
+        expect(Trip.busiest_day_weather.mean_temperature_f).to eq(condition.mean_temperature_f)
+      end
+      it 'returns the Weather on the day with the lowest rides.' do
+        trip1 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94701')
+        trip2 = Trip.create(duration: 1000, start_date: Date.strptime('1/29/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94701')
+        trip3 = Trip.create(duration: 1000, start_date: Date.strptime('2/27/2013 9:08', '%m/%d/%Y %k:%M'), start_station_name: '2nd at South Park', start_station_id: 100, end_date: Date.strptime('8/29/2013 9:11', '%m/%d/%Y %k:%M'), end_station_name: '2nd at South Park', end_station_id: 100, bike_id: 1000, subscription_type: 'Subscriber', zip_code: '94701')
+        condition = create(:condition, zip_code: 94701, date: trip3.start_date)
+
+        expect(Trip.slowest_day_weather.mean_temperature_f).to eq(condition.mean_temperature_f)
+      end
     end
   end
 end
