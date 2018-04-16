@@ -11,4 +11,12 @@ class Accessory < ApplicationRecord
   def subtotal(count_in_cart)
     price * count_in_cart
   end
+
+  def activate
+    self.status = 0
+  end
+
+  def deactivate
+    self.status = 1
+  end
 end
