@@ -18,7 +18,7 @@ describe 'User' do
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-        visit admin_conditions_dashboard_path
+        visit conditions_dashboard_path
 
         within(".highest_rides_by_temperature") do
           expect(page).to have_content("Highest Number of Rides by Temperature")
@@ -51,7 +51,7 @@ describe 'User' do
         end
       end
 
-      it 'and sees rides by precipitation' do
+    it 'and sees rides by precipitation' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -66,7 +66,7 @@ describe 'User' do
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-        visit admin_conditions_dashboard_path
+        visit conditions_dashboard_path
 
         within(".highest_rides_by_precipitation") do
           expect(page).to have_content("Highest Number of Rides by Precipitation")
@@ -102,7 +102,7 @@ describe 'User' do
         end
       end
 
-      it 'and sees rides by wind speed' do
+    it 'and sees rides by wind speed' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -117,7 +117,7 @@ describe 'User' do
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-        visit admin_conditions_dashboard_path
+        visit conditions_dashboard_path
 
         within(".highest_rides_by_wind_speed") do
           expect(page).to have_content("Highest Number of Rides by Wind Speed")
@@ -162,7 +162,7 @@ describe 'User' do
         end
       end
 
-      it 'and sees rides by visibility' do
+    it 'and sees rides by visibility' do
         date_1 = Date.strptime('8/29/2013 9:08', '%m/%d/%Y %k:%M')
         date_2 = Date.strptime('8/30/2013 9:08', '%m/%d/%Y %k:%M')
         date_3 = Date.strptime('8/31/2013 9:08', '%m/%d/%Y %k:%M')
@@ -177,7 +177,7 @@ describe 'User' do
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-        visit admin_conditions_dashboard_path
+        visit conditions_dashboard_path
 
         within(".highest_rides_by_visibility") do
           expect(page).to have_content("Highest Number of Rides by Visibility")

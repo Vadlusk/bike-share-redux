@@ -11,19 +11,19 @@
       <div class="dashboard-section">
         <div class="dashboard-info highest_rides_by_temperature">
           <h1>Highest Number of Rides by Temperature</h1>
-          <% Condition.max_trips_by(Condition.temperature_ranges, :trips_by_temperature).each do |key, value| %>
-            <h3><%= key %>: <%= value[1] %></h3>
+          <% @conditions.build_trips_hash(@temp_ranges, :max_trips_by, :max_temperature_f).each do |key, value| %>
+            <h3><%= key %>: <%= value %></h3>
           <% end %>
         </div>
         <div class="dashboard-info lowest_rides_by_temperature">
           <h1>Lowest Number of Rides by Temperature</h1>
-          <% Condition.min_trips_by(Condition.temperature_ranges, :trips_by_temperature).each do |key, value| %>
-            <h3><%= key %>: <%= value[1] %></h3>
+          <% @conditions.build_trips_hash(@temp_ranges, :min_trips_by, :max_temperature_f).each do |key, value| %>
+            <h3><%= key %>: <%= value %></h3>
           <% end %>
         </div>
         <div class="dashboard-info average_rides_by_temperature">
           <h1>Average Number of Rides by Temperature</h1>
-          <% Condition.avg_trips_by(Condition.temperature_ranges, :trips_by_temperature).each do |key, value| %>
+          <% @conditions.build_avg_trips_hash(@temp_ranges, :trip_count_by, :max_temperature_f).each do |key, value| %>
             <h3><%= key %>: <%= value %></h3>
           <% end %>
         </div>
@@ -32,19 +32,19 @@
     <div class="dashboard-section">
       <div class="dashboard-info highest_rides_by_precipitation">
         <h1>Highest Number of Rides by Precipitation</h1>
-        <% Condition.max_trips_by(Condition.precipitation_ranges, :trips_by_precipitation).each do |key, value| %>
-          <h3><%= key %>: <%= value[1] %></h3>
+        <% @conditions.build_trips_hash(@precipitation_ranges, :max_trips_by, :precipitation_inches).each do |key, value| %>
+          <h3><%= key %>: <%= value %></h3>
         <% end %>
       </div>
       <div class="dashboard-info lowest_rides_by_precipitation">
         <h1>Lowest Number of Rides by Precipitation</h1>
-        <% Condition.min_trips_by(Condition.precipitation_ranges, :trips_by_precipitation).each do |key, value| %>
-          <h3><%= key %>: <%= value[1] %></h3>
+        <% @conditions.build_trips_hash(@precipitation_ranges, :min_trips_by, :precipitation_inches).each do |key, value| %>
+          <h3><%= key %>: <%= value %></h3>
         <% end %>
       </div>
       <div class="dashboard-info average_rides_by_precipitation">
         <h1>Average Number of Rides by Precipitation</h1>
-        <% Condition.avg_trips_by(Condition.precipitation_ranges, :trips_by_precipitation).each do |key, value| %>
+        <% @conditions.build_avg_trips_hash(@precipitation_ranges, :trip_count_by, :precipitation_inches).each do |key, value| %>
           <h3><%= key %>: <%= value %></h3>
         <% end %>
       </div>
@@ -53,19 +53,19 @@
     <div class="dashboard-section">
       <div class="dashboard-info highest_rides_by_wind_speed">
         <h1>Highest Number of Rides by Wind Speed</h1>
-        <% Condition.max_trips_by(Condition.wind_ranges, :trips_by_wind_speed).each do |key, value| %>
-          <h3><%= key %>: <%= value[1] %></h3>
+        <% @conditions.build_trips_hash(@wind_ranges, :max_trips_by, :mean_wind_speed_mph).each do |key, value| %>
+          <h3><%= key %>: <%= value %></h3>
         <% end %>
       </div>
       <div class="dashboard-info lowest_rides_by_wind_speed">
         <h1>Lowest Number of Rides by Wind Speed</h1>
-        <% Condition.min_trips_by(Condition.wind_ranges, :trips_by_wind_speed).each do |key, value| %>
-          <h3><%= key %>: <%= value[1] %></h3>
+        <% @conditions.build_trips_hash(@wind_ranges, :min_trips_by, :mean_wind_speed_mph).each do |key, value| %>
+          <h3><%= key %>: <%= value %></h3>
         <% end %>
       </div>
       <div class="dashboard-info average_rides_by_wind_speed">
         <h1>Average Number of Rides by Wind Speed</h1>
-        <% Condition.avg_trips_by(Condition.wind_ranges, :trips_by_wind_speed).each do |key, value| %>
+        <% @conditions.build_avg_trips_hash(@wind_ranges, :trip_count_by, :mean_wind_speed_mph).each do |key, value| %>
           <h3><%= key %>: <%= value %></h3>
         <% end %>
       </div>
@@ -74,19 +74,19 @@
     <div class="dashboard-section">
       <div class="dashboard-info highest_rides_by_visibility">
         <h1>Highest Number of Rides by Visibility</h1>
-        <% Condition.max_trips_by(Condition.visibility_ranges, :trips_by_visibility).each do |key, value| %>
-          <h3><%= key %>: <%= value[1] %></h3>
+        <% @conditions.build_trips_hash(@visibility_ranges, :max_trips_by, :mean_visibility_miles).each do |key, value| %>
+          <h3><%= key %>: <%= value %></h3>
         <% end %>
       </div>
       <div class="dashboard-info lowest_rides_by_visibility">
         <h1>Lowest Number of Rides by Visibility</h1>
-        <% Condition.min_trips_by(Condition.visibility_ranges, :trips_by_visibility).each do |key, value| %>
-          <h3><%= key %>: <%= value[1] %></h3>
+        <% @conditions.build_trips_hash(@visibility_ranges, :min_trips_by, :mean_visibility_miles).each do |key, value| %>
+          <h3><%= key %>: <%= value %></h3>
         <% end %>
       </div>
       <div class="dashboard-info average_rides_by_visibility">
         <h1>Average Number of Rides by Visibility</h1>
-        <% Condition.avg_trips_by(Condition.visibility_ranges, :trips_by_visibility).each do |key, value| %>
+        <% @conditions.build_avg_trips_hash(@visibility_ranges, :trip_count_by, :mean_visibility_miles).each do |key, value| %>
           <h3><%= key %>: <%= value %></h3>
         <% end %>
       </div>

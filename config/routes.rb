@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post '/register',  to: 'users#create'
   get  '/dashboard', to: 'users#show'
   get '/trips-dashboard', to: 'trips_dashboard#index'
+  get '/conditions-dashboard', to: 'conditions_dashboard#index'
 
   get  '/login',  to: 'sessions#new'
   post '/login',  to: 'sessions#create'
@@ -25,7 +26,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard',            to: 'users#show'
-    get '/conditions-dashboard', to: 'conditions#index'
     resources :stations, only: [:update, :edit, :destroy, :new, :create]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :trips, only: [:new, :create, :edit, :show, :update, :destroy]
