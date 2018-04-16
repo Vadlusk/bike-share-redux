@@ -35,6 +35,8 @@ class Station < ApplicationRecord
   end
 
   def self.most_station
-    [].push(Station.find_by(dock_count: most_bikes))
+    Station.where(dock_count: most_bikes).each do |station|
+      [].push(station)
+    end
   end
 end
