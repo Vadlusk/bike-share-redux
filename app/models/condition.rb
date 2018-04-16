@@ -3,7 +3,7 @@ class Condition < ApplicationRecord
 
   def self.trip_count_by(attribute_hash)
     joins("JOIN trips ON conditions.date = trips.start_date")
-    .where(attribute_hash)
+    .where(attribute_hash, zip_code: 94107)
     .group("conditions.date")
     .count("trips.id")
   end
@@ -11,7 +11,7 @@ class Condition < ApplicationRecord
   def self.min_trips_by(attribute_hash)
     joins("JOIN trips ON conditions.date = trips.start_date")
       .select("conditions.date, count(trips.id) as trip_count")
-      .where(attribute_hash)
+      .where(attribute_hash, zip_code: 94107)
       .group("conditions.date")
       .order("trip_count ASC")
       .first
@@ -20,7 +20,7 @@ class Condition < ApplicationRecord
   def self.max_trips_by(attribute_hash)
     joins("JOIN trips ON conditions.date = trips.start_date")
       .select("conditions.date, count(trips.id) as trip_count")
-      .where(attribute_hash)
+      .where(attribute_hash, zip_code: 94107)
       .group("conditions.date")
       .order("trip_count DESC")
       .first
