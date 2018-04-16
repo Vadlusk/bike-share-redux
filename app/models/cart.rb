@@ -44,7 +44,7 @@ class Cart
   end
 
   def checkout(order)
-    contents.map do |accessory_id, quantity |
+    contents.map do |accessory_id, quantity|
       order.order_accessories.create!(accessory_id: accessory_id, quantity: quantity)
     end
   end

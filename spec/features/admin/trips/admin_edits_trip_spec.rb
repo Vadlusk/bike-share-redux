@@ -9,7 +9,7 @@ describe 'Admin' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       visit edit_admin_trip_path(trip)
 
-      fill_in 'trip[duration]', with: 100
+      fill_in 'trip[duration]', with: 3872
       fill_in 'trip[start_date]', with: '01/01/2003'
       fill_in 'trip[start_station_name]', with: 'station name'
       fill_in 'trip[start_station_id]', with: 900
@@ -23,7 +23,7 @@ describe 'Admin' do
 
       expect(current_path).to eq(trip_path(trip))
       expect(page).to have_content('You successfully updated this trip')
-      expect(page).to have_content('100')
+      expect(page).to have_content('3872')
       expect(page).to have_content('January 01, 2003')
       expect(page).to have_content('station name')
       expect(page).to have_content('900')
