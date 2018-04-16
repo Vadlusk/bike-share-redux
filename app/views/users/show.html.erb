@@ -11,6 +11,10 @@
     <!-- <h3>Bikes: </h3><p><%= @user.username %></p> -->
     <h3>email: </h3><p><%= @user.email %></p>
   </div>
+  <div>
+    <% @user.orders.each do |order| %>
+      <%= link_to order.id, order_path(order) %>
+      <%= order.status %>
+    <% end %>
+  </div>
 </main>
-
-<%= link_to "Logout", logout_path %>

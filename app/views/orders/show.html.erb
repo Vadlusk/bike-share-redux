@@ -1,0 +1,24 @@
+<header>
+  <div class="header-title">
+    <h6>
+      Accessories purchased on <%= format_date(@order.created_at) %>
+    <h6>
+  </div>
+</header>
+
+<%= @order.total_price %>
+<%= @order.status %>
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Title</th>
+    <th>quantity</th>
+    <th>Subtotal</th>
+  </tr>
+  <% @order.order_accessories.each do |order_accessory| %>
+    <tr>
+      <td><%= link_to order_accessory.accessory.title, accessory_path(order_accessory.accessory) %></td>
+      <td><%= order_accessory.quantity %></td>
+      <td><%= order_accessory.subtotal %></td>
+    </tr>
+  <% end %>
+</table>

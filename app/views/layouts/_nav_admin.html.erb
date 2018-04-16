@@ -6,26 +6,26 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <div class='nav_content'>
-        <div class='direct-links'>
+      <div class="nav_content">
+        <div class="direct-links">
           <li class="nav-item">
-            <a class='nav-link' href="/bike-shop">Bike Shop</a>
+            <%= link_to "Bike Shop", bike_shop_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <a class='nav-link' href="/conditions">Conditions</a>
+            <%= link_to "Conditions", conditions_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <a class='nav-link' href="/trips">Trips</a>
+            <%= link_to "Trips", trips_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <a class='nav-link' href="/stations">Stations</a>
+            <%= link_to "Stations", stations_path, class: "nav-link" %>
           </li>
         </div>
 
-        <div class='dropdowns'>
+        <div class="dropdowns">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id='navbarDropdown' role='button' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Add New Records
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              New
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "Station", new_admin_station_path, class: "dropdown-item" %>
@@ -35,16 +35,16 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id='navbarDropdown' role='button' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Logged in as Admin User: <%= current_user.username %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "Dashboard", admin_dashboard_path, class: "dropdown-item" %>
-              <%= link_to "Logout", logout_path, class: "dropdown-item" %>
             </div>
           </li>
+          <li><%= link_to "Logout", logout_path, class: "nav-link" %></li>
           <li class="nav-item active">
-            <a class='nav-link cart' href="/cart"><i class='fas fa-shopping-cart'></i> (<%= @cart.total_item_count %>) <span class="sr-only">(current)</span></a>
+            <a class="nav-link cart" href="/cart"><i class="fas fa-shopping-cart"></i> (<%= @cart.total_item_count %>) <span class="sr-only">(current)</span></a>
           </li>
         </div>
       </div>
