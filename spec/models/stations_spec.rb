@@ -134,6 +134,13 @@ describe Station do
         expect(stations.average_bikes).to eq(Station.average(:dock_count))
       end
     end
+    describe '#most_bikes' do
+      it 'returns the most bikes at any station' do
+        create_list(:station, 12)
+        stations = Station.all
 
+        expect(stations.most_bikes).to eq(Station.maximum(:dock_count))
+      end
+    end
   end
 end
