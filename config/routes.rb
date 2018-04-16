@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :stations, only: [:index, :show], param: :slug
   resources :accessories, only: [:show]
   resources :orders, only: [:create, :show, :update]
+  resources :stationsdashboard, only: [:index]
+
+  get '/stations-dashboard', to: 'stations_dashboard#index'
+
   get '/bike-shop', to: 'accessories#index'
 
   root controller: 'welcome', action: :index
