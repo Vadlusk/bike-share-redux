@@ -85,4 +85,8 @@ class Trip < ApplicationRecord
     .order('count DESC')
     .last
   end
+
+  def self.busiest_day_weather
+    Condition.find_by(date: busiest_date.date, zip_code: 94701)
+  end
 end
