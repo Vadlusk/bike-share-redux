@@ -169,5 +169,24 @@ describe Station do
         expect(stations.most_station).to eq([station1, station2])
       end
     end
+    describe '#fewest_station' do
+      it 'returns the  station with the fewest bikes' do
+        create_list(:station, 12)
+        station = create(:station, dock_count: 0)
+        stations = Station.all
+
+        expect(stations.fewest_station).to eq([station])
+      end
+    end
+    describe '#fewest_station' do
+      it 'can return multiple stations if they are tied for fewest bikes' do
+        create_list(:station, 12)
+        station1 = create(:station, name: 'a station', dock_count: 0)
+        station2 = create(:station, name: 'b station', dock_count: 0)
+        stations = Station.all
+
+        expect(stations.fewest_station).to eq([station1, station2])
+      end
+    end
   end
 end
