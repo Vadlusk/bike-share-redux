@@ -23,7 +23,7 @@ class Station < ApplicationRecord
   end
 
   def self.average_bikes
-    average(:dock_count)
+    average(:dock_count).round(2)
   end
 
   def self.most_bikes
