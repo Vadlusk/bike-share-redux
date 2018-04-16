@@ -39,4 +39,10 @@ class Station < ApplicationRecord
       [].push(station)
     end
   end
+
+  def self.fewest_station
+    Station.where(dock_count: fewest_bikes).each do |station|
+      [].push(station)
+    end
+  end
 end
