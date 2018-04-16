@@ -17,4 +17,9 @@ class Station < ApplicationRecord
   def to_param
     slug
   end
+
+  def self.total_stations
+    count
+  end
+
 end
