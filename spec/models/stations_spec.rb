@@ -118,5 +118,14 @@ describe Station do
         expect(station.to_param).to eq(station.slug)
       end
     end
+    describe '#total_stations' do
+      it 'returns the count of stations' do
+        create_list(:station, 12)
+        stations = Station.all
+
+        expect(stations.total_stations).to eq(12)
+      end
+    end
+
   end
 end
