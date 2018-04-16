@@ -45,4 +45,8 @@ class Station < ApplicationRecord
       [].push(station)
     end
   end
+
+  def self.newest_station
+    Station.order(:installation_date).last
+  end
 end
