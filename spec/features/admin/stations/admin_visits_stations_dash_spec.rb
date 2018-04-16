@@ -11,16 +11,14 @@ describe 'admin' do
     end
 
     it 'sees the average bikes available per station' do
-      skip
       create_list(:station, 30)
 
       visit '/stations-dashboard'
 
-      expect(page).to have_content("Average bikes per station: #{Station.average(:dock_count)}")
+      expect(page).to have_content("Average bikes per station: #{Station.average(:dock_count).round(2)}")
     end
 
     it 'sees the most bikes availabe at a station' do
-      skip
       create_list(:station, 30)
 
       visit '/stations-dashboard'
@@ -29,14 +27,12 @@ describe 'admin' do
     end
 
     it 'sees the station where the most bikes are available' do
-      skip
       create_list(:station, 30)
       create(:station, name: 'Manystationbikemany', dock_count: 1000)
 
       visit '/stations-dashboard'
 
-      expect(page).to have_content("The station with the most bikes available: Manystationbikemany (1000)")
-      expect(page).to have_content(Station.order(:dock_count).last)
+      expect(page).to have_content("The station with the most bikes available:\nManystationbikemany (1000)")
     end
 
     it 'sees the stations where the most bikes are available' do
@@ -48,7 +44,6 @@ describe 'admin' do
       visit '/stations-dashboard'
 
       expect(page).to have_content("The stations with the most bikes available: Beep Blorp (1000) Doopy Doop (1000)")
-      expect(page).to have_content(Station.order(:dock_count).last)
     end
 
     it 'sees the fewest bikes availabe at a station' do
@@ -68,7 +63,6 @@ describe 'admin' do
       visit '/stations-dashboard'
 
       expect(page).to have_content("The station with the fewest bikes available: Fewstationbikefew (0)")
-      expect(page).to have_content(Station.order(:dock_count).first)
     end
 
     it 'sees the stations where the fewest bikes are available' do
@@ -80,7 +74,6 @@ describe 'admin' do
       visit '/stations-dashboard'
 
       expect(page).to have_content("The stations with the fewest bikes available: Not much (0) Many none (0)")
-      expect(page).to have_content(Station.order(:dock_count).first)
     end
 
     it 'sees the newest station by installation_date' do
