@@ -83,7 +83,7 @@ describe 'admin' do
       expect(page).to have_content(Station.order(:dock_count).first)
     end
 
-    it 'sees the newest station by installed_date' do
+    it 'sees the newest station by installation_date' do
       skip
       create_list(:station, 30)
       create(:station, name: 'Brand Spanking New', installation_date: '2020-01-30')
@@ -94,7 +94,7 @@ describe 'admin' do
       expect(page).to have_content('The newest staton is Dirty Old Station - Installed: January 30, 2020')
     end
 
-    it 'sees the oldest station by installed_date' do
+    it 'sees the oldest station by installation_date' do
       skip
       create_list(:station, 30)
       create(:station, name: 'Dirty Old Station', installation_date: '2001-01-30')
