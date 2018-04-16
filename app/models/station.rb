@@ -17,4 +17,36 @@ class Station < ApplicationRecord
   def to_param
     slug
   end
+
+  def self.total_stations
+    count
+  end
+
+  def self.average_bikes
+    average(:dock_count).round(2)
+  end
+
+  def self.most_bikes
+    maximum(:dock_count)
+  end
+
+  def self.fewest_bikes
+    minimum(:dock_count)
+  end
+
+  def self.most_station
+    Station.where(dock_count: most_bikes)
+  end
+
+  def self.fewest_station
+    Station.where(dock_count: fewest_bikes)
+  end
+
+  def self.newest_station
+    Station.order(:installation_date).last
+  end
+
+  def self.oldest_station
+    Station.order(:installation_date).first
+  end
 end

@@ -118,5 +118,93 @@ describe Station do
         expect(station.to_param).to eq(station.slug)
       end
     end
+    describe '#total_stations' do
+      it 'returns the count of stations' do
+        create_list(:station, 12)
+        stations = Station.all
+
+        expect(stations.total_stations).to eq(12)
+      end
+    end
+    describe '#average_bikes' do
+      it 'returns the average bikes per station' do
+        create_list(:station, 12)
+        stations = Station.all
+
+        expect(stations.average_bikes).to eq((Station.average(:dock_count)).round(2))
+      end
+    end
+    describe '#most_bikes' do
+      it 'returns the most bikes at any station' do
+        create_list(:station, 12)
+        stations = Station.all
+
+        expect(stations.most_bikes).to eq(Station.maximum(:dock_count))
+      end
+    end
+    describe '#fewest_bikes' do
+      it 'returns the fewest bikes at any station' do
+        create_list(:station, 12)
+        stations = Station.all
+
+        expect(stations.fewest_bikes).to eq(Station.minimum(:dock_count))
+      end
+    end
+    describe '#most_station' do
+      it 'returns the  station with the most bikes' do
+        create_list(:station, 12)
+        station = create(:station, dock_count: 31)
+        stations = Station.all
+
+        expect(stations.most_station).to eq([station])
+      end
+    end
+    describe '#most_station' do
+      it 'can return multiple stations if they are tied for most bikes' do
+        create_list(:station, 12)
+        station1 = create(:station, name: 'a station', dock_count: 31)
+        station2 = create(:station, name: 'b station', dock_count: 31)
+        stations = Station.all
+
+        expect(stations.most_station).to eq([station1, station2])
+      end
+    end
+    describe '#fewest_station' do
+      it 'returns the  station with the fewest bikes' do
+        create_list(:station, 12)
+        station = create(:station, dock_count: 0)
+        stations = Station.all
+
+        expect(stations.fewest_station).to eq([station])
+      end
+    end
+    describe '#fewest_station' do
+      it 'can return multiple stations if they are tied for fewest bikes' do
+        create_list(:station, 12)
+        station1 = create(:station, name: 'a station', dock_count: 0)
+        station2 = create(:station, name: 'b station', dock_count: 0)
+        stations = Station.all
+
+        expect(stations.fewest_station).to eq([station1, station2])
+      end
+    end
+    describe '#newest_station' do
+      it 'returns the station installed most recently' do
+        create_list(:station, 12)
+        station = create(:station, installation_date: '2020-01-30')
+        stations = Station.all
+
+        expect(stations.newest_station).to eq(station)
+      end
+    end
+    describe '#oldest_station' do
+      it 'returns the station installed least recently' do
+        create_list(:station, 12)
+        station = create(:station, installation_date: '1920-01-30')
+        stations = Station.all
+
+        expect(stations.oldest_station).to eq(station)
+      end
+    end
   end
 end
