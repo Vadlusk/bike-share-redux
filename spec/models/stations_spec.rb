@@ -155,6 +155,17 @@ describe Station do
         create_list(:station, 12)
         stations = Station.all
 
+        expect(stations.most_station).to eq([Station.order(:dock_count).last])
+      end
+    end
+    describe '#most_station' do
+      it 'can return multiple stations if they are tied for most bikes' do
+        skip
+        create_list(:station, 12)
+        create(:station, dock_count: 31)
+        create(:station, dock_count: 31)
+        stations = Station.all
+
         expect(stations.most_station).to eq("#{Station.order(:dock_count).last.name} #{Station.maximum(:dock_count)}")
       end
     end
