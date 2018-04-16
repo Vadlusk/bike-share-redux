@@ -131,7 +131,7 @@ describe Station do
         create_list(:station, 12)
         stations = Station.all
 
-        expect(stations.average_bikes).to eq(Station.average(:dock_count))
+        expect(stations.average_bikes).to eq((Station.average(:dock_count)).round(2))
       end
     end
     describe '#most_bikes' do
