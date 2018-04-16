@@ -143,11 +143,19 @@ describe Station do
       end
     end
     describe '#fewest_bikes' do
-      it 'returns the most bikes at any station' do
+      it 'returns the fewest bikes at any station' do
         create_list(:station, 12)
         stations = Station.all
 
         expect(stations.fewest_bikes).to eq(Station.minimum(:dock_count))
+      end
+    end
+    describe '#most_station' do
+      it 'returns the name of the station with the most bikes and bike count' do
+        create_list(:station, 12)
+        stations = Station.all
+
+        expect(stations.most_station).to eq("#{Station.order(:dock_count).last.name} #{Station.maximum(:dock_count)}")
       end
     end
   end
