@@ -188,5 +188,14 @@ describe Station do
         expect(stations.fewest_station).to eq([station1, station2])
       end
     end
+    describe '#newest_station' do
+      it 'returns the station installed most recently' do
+        create_list(:station, 12)
+        station = create(:station, installation_date: '2020-01-30')
+        stations = Station.all
+
+        expect(stations.newest_station).to eq(station)
+      end
+    end
   end
 end
