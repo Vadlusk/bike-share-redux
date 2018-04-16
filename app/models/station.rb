@@ -35,15 +35,11 @@ class Station < ApplicationRecord
   end
 
   def self.most_station
-    Station.where(dock_count: most_bikes).each do |station|
-      [].push(station)
-    end
+    Station.where(dock_count: most_bikes)
   end
 
   def self.fewest_station
-    Station.where(dock_count: fewest_bikes).each do |station|
-      [].push(station)
-    end
+    Station.where(dock_count: fewest_bikes)
   end
 
   def self.newest_station
