@@ -126,6 +126,14 @@ describe Station do
         expect(stations.total_stations).to eq(12)
       end
     end
+    describe '#average_bikes' do
+      it 'returns the average bikes per station' do
+        create_list(:station, 12)
+        stations = Station.all
+
+        expect(stations.average_bikes).to eq(Station.average(:dock_count))
+      end
+    end
 
   end
 end
