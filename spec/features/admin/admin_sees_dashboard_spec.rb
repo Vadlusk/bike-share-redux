@@ -67,7 +67,7 @@ describe 'Admin' do
       visit admin_dashboard_path
       click_on 'Cancel'
 
-      expect(ordered.status).to eq('cancelled')
+      expect(Order.find(ordered.id).status).to eq('cancelled')
     end
     it 'can cancel orders that are paid' do
       admin   = create(:admin)
@@ -77,7 +77,7 @@ describe 'Admin' do
       visit admin_dashboard_path
       click_on 'Cancel'
 
-      expect(paid.status).to eq('cancelled')
+      expect(Order.find(paid.id).status).to eq('cancelled')
     end
     it 'can mark as paid ordered orders' do
       admin     = create(:admin)
@@ -87,7 +87,7 @@ describe 'Admin' do
       visit admin_dashboard_path
       click_on 'Mark as Paid'
 
-      expect(ordered.status).to eq('paid')
+      expect(Order.find(ordered.id).status).to eq('paid')
     end
     it 'can mark as completed orders that are paid' do
       admin   = create(:admin)
@@ -97,7 +97,7 @@ describe 'Admin' do
       visit admin_dashboard_path
       click_on 'Mark as Completed'
 
-      expect(paid.status).to eq('completed')
+      expect(Order.find(paid.id).status).to eq('completed')
     end
   end
 end

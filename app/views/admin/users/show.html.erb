@@ -48,11 +48,11 @@
         <td><%= order.created_at %></td>
         <td><%= order.status %></td>
         <td>
-          <% if order.status == "paid" || "ordered" %>
+          <% if order.status.include?("ordered") || order.status.include?("paid") %>
             <%= form_for order do |f| %>
               <%= f.hidden_field :status %>
               <%= hidden_field_tag :status, "cancelled" %>
-              <%= f.submit "cancel" %>
+              <%= f.submit "Cancel" %>
             <% end %>
           <% end %>
         </td>

@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
 
   def update
     @order.update(status: params[:status])
+    redirect_to admin_dashboard_path
   end
 
   private
