@@ -2,17 +2,21 @@
 <p>There are <%= @stations.total_stations %> bike share stations</p>
 <p>Average bikes per station: <%= @stations.average_bikes%></p>
 <p>The most bikes available at any station: <%= @stations.most_bikes %></p>
-<p>The station with the most bikes available:
+<p>The station(s) with the most bikes available:
   <ul>
     <% @stations.most_station.each do |s| %>
       <li><%= s.name %> (<%= s.dock_count %>)</li>
     <% end %>
   </ul>
 </p>
-<p>The station with the fewest bikes available:
+<p>The fewest bikes available at any station: <%= @stations.fewest_bikes %></p>
+
+<p>The station(s) with the fewest bikes available:
   <ul>
     <% @stations.fewest_station.each do |s| %>
       <li><%= s.name %> (<%= s.dock_count %>)</li>
     <% end %>
   </ul>
 </p>
+<p>The newest staton is <%= @stations.newest_station.name %> - Installed: <%= format_date(@stations.newest_station.installation_date) %></p>
+<p>The oldest staton is <%= @stations.oldest_station.name %> - Installed: <%= format_date(@stations.oldest_station.installation_date) %></p>
