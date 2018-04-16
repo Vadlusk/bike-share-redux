@@ -33,4 +33,8 @@ class Station < ApplicationRecord
   def self.fewest_bikes
     minimum(:dock_count)
   end
+
+  def self.most_station
+    "#{order(:dock_count).last.name} #{most_bikes}"
+  end
 end
