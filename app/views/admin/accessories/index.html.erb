@@ -12,6 +12,11 @@
       <td><a href="/accessories/<%= a.id %>"><%= a.title %></a></td>
       <td><%= a.status %></td>
       <td><%= a.description %></td>
+      <td>
+        <div class="table-buttons">
+          <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_admin_accessory_path(a) %>
+        </div>
+      </td>
     </tr>
   <% end %>
 </table>
