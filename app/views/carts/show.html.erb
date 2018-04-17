@@ -10,19 +10,16 @@
   </main>
 <% else %>
   <% @accessories.each do |accessory| %>
-    <%= accessory.title %>
+    <%= link_to "#{accessory.title}", accessory_path(accessory) %>
     <%= number_to_currency(accessory.price) %>
     <img src="<%= accessory.image_url %>" alt="" class="accessory_image">
     Quantity: <%= @cart.contents[accessory.id.to_s] %>
-
-
 
     <div class="table-buttons">
       <%= link_to '<i class="fas fa-plus-square"></i>'.html_safe, cart_path(@cart, accessory_id: accessory.id, delta: 'increase'), method: :put %>
       <%= link_to '<i class="fas fa-minus-square"></i>'.html_safe, cart_path(@cart, accessory_id: accessory.id, delta: 'decrease'), method: :put %>
       <%= link_to "Remove", cart_path(@cart, accessory_id: accessory.id), method: :delete %>
     </div>
-
 
     <br>
   <% end %>
