@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'visitor' do
-  scenario 'visitor sees all stations on stations index' do
+  scenario 'sees all stations on stations index' do
     stations = create_list(:station, 3)
 
     visit stations_path

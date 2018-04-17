@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe 'user' do
+describe 'admin' do
   context 'as an admin' do
     it 'sees delete button in station show' do
       station = create(:station)
-      admin = create(:admin)
+      admin   = create(:admin)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -15,7 +15,7 @@ describe 'user' do
 
     it 'does not show delete button to non-admin' do
       station = create(:station)
-      user = create(:user)
+      user    = create(:user)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -26,8 +26,7 @@ describe 'user' do
 
     it 'admin can delete a station by clicking button' do
       station = create(:station)
-
-      admin = create(:admin)
+      admin   = create(:admin)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -39,6 +38,5 @@ describe 'user' do
       expect(page).to have_content("You deleted the station successfully.")
       expect(page).to_not have_content(station.name)
     end
-
   end
 end

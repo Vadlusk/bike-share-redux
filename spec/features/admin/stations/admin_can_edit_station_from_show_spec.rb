@@ -13,7 +13,7 @@ describe 'admin' do
 
       expect(page).to have_css(".card-buttons")
     end
-    it 'does not show edit button to non-admin on station show' do
+    it 'does not show edit button to visitor on station show' do
       station = create(:station)
       user    = create(:user)
 
@@ -28,7 +28,6 @@ describe 'admin' do
       station = create(:station)
       user    = create(:user)
       trips   = create_list(:trip, 10, start_station_id: station.id, end_station_id: station.id)
-
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit station_path(station)
