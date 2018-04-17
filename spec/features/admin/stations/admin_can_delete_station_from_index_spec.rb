@@ -1,10 +1,9 @@
 require 'rails_helper'
 
-describe 'user' do
+describe 'admin' do
   context 'as an admin' do
     it 'sees delete button in station index' do
       create_list(:station, 10)
-
       admin = create(:admin)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
@@ -16,8 +15,9 @@ describe 'user' do
 
     it 'does not show delete button to non-admin' do
       create_list(:station, 10)
-
-      user = create(:user)
+      station = create(:station)
+      trips   = create_list(:trip, 10, start_station_id: station.id, end_station_id: station.id)
+      user    = create(:user)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -26,11 +26,11 @@ describe 'user' do
       expect(page).to_not have_css(".table-buttons")
     end
 
-    it 'admin can delete a station by clicking button' do
+    it 'can delete a station by clicking button' do
       create_list(:station, 10)
       station = create(:station, name: 'Grrblllball')
-
-      admin = create(:admin)
+      trips   = create_list(:trip, 20, start_station_id: station.id, end_station_id: station.id)
+      admin   = create(:admin)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 

@@ -2,6 +2,7 @@
   <div class="header-title">
     <h6>
       <%= @station.name %>
+    </h6>
   </div>
 </header>
 <main>
@@ -20,4 +21,21 @@
       <% end %>
     </div>
   </div>
+  <% if current_user && @station.start_trips.count >= 1 %>
+    <div class="card-container">
+      <div class="card-info" id="station-show">
+        <p>Rides started at this station: <%= @station.num_rides_started %></p>
+          <% if current_user && @station.end_trips.count >= 1 %>
+            <p>Rides ended at this station: <%= @station.num_rides_ended %></p>
+          <% end %>
+        <p>Most frequent destination from this station: <%= @station.frequent_destination %></p>
+          <% if current_user && @station.end_trips.count >= 1 %>
+            <p>Most frequent origination to this station: <%= @station.frequent_origination %></p>
+          <% end %>
+        <p>Busiest date: <%= @station.busiest_date %></p>
+        <p>Most frequent zip code for users at this station: <%= @station.busiest_zip_code %></p>
+        <p>Busiest bike id for this station: <%= @station.busiest_bike %></p>
+      </div>
+    </div>
+  <% end %>
 </main>
