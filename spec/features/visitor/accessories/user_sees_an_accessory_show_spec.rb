@@ -20,7 +20,7 @@ describe 'visitor' do
     expect(page).to have_content('(0)')
 
     click_on 'Add to Cart'
-    save_and_open_page
+
     within ('.alert-success') do
       expect(page).to have_content("You've added 1 #{accessory.title} to your cart")
     end
