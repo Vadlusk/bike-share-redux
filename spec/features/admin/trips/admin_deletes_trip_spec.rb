@@ -12,7 +12,6 @@ describe 'Admin' do
       within(".table-buttons") do
         find(:xpath, ".//a[i[contains(@class, 'far fa-trash-alt')]]").click
       end
-      save_and_open_page
 
       expect(current_path).to eq(trips_path)
       expect(page).to have_content('Successfully deleted trip')

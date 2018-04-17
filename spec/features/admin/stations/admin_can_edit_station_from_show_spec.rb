@@ -10,7 +10,7 @@
 
           visit station_path(station)
 
-          expect(page).to have_css(".table-buttons")
+          expect(page).to have_css(".card-buttons")
         end
 
         it 'does not show edit button to non-admin on station show' do
@@ -21,7 +21,7 @@
 
           visit station_path(station)
 
-          expect(page).to_not have_css(".table-buttons")
+          expect(page).to_not have_css(".card-buttons")
         end
 
         it 'admin can get to station edit page by clicking button' do
@@ -33,7 +33,7 @@
 
           visit station_path(station)
 
-          find(:xpath, ".//a[i[contains(@class, 'far fa-edit')]]").click
+          find(:xpath, ".//a[i[contains(@class, 'fas fa-edit')]]").click
 
           expect(current_path).to eq(edit_admin_station_path(station))
         end

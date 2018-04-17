@@ -10,7 +10,7 @@ describe 'user' do
 
       visit station_path(station)
 
-      expect(page).to have_css(".table-buttons")
+      expect(page).to have_css(".card-buttons")
     end
 
     it 'does not show delete button to non-admin' do
@@ -21,7 +21,7 @@ describe 'user' do
 
       visit station_path(station)
 
-      expect(page).to_not have_css(".table-buttons")
+      expect(page).to_not have_css(".card-buttons")
     end
 
     it 'admin can delete a station by clicking button' do
@@ -33,7 +33,7 @@ describe 'user' do
 
       visit station_path(station)
 
-      find(:xpath, ".//a[i[contains(@class, 'far fa-trash-alt')]]").click
+      find(:xpath, ".//a[i[contains(@class, 'fas fa-trash-alt')]]").click
 
       expect(current_path).to eq(stations_path)
       expect(page).to have_content("You deleted the station successfully.")
