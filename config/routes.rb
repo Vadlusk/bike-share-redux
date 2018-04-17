@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :accessories, only: [:show]
   resources :orders, only: [:create, :show, :update]
   resources :stationsdashboard, only: [:index]
+  resources :user, only: [:edit, :update]
 
   get '/stations-dashboard', to: 'stations_dashboard#index'
 
