@@ -181,6 +181,7 @@ div.station_show
   margin: 20px 0px
   display: flex
   justify-content: center
+  max-width: 95%
 
 table
   margin: 5px 10px
@@ -225,36 +226,6 @@ table
 
       a
         font-size: 15px
-
-  .dashboard-section
-    display: flex
-    justify-content: space-around
-    align-content: center
-    flex-flow: row nowrap
-    margin: 20px
-
-    .dashboard-info
-      display: flex
-      align-self: center
-      flex-flow: column nowrap
-      background-color: lightgrey
-      max-width: 350px
-      min-width: 250px
-      margin: 35px 20px 20px 20px
-      padding: 20px
-      border-radius: 10px
-      border: .5px solid black
-
-      h1
-        font-size: 20px
-        text-align: center
-        padding: 10px 0px 10px 0px
-        margin-bottom: 20px
-        border-bottom: 1px solid black
-
-      h3
-        font-size: 15px
-        margin: 5px 0px 5px 0px
 
 .accessories
   display: flex
@@ -347,7 +318,16 @@ table
       h3
         font-size: 15px
         margin: 0px 0px 0px 0px
+        line-height: 1.5em
 
       h4
         font-size: 20px
         margin-top: 10px
+
+.table-buttons
+  display: flex
+  flex-flow: row nowrap
+
+  a
+    padding: 0px 10px 0px 10px
+    font-size: 20px
