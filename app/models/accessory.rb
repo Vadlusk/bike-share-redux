@@ -1,6 +1,11 @@
 class Accessory < ApplicationRecord
-  validates_presence_of :title, :description
+  validates_presence_of :title, :description, :price
+  validates_uniqueness_of :title
+  validates_numericality_of :price, greater_than_or_equal_to: 0
+
   has_many :order_accessories, dependent: :destroy
+  has_many :order_accessories
+
   enum status: ['active', 'retired']
 
   def active?
@@ -10,13 +15,5 @@ class Accessory < ApplicationRecord
 
   def subtotal(count_in_cart)
     price * count_in_cart
-  end
-
-  def activate
-    self.status = 0
-  end
-
-  def deactivate
-    self.status = 1
   end
 end
