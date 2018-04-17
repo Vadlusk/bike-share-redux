@@ -18,6 +18,17 @@ class Station < ApplicationRecord
     slug
   end
 
+  def num_rides_started
+    Trip.where(start_station_id: id).count
+  end
+
+  def num_rides_ended
+    Trip.where(end_station_id: id).count
+  end
+
+  def frequent_destination
+  end
+
   def self.total_stations
     count
   end
