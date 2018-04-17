@@ -5,38 +5,38 @@
     <h6>
   </div>
 </header>
-    <main>
-      <div class="card-container">
-        <div class="dashboard-section">
-          <div class="dashboard-info duration">
-            <h1>Duration</h1>
-            <h3>Average Trip Duration: <%= @trips.average_duration %> centuries</h3>
-          </div>
-          <div class="dashboard-info longest-trip">
-            <h1>Longest Trip</h1>
-            <h3>Trip #: <%= @trips.longest_ride.id %></h3></br>
-            <h3>Duration: <%= @trips.longest_ride.duration %></h3>
-          </div>
-          <div class="dashboard-info average_rides_by_temperature">
-            <h1>Shortest Trip</h1>
-            <h3>Trip #: <%= @trips.shortest_ride.id %></h3></br>
-            <h3>Duration: <%= @trips.shortest_ride.duration %></h3>
-          </div>
-        </div>
+<main>
+  <div class="card-container">
+    <div class="dashboard-section">
+      <div class="dashboard-info duration">
+        <h1>Duration</h1>
+        <h3>Average Trip Duration: <%= @trips.average_duration %> centuries</h3>
+      </div>
+      <div class="dashboard-info longest-trip">
+        <h1>Longest Trip</h1>
+        <h3>Trip #: <%= @trips.longest_ride.id %></h3></br>
+        <h3>Duration: <%= @trips.longest_ride.duration %></h3>
+      </div>
+      <div class="dashboard-info average_rides_by_temperature">
+        <h1>Shortest Trip</h1>
+        <h3>Trip #: <%= @trips.shortest_ride.id %></h3></br>
+        <h3>Duration: <%= @trips.shortest_ride.duration %></h3>
+      </div>
+    </div>
 
-        <div class="dashboard-section">
-          <div class="dashboard-info busiest-station">
-            <h1>Busiest Stations</h1>
-            <h3>Starting Station: Station #<%= @trips.busiest_starting_station.id %></h3></br>
-            <h3>Ending Station: Station #<%= @trips.busiest_ending_station.id %>
-          </div>
-          <div class="dashboard-info yearly-breakout">
-            <h1>Yearly Ride Counts</h1>
-            <% @trips.yearly_ride_count.each do |year_data| %>
-              <h3><%= "#{year_data.year.strftime('%Y')} Rides: #{year_data.count}" %></h3></br>
-            <% end %>
-          </div>
-        </div>
+    <div class="dashboard-section">
+      <div class="dashboard-info busiest-station">
+        <h1>Busiest Stations</h1>
+        <h3>Starting Station: Station #<%= @trips.busiest_starting_station.id %></h3></br>
+        <h3>Ending Station: Station #<%= @trips.busiest_ending_station.id %>
+      </div>
+      <div class="dashboard-info yearly-breakout">
+        <h1>Yearly Ride Counts</h1>
+        <% @trips.yearly_ride_count.each do |year_data| %>
+          <h3><%= "#{year_data.year.strftime('%Y')} Rides: #{year_data.count}" %></h3></br>
+        <% end %>
+      </div>
+    </div>
 
     <div class="dashboard-section">
       <div class="dashboard-info bike">
