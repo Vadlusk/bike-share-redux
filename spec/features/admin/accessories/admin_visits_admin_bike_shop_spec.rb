@@ -9,7 +9,7 @@ describe 'admin' do
 
       visit admin_dashboard_path
 
-      click_on 'Bike Shop'
+      click_on 'All Accessories'
 
       expect(current_path).to eq('/admin/bike-shop')
     end
