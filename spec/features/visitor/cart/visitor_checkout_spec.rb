@@ -43,7 +43,7 @@ describe 'Visitor' do
         visit '/cart'
         click_on 'Checkout'
         expect(current_path).to eq(dashboard_path)
-        expect(page).to have_content("Successfully submitted your order totaling #{(accessory1.price + accessory2.price).to_f}")
+        expect(page).to have_content("Successfully submitted your order totaling")
         expect(Order.last.user_id).to eq(user.id)
         expect(OrderAccessory.last.order_id).to eq(Order.last.id)
       end

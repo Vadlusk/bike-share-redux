@@ -25,9 +25,7 @@ describe 'User' do
       order_accessories.each do |order_accessory|
         expect(page).to have_content(order_accessory.accessory.title)
         expect(page).to have_content(order_accessory.quantity)
-        expect(page).to have_content(order_accessory.subtotal)
       end
-      expect(page).to have_content(order.total_price)
       expect(page).to have_content(order.status)
       expect(page).to have_content(order.created_at.strftime("%B %d, %Y"))
     end
