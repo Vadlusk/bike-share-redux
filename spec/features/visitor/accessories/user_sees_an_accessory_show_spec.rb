@@ -21,7 +21,7 @@ describe 'visitor' do
 
     click_on 'Add to Cart'
 
-    within ('#notice') do
+    within ('.alert-success') do
       expect(page).to have_content("You've added 1 #{accessory.title} to your cart")
     end
 
@@ -30,7 +30,7 @@ describe 'visitor' do
     visit accessory_path(accessory)
     click_on 'Add to Cart'
 
-    within ('#notice') do
+    within ('.alert-success') do
       expect(page).to have_content("You've added 2 #{accessory.title}s to your cart")
     end
 

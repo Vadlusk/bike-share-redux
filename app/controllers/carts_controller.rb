@@ -25,10 +25,13 @@ class CartsController < ApplicationController
   def update
     accessory = Accessory.find(params[:accessory_id])
     if params[:delta] == 'increase'
+      flash[:success] = "You've added another #{accessory.title} to your cart"
       @cart.increment_accessory(params[:accessory_id])
     elsif params[:delta] == 'decrease'
       @cart.decrement_accessory(params[:accessory_id])
-      unless @cart.contents.keys.include?(params[:accessory_id])
+      if @cart.contents.keys.include?(params[:accessory_id])
+        flash[:success] = "You've removed a #{accessory.title} from your cart"
+      else
         flash[:success] = %Q(Successfully removed #{view_context.link_to(accessory.title, accessory_path(accessory))} from your cart)
       end
     end
