@@ -44,6 +44,7 @@ describe 'Admin' do
       expect(page).to_not have_content(trip.subscription_type)
       expect(page).to_not have_content(trip.zip_code)
     end
+    
     it 'is not possible with incorrect use of fields' do
       admin = create(:admin)
       trip  = create(:trip)

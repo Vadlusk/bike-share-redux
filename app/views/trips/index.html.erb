@@ -36,15 +36,14 @@
         <td><%= trip.bike_id %></td>
         <td><%= trip.subscription_type %></td>
         <td><%= trip.zip_code %></td>
-          <% if current_admin? %>
-            <td>
-              <div class="table-buttons">
-                <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_admin_trip_path(trip) %>
-                <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, method: :delete, data: { confirm: "Are you sure? You will permanently delete this trip."} %>
-              </div>
-            </td>
-          <% end %>
-        </td>
+        <% if current_admin? %>
+          <td>
+            <div class="table-buttons">
+              <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_admin_trip_path(trip) %>
+              <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, method: :delete, data: { confirm: "Are you sure? You will permanently delete this trip."} %>
+            </div>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </table>

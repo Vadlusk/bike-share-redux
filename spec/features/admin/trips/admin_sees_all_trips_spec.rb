@@ -9,8 +9,10 @@ describe 'Admin' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       visit trips_path
 
-      expect(page).to have_link('Delete')
-      expect(page).to have_link('Edit')
+      within(".table-buttons") do
+        expect(page).to have_xpath(".//a[i[contains(@class, 'far fa-trash-alt')]]")
+        expect(page).to have_xpath(".//a[i[contains(@class, 'far fa-edit')]]")
+      end
     end
   end
 end

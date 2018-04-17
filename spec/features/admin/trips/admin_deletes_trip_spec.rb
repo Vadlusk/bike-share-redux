@@ -9,7 +9,9 @@ describe 'Admin' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       visit trips_path
 
-      click_on 'Delete'
+      within(".table-buttons") do
+        find(:xpath, ".//a[i[contains(@class, 'far fa-trash-alt')]]").click
+      end
 
       expect(current_path).to eq(trips_path)
       expect(page).to have_content('Successfully deleted trip')
