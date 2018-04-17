@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 20180415172546) do
     t.string "zip_code"
   end
 
-<<<<<<< HEAD
   create_table "order_accessories", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "order_id"
@@ -69,20 +68,13 @@ ActiveRecord::Schema.define(version: 20180415172546) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-=======
->>>>>>> Update schema after new migrations
   create_table "stations", force: :cascade do |t|
     t.string "name"
     t.integer "dock_count"
     t.string "city"
     t.datetime "installation_date"
-<<<<<<< HEAD
     t.float "lat"
     t.float "long"
-=======
-    t.float "latitude"
-    t.float "longitude"
->>>>>>> Update schema after new migrations
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
