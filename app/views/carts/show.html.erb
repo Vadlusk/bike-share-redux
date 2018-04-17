@@ -46,14 +46,12 @@
     <% end %>
   </table>
   <div class="cart-total">
-    <h3>Total</h3>
-    Total: <%= number_to_currency(@cart.total_price) %>
-
+    <h3>Total: <%= number_to_currency(@cart.total_price) %></h3>
     <% if current_user %>
-    <%= link_to "Checkout", orders_path(user_id: current_user.id, cart_items: @cart.contents), method: :post %>
+      <%= button_to "Checkout", orders_path(user_id: current_user.id, cart_items: @cart.contents), method: :post %>
     <% else %>
-    <%= link_to "Checkout", login_path %>
-    <% end %>
+      <%= button_to "Checkout", login_path %>
     <% end %>
   </div>
+  <% end %>
 </div>
