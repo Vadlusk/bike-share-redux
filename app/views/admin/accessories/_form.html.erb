@@ -1,0 +1,21 @@
+<%= form_for [:admin, @accessory] do |f| %>
+  <%= f.label :title  %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description  %>
+  <%= f.text_area :description %>
+
+  <%= f.label :status  %>
+  <%= f.select :status, ['active', 'retired'] %>
+
+  <%= f.label :price  %>
+  <%= f.number_field :price, :step => 0.01%>
+
+  <%= f.label :image_url  %>
+  <%= f.text_field :image_url, value: 'http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png' %>
+
+  <div class="cancel-submit">
+    <%= link_to "Cancel", admin_bike_shop_path, class: 'btn btn-outline-light' %>
+    <%= f.submit class: 'btn btn-outline-light' %>
+  </div>
+<% end %>

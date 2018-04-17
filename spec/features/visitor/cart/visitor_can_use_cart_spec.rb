@@ -5,10 +5,10 @@ describe 'Visitor' do
   context 'a visitor goes to the cart page' do
     it 'displays all added accessories' do
       accessory1 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
-      accessory2 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
-      accessory3 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
-      accessory4 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
-      accessory5 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+      accessory2 = Accessory.create!(title: "help2", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+      accessory3 = Accessory.create!(title: "help3", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+      accessory4 = Accessory.create!(title: "help4", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+      accessory5 = Accessory.create!(title: "help5", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
 
       accessories = [accessory1, accessory2, accessory3, accessory4, accessory5]
       visit bike_shop_path
@@ -41,10 +41,10 @@ describe 'Visitor' do
     end
     it 'creates account and cart persists' do
       accessory1 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
-      accessory2 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
-      accessory3 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
-      accessory4 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
-      accessory5 = Accessory.create!(title: "help", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+      accessory2 = Accessory.create!(title: "help2", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+      accessory3 = Accessory.create!(title: "help3", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+      accessory4 = Accessory.create!(title: "help4", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+      accessory5 = Accessory.create!(title: "help5", description: "Bad", price: 10, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
 
       accessories = [accessory1, accessory2, accessory3, accessory4, accessory5]
 
