@@ -142,7 +142,7 @@ describe Station do
         trips_1 = create_list(:trip, 18, start_station_id: station.id, end_station_name: 'Good')
         trips_2 = create_list(:trip, 2, start_station_id: station.id, end_station_name: 'Bad')
 
-        expect(station.frequent_destination).to eq('Good')
+        expect(station.frequent_destination.end_station_name).to eq('Good')
       end
     end
     describe '#frequent_origination' do
@@ -151,16 +151,16 @@ describe Station do
         trips_1 = create_list(:trip, 18, end_station_id: station.id, start_station_name: 'Good')
         trips_2 = create_list(:trip, 2, end_station_id: station.id, start_station_name: 'Bad')
 
-        expect(station.frequent_origination).to eq('Good')
+        expect(station.frequent_origination.start_station_name).to eq('Good')
       end
     end
     describe '#busiest_date' do
       it 'shows the date with the highest number of trips started at this station' do
         station = create(:station)
         trips_1 = create_list(:trip, 18, start_station_id: station.id, start_date: '1/1/2009')
-        trips_2 = create_list(:trip, 2, start_station_id: station.id, start_station_name: '1/2/2008')
+        trips_2 = create_list(:trip, 2, start_station_id: station.id, start_date: '1/2/2008')
 
-        expect(station.busiest_date).to eq('1/1/2009')
+        expect(station.busiest_date.start_date).to eq('1/1/2009')
       end
     end
     describe '#busiest_zip_code' do
@@ -169,7 +169,7 @@ describe Station do
         trips_1 = create_list(:trip, 18, start_station_id: station.id, zip_code: '12345')
         trips_2 = create_list(:trip, 2, start_station_id: station.id, zip_code: '11111')
 
-        expect(station.busiest_zip_code).to eq('12345')
+        expect(station.busiest_zip_code.zip_code).to eq(12345)
       end
     end
     describe '#busiest_bike' do
@@ -178,7 +178,7 @@ describe Station do
         trips_1 = create_list(:trip, 18, start_station_id: station.id, bike_id: 5)
         trips_2 = create_list(:trip, 2, start_station_id: station.id, bike_id: 1)
 
-        expect(station.busiest_bike).to eq(5)
+        expect(station.busiest_bike.bike_id).to eq(5)
       end
     end
   end

@@ -19,14 +19,46 @@ class Station < ApplicationRecord
   end
 
   def num_rides_started
-    Trip.where(start_station_id: id).count
+    starting_trips.count
   end
 
   def num_rides_ended
-    Trip.where(end_station_id: id).count
+    ending_trips.count
   end
 
   def frequent_destination
+    starting_trips.select('end_station_name, count(end_station_name) as count')
+    .group('end_station_name')
+    .order('count DESC')
+    .first
+  end
+
+  def frequent_origination
+    ending_trips.select('start_station_name, count(start_station_name) as count')
+    .group('start_station_name')
+    .order('count DESC')
+    .first
+  end
+
+  def busiest_date
+    starting_trips.select('start_date, count(start_date) as count')
+    .group('start_date')
+    .order('count DESC')
+    .first
+  end
+
+  def busiest_zip_code
+    starting_trips.select('zip_code, count(zip_code) as count')
+    .group('zip_code')
+    .order('count DESC')
+    .first
+  end
+
+  def busiest_bike
+    starting_trips.select('bike_id, count(bike_id) as count')
+    .group('bike_id')
+    .order('count DESC')
+    .first
   end
 
   def self.total_stations
@@ -46,18 +78,28 @@ class Station < ApplicationRecord
   end
 
   def self.most_station
-    Station.where(dock_count: most_bikes)
+    where(dock_count: most_bikes)
   end
 
   def self.fewest_station
-    Station.where(dock_count: fewest_bikes)
+    where(dock_count: fewest_bikes)
   end
 
   def self.newest_station
-    Station.order(:installation_date).last
+    order(:installation_date).last
   end
 
   def self.oldest_station
-    Station.order(:installation_date).first
+    order(:installation_date).first
   end
+
+  private
+
+    def starting_trips
+      Trip.where(start_station_id: id)
+    end
+
+    def ending_trips
+      Trip.where(end_station_id: id)
+    end
 end
