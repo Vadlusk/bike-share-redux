@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'user' do
+describe 'admin' do
   context 'as an admin' do
     it 'can create a new station' do
       admin = create(:admin)

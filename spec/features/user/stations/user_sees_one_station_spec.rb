@@ -21,19 +21,19 @@ describe 'User' do
       expect(page).to have_content("Rides ended at this station: #{@station.num_rides_ended}")
     end
     it 'shows the most frequent destination station for rides that began at this station' do
-      expect(page).to have_content("Most frequent destination from this station: #{@station.frequent_destination.end_station_name}")
+      expect(page).to have_content("Most frequent destination from this station: #{@station.frequent_destination}")
     end
     it 'shows the most frequent origination station for rides that ended at this station' do
-      expect(page).to have_content("Most frequent origination to this station: #{@station.frequent_origination.start_station_name}")
+      expect(page).to have_content("Most frequent origination to this station: #{@station.frequent_origination}")
     end
     it 'shows the date with the highest number of trips started at this station' do
-      expect(page).to have_content("Busiest date: #{@station.busiest_date.start_date}")
+      expect(page).to have_content("Busiest date: #{@station.busiest_date}")
     end
     it 'shows the most frequent zip code for users starting trips at this station' do
-      expect(page).to have_content("Most frequent zip code for users at this station: #{@station.busiest_zip_code.zip_code}")
+      expect(page).to have_content("Most frequent zip code for users at this station: #{@station.busiest_zip_code}")
     end
     it 'shows the bike ID most frequently starting a trip at this station' do
-      expect(page).to have_content("Busiest bike id for this station: #{@station.busiest_bike.bike_id}")
+      expect(page).to have_content("Busiest bike id for this station: #{@station.busiest_bike}")
     end
   end
 end

@@ -10,6 +10,9 @@ class Station < ApplicationRecord
   validates :lat, :inclusion => -90..90
   validates :long, :inclusion => -180..180
 
+  has_many :start_trips, class_name: "Trip", foreign_key: "start_station_id"
+  has_many :end_trips, class_name: "Trip", foreign_key: "end_station_id"
+
   def generate_slug
     self.slug = name.parameterize
   end
@@ -19,46 +22,51 @@ class Station < ApplicationRecord
   end
 
   def num_rides_started
-    starting_trips.count
+    start_trips.count
   end
 
   def num_rides_ended
-    ending_trips.count
+    end_trips.count
   end
 
   def frequent_destination
-    starting_trips.select('end_station_name, count(end_station_name) as count')
+    start_trips.select('end_station_name, count(end_station_name) as count')
     .group('end_station_name')
     .order('count DESC')
     .first
+    .end_station_name
   end
 
   def frequent_origination
-    ending_trips.select('start_station_name, count(start_station_name) as count')
+    end_trips.select('start_station_name, count(start_station_name) as count')
     .group('start_station_name')
     .order('count DESC')
     .first
+    .start_station_name
   end
 
   def busiest_date
-    starting_trips.select('start_date, count(start_date) as count')
+    start_trips.select('start_date, count(start_date) as count')
     .group('start_date')
     .order('count DESC')
     .first
+    .start_date
   end
 
   def busiest_zip_code
-    starting_trips.select('zip_code, count(zip_code) as count')
+    start_trips.select('zip_code, count(zip_code) as count')
     .group('zip_code')
     .order('count DESC')
     .first
+    .zip_code
   end
 
   def busiest_bike
-    starting_trips.select('bike_id, count(bike_id) as count')
+    start_trips.select('bike_id, count(bike_id) as count')
     .group('bike_id')
     .order('count DESC')
     .first
+    .bike_id
   end
 
   def self.total_stations
@@ -92,14 +100,4 @@ class Station < ApplicationRecord
   def self.oldest_station
     order(:installation_date).first
   end
-
-  private
-
-    def starting_trips
-      Trip.where(start_station_id: id)
-    end
-
-    def ending_trips
-      Trip.where(end_station_id: id)
-    end
 end
