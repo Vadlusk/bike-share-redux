@@ -20,6 +20,22 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
   end
 
+  def edit
+    @user = User.find(session[:user_id])
+  end
+
+  def update
+    @user = User.find(session[:user_id])
+    @user.update(user_params)
+    if @user.save
+      flash.notice = 'This user has been updated.'
+      redirect_to dashboard_path
+    else
+      flash.notice = 'This user has NOT been updated.'
+      render :edit
+    end
+  end
+
   private
     def user_params
       params.require(:user).permit(:username, :password, :password_confirmation, :email)

@@ -68,6 +68,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "Dashboard", admin_dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Edit Account", edit_user_path(current_user), class: "dropdown-item" %>
             </div>
           </li>
           <li><%= link_to "Logout", logout_path, class: "nav-link" %></li>
