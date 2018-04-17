@@ -26,10 +26,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/bike-shop', to: 'accessories#index'
-    get '/dashboard',            to: 'users#show'
+    get '/dashboard', to: 'users#show'
     resources :stations, only: [:update, :edit, :destroy, :new, :create]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :trips, only: [:new, :create, :edit, :show, :update, :destroy]
-    resources :accessories, only: [:index]
+    resources :accessories, only: [:new, :create, :edit, :index, :update]
   end
 end
