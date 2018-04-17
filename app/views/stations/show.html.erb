@@ -13,15 +13,9 @@
       <h3>Latitude: </h3><p><%= @station.lat %>°</p>
       <h3>Longitude: </h3><p><%= @station.long %>°</p>
       <% if current_admin? %>
-<<<<<<< HEAD
           <div class="card-buttons">
             <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_admin_station_path(@station) %>
             <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, admin_station_path(@station), method: :delete, data: { confirm: "Are you sure? You will permanently delete this station."} %>
-=======
-          <div class="table-buttons">
-            <%= link_to '<i class="far fa-edit"></i> Edit Station'.html_safe, edit_admin_station_path(@station) %>
-            <%= link_to '<i class="far fa-trash-alt"></i> Delete Station'.html_safe, admin_station_path(@station), method: :delete, data: { confirm: "Are you sure? You will permanently delete this station."} %>
->>>>>>> Align styling on edit and delete buttons for show pages
           </div>
       <% end %>
     </div>
