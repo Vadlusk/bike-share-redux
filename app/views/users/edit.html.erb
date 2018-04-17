@@ -1,3 +1,15 @@
-<main>
-  <%= render partial: "form" %>
-</main>
+<%= form_for @user do |f| %>
+  <%= f.label :username  %>
+  <%= f.text_field :username %>
+
+  <%= f.label :email  %>
+  <%= f.email_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <div class="cancel-submit">
+    <%= link_to "Cancel", dashboard_path, class: 'btn btn-outline-light' %>
+    <%= f.submit class: 'btn btn-outline-light' %>
+  </div>
+<% end %>

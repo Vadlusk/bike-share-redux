@@ -30,7 +30,7 @@ describe 'Visitor' do
       fill_in 'user[password]', with: password
       fill_in 'user[password_confirmation]', with: password
       fill_in 'user[email]', with: email
-      click_on "Create Account"
+      click_on "Create User"
 
       expect(current_path).to eq(dashboard_path)
 
@@ -56,7 +56,7 @@ describe 'Visitor' do
       fill_in 'user[password]', with: password
       fill_in 'user[password_confirmation]', with: password
       fill_in 'user[email]', with: email
-      click_on "Create Account"
+      click_on "Create User"
 
       expect(current_path).to eq(register_path)
       expect(page).to have_content("Failed to create new account. Please try again.")
@@ -76,7 +76,7 @@ describe 'Visitor' do
       fill_in 'user[password]', with: password
       fill_in 'user[password_confirmation]', with: password
       fill_in 'user[email]', with: user.email
-      click_on "Create Account"
+      click_on "Create User"
 
       expect(current_path).to eq(register_path)
       expect(page).to have_content("Failed to create new account. Please try again.")
@@ -97,7 +97,7 @@ describe 'Visitor' do
       fill_in 'user[password]', with: password
       fill_in 'user[password_confirmation]', with: password_2
       fill_in 'user[email]', with: email
-      click_on "Create Account"
+      click_on "Create User"
 
       expect(current_path).to eq(register_path)
       expect(page).to have_content("Failed to create new account. Please try again.")
