@@ -1,8 +1,0 @@
-<%= form_for [:admin, @accessory] do |f| %>
-  <%= f.label :status  %>
-  <%= f.select :status, ['active', 'retired'] %>
-
-  <div class="cancel-submit">
-    <%= f.submit class: 'btn btn-outline-light' %>
-  </div>
-<% end %>
