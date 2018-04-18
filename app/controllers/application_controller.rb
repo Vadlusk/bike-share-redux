@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :current_admin?
   before_action :set_cart
 
+  rescue_from ActiveRecord::RecordNotFound, with: :error
+  rescue_from NoMethodError, with: :error
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
@@ -13,5 +16,9 @@ class ApplicationController < ActionController::Base
 
   def set_cart
     @cart ||= Cart.new(session[:cart])
+  end
+
+  def error
+    render file: '/public/404'
   end
 end

@@ -50,7 +50,7 @@
     <% if current_user %>
       <%= button_to "Checkout", orders_path(user_id: current_user.id, cart_items: @cart.contents), method: :post %>
     <% else %>
-      <%= button_to "Checkout", login_path %>
+      <%= button_to "Checkout", login_path, method: :get %>
     <% end %>
   </div>
   <% end %>

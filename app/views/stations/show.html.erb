@@ -21,7 +21,7 @@
       <% end %>
     </div>
   </div>
-  <% if current_user && @station.start_trips.count >= 1 %>
+  <% if @station.start_trips.count >= 1 %>
     <div class="card-container">
       <div class="card-info" id="station-show">
         <p>Rides started at this station: <%= @station.num_rides_started %></p>
