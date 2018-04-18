@@ -8,10 +8,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "New account created successfully"
+      flash[:success] = "Created a new account"
       redirect_to dashboard_path
     else
-      flash.now[:error] = "Failed to create new account. Please try again."
+      flash.now[:error] = "Failed to create a new account"
       render :new
     end
   end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       flash.notice = 'This user has been updated.'
       redirect_to dashboard_path
     else
-      flash.notice = 'This user has NOT been updated.'
+      flash.notice = 'Failed to update account information'
       render :edit
     end
   end

@@ -59,7 +59,7 @@ describe 'Visitor' do
       click_on "Create User"
 
       expect(current_path).to eq(register_path)
-      expect(page).to have_content("Failed to create new account. Please try again.")
+      expect(page).to have_content("Failed to create a new account")
     end
 
     it 'but cannot create an account if provided email already exists in database' do
@@ -79,7 +79,7 @@ describe 'Visitor' do
       click_on "Create User"
 
       expect(current_path).to eq(register_path)
-      expect(page).to have_content("Failed to create new account. Please try again.")
+      expect(page).to have_content("Failed to create a new account")
     end
 
     it 'but cannot create an account if password and password confirmation fields do not match' do
@@ -100,7 +100,7 @@ describe 'Visitor' do
       click_on "Create User"
 
       expect(current_path).to eq(register_path)
-      expect(page).to have_content("Failed to create new account. Please try again.")
+      expect(page).to have_content("Failed to create a new account")
     end
   end
 end

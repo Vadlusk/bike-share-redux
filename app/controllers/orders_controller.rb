@@ -33,6 +33,6 @@ class OrdersController < ApplicationController
 
     def require_correct_user
       return render file: 'public/404' if current_user.nil?
-      render file: 'public/404' unless current_user.id == @order.id || current_admin?
+      render file: 'public/404' unless current_user.id == @order.user_id || current_admin?
     end
 end
