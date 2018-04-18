@@ -25,6 +25,13 @@ Trip.destroy_all
 Condition.destroy_all
 Accessory.destroy_all
 User.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!(:stations)
+ActiveRecord::Base.connection.reset_pk_sequence!(:conditions)
+ActiveRecord::Base.connection.reset_pk_sequence!(:users)
+ActiveRecord::Base.connection.reset_pk_sequence!(:accessories)
+ActiveRecord::Base.connection.reset_pk_sequence!(:trips)
+ActiveRecord::Base.connection.reset_pk_sequence!(:order_accessories)
+ActiveRecord::Base.connection.reset_pk_sequence!(:orders)
 
 def zip_cleaner(zip)
   if zip
@@ -52,9 +59,9 @@ CSV.foreach('db/csv/weather.csv', headers: true) do |row|
   Condition.create!(row.to_h)
 end
 
-Accessory.create!(title: "Helmet", description: "Protects your noggin", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
-Accessory.create!(title: "Seat", description: "Protects your butt", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
-Accessory.create!(title: "Wheel", description: "Protects the road", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+accessory1 = Accessory.create!(title: "Helmet", description: "Protects your noggin", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+accessory2 = Accessory.create!(title: "Seat", description: "Protects your butt", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
+accessory3 = Accessory.create!(title: "Wheel", description: "Protects the road", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
 Accessory.create!(title: "Cleats", description: "Protects your feet", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
 Accessory.create!(title: "Bag", description: "Protects your stuff", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
 Accessory.create!(title: "Light", description: "Protects your life", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
@@ -67,10 +74,27 @@ Accessory.create!(title: "Socks", description: "Protects your shoes from sweat",
 Accessory.create!(title: "Gummies", description: "Protects your stomach", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 0)
 Accessory.create!(title: "retired", description: "Protects nothing", price: 100.00, image_url: "http://icons.iconarchive.com/icons/guillendesign/variations-3/256/Default-Icon-icon.png", status: 1)
 
-User.create!(username: "admin", email: "admin@admin.com", password: "password", role: 1)
-User.create!(username: "default", email: "default@default.com", password: "password")
+admin = User.create!(username: "admin", email: "admin@admin.com", password: "password", role: 1)
+user = User.create!(username: "default", email: "default@default.com", password: "password")
+
+15.times do
+  order = Order.create!(user_id: admin.id, status: [0,1,2,3].sample)
+  OrderAccessory.create!(quantity: [1,2,3].sample, order_id: order.id, accessory_id: accessory1.id)
+  OrderAccessory.create!(quantity: [1,2,3].sample, order_id: order.id, accessory_id: accessory2.id)
+  OrderAccessory.create!(quantity: [1,2,3].sample, order_id: order.id, accessory_id: accessory3.id)
+end
+
+15.times do
+  order = Order.create!(user_id: user.id, status: [0,1,2,3].sample)
+  OrderAccessory.create!(quantity: [1,2,3].sample, order_id: order.id, accessory_id: accessory1.id)
+  OrderAccessory.create!(quantity: [1,2,3].sample, order_id: order.id, accessory_id: accessory2.id)
+  OrderAccessory.create!(quantity: [1,2,3].sample, order_id: order.id, accessory_id: accessory3.id)
+end
 
 ActiveRecord::Base.connection.reset_pk_sequence!(:stations)
 ActiveRecord::Base.connection.reset_pk_sequence!(:conditions)
 ActiveRecord::Base.connection.reset_pk_sequence!(:users)
 ActiveRecord::Base.connection.reset_pk_sequence!(:accessories)
+ActiveRecord::Base.connection.reset_pk_sequence!(:trips)
+ActiveRecord::Base.connection.reset_pk_sequence!(:order_accessories)
+ActiveRecord::Base.connection.reset_pk_sequence!(:orders)
