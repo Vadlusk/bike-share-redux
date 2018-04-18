@@ -6,10 +6,10 @@ class Admin::StationsController < Admin::BaseController
   def create
     @station = Station.new(station_params)
     if @station.save
-      flash.notice = 'You successfully created this station'
+      flash[:notice] = 'You successfully created this station'
       redirect_to station_path(@station)
     else
-      flash.notice = 'Station has NOT been created, please make sure you fill in all of the form'
+      flash[:notice] = 'Station has NOT been created, please make sure you fill in all of the form'
       render :new
     end
   end
@@ -22,10 +22,10 @@ class Admin::StationsController < Admin::BaseController
     @station = Station.find_by_slug(params[:id])
     @station.update(station_params)
     if @station.save
-      flash.notice = 'This station has been updated.'
+      flash[:notice] = 'This station has been updated.'
       redirect_to station_path(@station)
     else
-      flash.notice = 'This station has NOT been updated.'
+      flash[:notice] = 'This station has NOT been updated.'
       render :edit
     end
   end
@@ -33,10 +33,10 @@ class Admin::StationsController < Admin::BaseController
   def destroy
     @station = Station.find_by_slug(params[:id])
     if @station.destroy
-      flash.notice = "You deleted the station successfully."
+      flash[:notice] = "You deleted the station successfully."
       redirect_to stations_path
     else
-      flash.notice = "You failed to deleted the station."
+      flash[:notice] = "You failed to deleted the station."
       render stations_path
     end
   end
