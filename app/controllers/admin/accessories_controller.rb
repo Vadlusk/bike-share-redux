@@ -10,10 +10,10 @@ class Admin::AccessoriesController < Admin::BaseController
   def create
     @accessory = Accessory.new(accessory_params)
     if @accessory.save
-      flash.notice = 'You successfully created this accessory'
+      flash[:notice] = 'You successfully created this accessory'
       redirect_to admin_bike_shop_path
     else
-      flash.notice = 'Accessory has NOT been created, please make sure you fill in all of the form'
+      flash[:notice] = 'Accessory has NOT been created, please make sure you fill in all of the form'
       render :new
     end
   end
@@ -26,10 +26,10 @@ class Admin::AccessoriesController < Admin::BaseController
     @accessory = Accessory.find(params[:id])
     @accessory.update(accessory_params)
     if @accessory.save
-      flash.notice = "Accessory has been updated."
+      flash[:notice] = "Accessory has been updated."
       redirect_to admin_bike_shop_path
     else
-      flash.notice = "Accessory has NOT been updated."
+      flash[:notice] = "Accessory has NOT been updated."
       render :edit
     end
   end
