@@ -1,32 +1,24 @@
 # Bike Share Redux
 
-This project uses Ruby on Rails and Activerecord to build a site that analyzes bike share usage in San Francisco and allows a user to purchase bike accessories via an online store.  
+This project uses Ruby on Rails and Activerecord to build a site that analyzes bike share usage in San Francisco based on [this data](https://www.kaggle.com/benhamner/sf-bay-area-bike-share) and allows a user to purchase bike accessories via an online store.
 Brought to you by Adam Conway, Kelly Schroeder, Andrew Piermarini, and Adam Lusk.  
 
 # Usage
 
-To use this site, visit our site at https://serene-temple-75536.herokuapp.com/   
-Or,    
-fork and clone this repository.  
-Then from the root directory, run ```bundle install```.  
+To use this site, visit [here](https://serene-temple-75536.herokuapp.com/)<br>
+If you're interested in using this in your own project, fork and clone this repository.  
+From the root directory, run ```bundle install```.  
 Next, initialize the database ```rake db:{install, migrate, seed}```  
-Finally, open a ```rails console```  
-and open http://localhost:3000/ on any browser.  
+Finally, open a ```rails server```  
+and open http://localhost:3000/ on any browser.<br>
+Run ```rspec``` to run the test suite
 
-* Ruby version
+# Versions
+ruby 2.4.1  
+rails 5.1.6
 
-* System dependencies
+# Next steps
 
-* Configuration
+* Implement a payment processor so the shop features can be used with real bike accessories
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Add in extra data to get better analysis on bike share usage. In particular, the status.csv file from [this page](https://www.kaggle.com/benhamner/sf-bay-area-bike-share/data)
