@@ -13,6 +13,7 @@ nav.navbar
   .nav-item
     width: fit-content
 
+
   .dropdown-menu
     right: 0
     left: auto
@@ -23,7 +24,7 @@ nav.navbar
 
   .direct-links
     display: flex
-    flex-direction: row
+    flex-flow: row
 
   .dropdowns
     display: flex
@@ -32,6 +33,12 @@ nav.navbar
   .nav_content .nav-link
     color: white
     padding-left: 15px
+
+    a.cart
+      display: flex
+      flex-direction: row
+      justify-content: center
+      align-items: center
 
 #notice
   color: black
@@ -181,6 +188,7 @@ form
   background-color: transparentize(#114B5F, .4)
   height: 100%
   border-radius: 0px 0px 10px 0px
+
 div.station_show
   background-color: #858e9b
   border-radius: 3%
@@ -361,10 +369,7 @@ table
   a
     padding: 0px 3px 0px 3px
 
-.cart
-  display: flex
-  flex-direction: column
-  justify-content: center
+
 
 .cart-total
   display: flex
@@ -416,3 +421,6 @@ table
 
 #station-show
   min-height: 500px
+
+.visitor-tip
+  margin-top: 20px
