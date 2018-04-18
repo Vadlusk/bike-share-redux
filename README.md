@@ -13,6 +13,10 @@ Finally, open a ```rails server```
 and open http://localhost:3000/ on any browser.<br>
 Run ```rspec``` to run the test suite
 
+# Versions
+ruby 2.4.1  
+rails 5.1.6
+
 # Next steps
 
 * Implement a payment processor so the shop features can be used with real bike accessories
