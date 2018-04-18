@@ -1,14 +1,14 @@
 <header>
   <div class="header-title">
     <h6>
-      Trip #<%= @trip.id %> starting <%= format_date(@trip.start_date) %>
+      Trip <%= @trip.id %> starting <%= format_date(@trip.start_date) %>
     <h6>
   </div>
 </header>
 
 <div class="card-container">
   <div class="card-info">
-    <span><h5>Duration:</h5><h6><%= @trip.duration %></h6></span>
+    <span><h5>Duration:</h5><h6><%= @trip.duration %> (seconds)</h6></span>
     <span><h5>Start Station Name: </h5><h6><%= @trip.start_station_name %></h6></span>
     <span><h5>Start Station ID: </h5><h6><%= @trip.start_station_id %></h6></span>
     <span><h5>End Date: </h5><h6><%= format_date(@trip.end_date) %></h6></span>
