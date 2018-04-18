@@ -6,15 +6,30 @@
   </div>
 </header>
 <main>
-  <div class="station_show">
-    <h1><%= @user.username %></h1>
-    <!-- <h3>Bikes: </h3><p><%= @user.username %></p> -->
-    <h3>email: </h3><p><%= @user.email %></p>
-  </div>
-  <div>
-    <% @user.orders.each do |order| %>
-      <%= link_to order.id, order_path(order) %>
-      <%= order.status %>
-    <% end %>
+  <div class="card-container">
+    <div class="card-info">
+      <h3>Username: <%= @user.username %></h3>
+      <h3>Email: <%= @user.email %></h3>
+      <div class="card-buttons">
+        <%= link_to '<i class="fas fa-edit"></i> Edit Account Info'.html_safe, edit_user_path(@user) %>
+      </div>
+    </div>
   </div>
 </main>
+
+<% unless @user.orders.empty? %>
+  <main>
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Order ID</th>
+        <th>Order Status</th>
+      </tr>
+      <% @user.orders.each do |order| %>
+        <tr class="order-<%= order.id %>">
+          <td><%= link_to order.id, order_path(order) %></td>
+          <td><%= order.status %></td>
+        </tr>
+      <% end %>
+    </table>
+  </main>
+<% end %>
