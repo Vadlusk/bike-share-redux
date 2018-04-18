@@ -2,7 +2,8 @@ class Admin::UsersController < Admin::BaseController
   before_action :require_admin
 
   def show
-    @user   = current_user
+    @all_orders = Order.all
+    @user       = current_user
     if params[:status]
       @orders = Order.where(status: params[:status])
     else

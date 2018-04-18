@@ -7,3 +7,9 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 end
+
+
+
+group :development, :test do
+  gem 'factory_bot_rails'
+end
