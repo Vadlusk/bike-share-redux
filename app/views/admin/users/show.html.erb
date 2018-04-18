@@ -23,19 +23,19 @@
       <p>Totals for each status: </p>
       <p>
         <%= link_to 'Paid', '/admin/dashboard?status=paid' %>:
-        <%= Order.all.status_total('paid') %>
+        <%= @all_orders.status_total('paid') %>
       </p>
       <p>
         <%= link_to 'Ordered', '/admin/dashboard?status=ordered' %>:
-        <%= Order.all.status_total('ordered') %>
+        <%= @all_orders.status_total('ordered') %>
       </p>
       <p>
         <%= link_to 'Cancelled', '/admin/dashboard?status=cancelled' %>:
-        <%= Order.all.status_total('cancelled') %>
+        <%= @all_orders.status_total('cancelled') %>
       </p>
       <p>
         <%= link_to 'Completed', '/admin/dashboard?status=completed' %>:
-        <%= Order.all.status_total('completed') %>
+        <%= @all_orders.status_total('completed') %>
       </p>
     </div>
   </div>
@@ -65,7 +65,7 @@
             <% end %>
           <% end %>
         </td>
-        <td>
+        <td class="order-button">
           <% if order.status.include?("ordered") %>
             <%= form_for order do |f| %>
               <%= f.hidden_field :status %>
@@ -77,7 +77,7 @@
             <%= form_for order do |f| %>
               <%= f.hidden_field :status %>
               <%= hidden_field_tag :status, "completed" %>
-              <%= f.submit "Mark as Completed", class: "order-button"%>
+              <%= f.submit "Mark as Completed" %>
             <% end %>
           <% end %>
         </td>
