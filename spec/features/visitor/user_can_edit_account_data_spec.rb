@@ -20,8 +20,9 @@ describe 'user' do
       fill_in 'user[username]', with: 'Larry'
       fill_in 'user[email]', with: 'realmail@larry.com'
       fill_in 'user[password]', with: 'wordpass'
+      fill_in 'user[password_confirmation]', with: 'wordpass'
 
-      click_on 'Update User'
+      click_on 'Update Account Information'
 
       expect(page).to have_content('This user has been updated')
     end
@@ -42,8 +43,9 @@ describe 'user' do
       fill_in 'user[username]', with: 'Larry'
       fill_in 'user[email]', with: 'realmail@larry.com'
       fill_in 'user[password]', with: 'wordpass'
+      fill_in 'user[password_confirmation]', with: 'wordpass'
 
-      click_on 'Update User'
+      click_on 'Update Account Information'
 
       expect(user2.username).to_not eq('Larry')
       expect(user2.password).to_not eq('wordpass')

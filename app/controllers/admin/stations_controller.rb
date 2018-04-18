@@ -6,10 +6,10 @@ class Admin::StationsController < Admin::BaseController
   def create
     @station = Station.new(station_params)
     if @station.save
-      flash[:notice] = 'You successfully created this station'
+      flash[:notice] = 'Created a new station'
       redirect_to station_path(@station)
     else
-      flash[:notice] = 'Station has NOT been created, please make sure you fill in all of the form'
+      flash[:notice] = 'Failed to create a new station'
       render :new
     end
   end

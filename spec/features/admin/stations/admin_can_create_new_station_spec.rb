@@ -18,7 +18,7 @@ describe 'admin' do
       click_on 'Create Station'
 
       expect(current_path).to eq('/stations/awesome-bike-place')
-      expect(page).to have_content('You successfully created this station')
+      expect(page).to have_content('Created a new station')
       expect(page).to have_content('Awesome Bike Place')
       expect(page).to have_content(77)
       expect(page).to have_content('No Way Jose')
@@ -43,8 +43,8 @@ describe 'admin' do
       click_on 'Create Station'
 
       expect(page).to have_button('Create Station')
-      expect(page).to have_content('Station has NOT been created, please make sure you fill in all of the form')
-      expect(page).to_not have_content('You successfully created this station')
+      expect(page).to have_content('Failed to create a new station')
+      expect(page).to_not have_content('Created a new station')
     end
   end
 end

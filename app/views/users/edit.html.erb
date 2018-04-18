@@ -1,15 +1,27 @@
-<%= form_for @user do |f| %>
-  <%= f.label :username  %>
-  <%= f.text_field :username %>
-
-  <%= f.label :email  %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <div class="cancel-submit">
-    <%= link_to "Cancel", dashboard_path, class: 'btn btn-outline-light' %>
-    <%= f.submit class: 'btn btn-outline-light' %>
+<header>
+  <div class="header-title">
+    <h6>
+      Edit Account Information
+    <h6>
   </div>
-<% end %>
+</header>
+<main>
+  <%= form_for @user do |f| %>
+    <%= f.label :username  %>
+    <%= f.text_field :username %>
+
+    <%= f.label :email  %>
+    <%= f.email_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+
+    <div class="cancel-submit">
+      <%= link_to "Cancel", dashboard_path, class: 'btn btn-outline-light' %>
+      <%= f.submit "Update Account Information", class: 'btn btn-outline-light' %>
+    </div>
+  <% end %>
+<main>

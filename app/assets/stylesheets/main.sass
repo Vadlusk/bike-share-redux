@@ -13,6 +13,7 @@ nav.navbar
   .nav-item
     width: fit-content
 
+
   .dropdown-menu
     right: 0
     left: auto
@@ -23,7 +24,7 @@ nav.navbar
 
   .direct-links
     display: flex
-    flex-direction: row
+    flex-flow: row
 
   .dropdowns
     display: flex
@@ -32,6 +33,12 @@ nav.navbar
   .nav_content .nav-link
     color: white
     padding-left: 15px
+
+    a.cart
+      display: flex
+      flex-direction: row
+      justify-content: center
+      align-items: center
 
 #notice
   color: black
@@ -83,6 +90,7 @@ form
 
   label
     font-weight: bold
+    padding-top: 12px
 
   .cancel-submit
     margin-top: 40px
@@ -180,6 +188,7 @@ form
   background-color: transparentize(#114B5F, .4)
   height: 100%
   border-radius: 0px 0px 10px 0px
+
 div.station_show
   background-color: #858e9b
   border-radius: 3%
@@ -220,9 +229,6 @@ table
     padding: 20px
     border-radius: 10px
 
-  #station-show
-    min-height: 475px
-
     h5
       font-size: 18px
       margin-bottom: 0px
@@ -242,6 +248,10 @@ table
       a
         font-size: 15px
 
+
+#station-show
+  min-height: 475px
+
 .accessories
   display: flex
   flex-flow: row wrap
@@ -250,8 +260,6 @@ table
   .card-info
     display: flex
     flex-flow: row nowrap
-
-    .accessory
 
 .accessory_image
   width: 80%
@@ -348,7 +356,6 @@ table
     font-size: 20px
 
 .cart-table
-
   img
     height: 40px
     width: 40px
@@ -359,11 +366,6 @@ table
 
   a
     padding: 0px 3px 0px 3px
-
-.cart
-  display: flex
-  flex-direction: column
-  justify-content: center
 
 .cart-total
   display: flex
@@ -415,3 +417,6 @@ table
 
 #station-show
   min-height: 500px
+
+.visitor-tip
+  margin-top: 20px
