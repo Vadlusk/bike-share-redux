@@ -34,6 +34,12 @@ class Admin::AccessoriesController < Admin::BaseController
     end
   end
 
+  def status
+    accessory = Accessory.find(params[:id])
+    accessory.retired? ? accessory.active! : accessory.retired!
+    redirect_to admin_bike_shop_path
+  end
+
   private
 
   def accessory_params

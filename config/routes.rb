@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/bike-shop', to: 'accessories#index'
     get '/dashboard', to: 'users#show'
+    post 'status' => 'accessories#status', as: :status
     resources :stations, only: [:update, :edit, :destroy, :new, :create]
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :trips, only: [:new, :create, :edit, :show, :update, :destroy]

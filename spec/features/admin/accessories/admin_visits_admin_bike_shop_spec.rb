@@ -32,5 +32,31 @@ describe 'admin' do
       expect(page).to have_content('Definitely junk')
       expect(page).to have_content('Not quite junk')
     end
+    it 'can retire an item from index' do
+      create(:accessory, title: 'Some junk', status: 0)
+      admin = create(:admin)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_bike_shop_path
+
+      click_on 'Retire'
+
+      expect(page).to have_content('retired')
+      expect(page).to_not have_content('active')
+    end
+    it 'can activate an item from index' do
+      create(:accessory, title: 'Some junk', status: 1)
+      admin = create(:admin)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_bike_shop_path
+
+      click_on 'Activate'
+
+      expect(page).to have_content('active')
+      expect(page).to_not have_content('retired')
+    end
   end
 end
