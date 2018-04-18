@@ -10,7 +10,7 @@
   <div class="card-info">
     <h3>User: <%= @order.user.username %></h3>
     <h3>User's Email: <%= @order.user.email %></h3>
-    <h3>Status: <%= @order.status %></h2>
+    <h3>Status: <%= @order.status %></h3>
     <% if @order.status.include?("completed") %>
       <h3>Completed on: <%= format_date(@order.updated_at) %></h3>
     <% end %>
