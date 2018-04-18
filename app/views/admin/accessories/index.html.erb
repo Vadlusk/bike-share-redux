@@ -15,9 +15,9 @@
       <td><%= accessory.description %></td>
       <td>
         <% if accessory.active? %>
-          <%= button_to 'Retire', admin_status_path(id: accessory.id, status: 1), data: { confirm: "Are you sure you want to retire this item?"} %>
+          <div class="status-button"><%= button_to 'Retire', admin_status_path(id: accessory.id, status: 1), data: { confirm: "Are you sure you want to retire this item?"} %></div>
         <% else %>
-          <%= button_to 'Activate', admin_status_path(id: accessory.id, status: 0), data: { confirm: "Are you sure you want to activate this item?"} %>
+          <div class="status-button"><%= button_to 'Activate', admin_status_path(id: accessory.id, status: 0), data: { confirm: "Are you sure you want to activate this item?"} %></div>
         <% end %>
       </td>
       <td>
