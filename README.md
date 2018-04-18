@@ -5,7 +5,7 @@ Brought to you by Adam Conway, Kelly Schroeder, Andrew Piermarini, and Adam Lusk
 
 # Usage
 
-To use this site, visit our heroku page at https://serene-temple-75536.herokuapp.com/   
+To use this site, visit our site at https://serene-temple-75536.herokuapp.com/   
 Or,    
 fork and clone this repository.  
 Then from the root directory, run ```bundle install```.  
